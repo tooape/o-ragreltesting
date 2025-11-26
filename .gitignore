@@ -11,6 +11,7 @@ env/
 
 # Data (vault-specific, don't commit)
 data/vault_chunks.json
+data/filtered_chunks.json
 
 # IDE
 .idea/
