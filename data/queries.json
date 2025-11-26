@@ -1,0 +1,123 @@
+{
+  "version": "0.1.0",
+  "description": "O-RAG evaluation queries - chunk-level ground truth",
+  "queries": [
+    {
+      "id": "smart-001",
+      "tool": "smart-search",
+      "query": "Ritu 1x1",
+      "category": "meeting-recall",
+      "expected_chunks": [
+        {
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Meetings>[[Ritu Goel|Ritu]] Staff #meetings",
+          "relevance": 2,
+          "reason": "Recent Ritu meeting but staff not 1x1"
+        },
+        {
+          "chunk_id": "People/Ritu Goel.md::root",
+          "relevance": 2,
+          "reason": "Person page provides context"
+        }
+      ],
+      "notes": "Testing person + meeting type combo. Semantic should find staff meetings too."
+    },
+    {
+      "id": "smart-002",
+      "tool": "smart-search",
+      "query": "Intent AI 2026 strategy",
+      "category": "project-status",
+      "expected_chunks": [
+        {
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Meetings>[[Intent AI Home|Intent]] Strategy 2026 White-paper #meetings",
+          "relevance": 3,
+          "reason": "Direct match - meeting about 2026 strategy whitepaper"
+        }
+      ],
+      "notes": "Conceptual query matching program + year + strategy"
+    },
+    {
+      "id": "smart-003",
+      "tool": "smart-search",
+      "query": "Firefly semantic search",
+      "category": "project-status",
+      "expected_chunks": [
+        {
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Meetings>Semantic Search for [[Firefly]] #meetings",
+          "relevance": 3,
+          "reason": "Direct match - meeting about Firefly semantic search"
+        }
+      ],
+      "notes": "Product + feature combo"
+    },
+    {
+      "id": "smart-004",
+      "tool": "smart-search",
+      "query": "Kosta meeting",
+      "category": "meeting-recall",
+      "expected_chunks": [
+        {
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Meetings>[[Kosta Blank|Kosta]] #meetings/1x1",
+          "relevance": 3,
+          "reason": "Direct Kosta 1x1 match"
+        }
+      ],
+      "notes": "Person + meeting type"
+    },
+    {
+      "id": "smart-005",
+      "tool": "smart-search",
+      "query": "DC Recs evaluation",
+      "category": "project-status",
+      "expected_chunks": [
+        {
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Meetings>[[Acrobat|DC]] [[Recommendations Home|Recs]] sync #meetings",
+          "relevance": 3,
+          "reason": "DC Recs sync meeting"
+        }
+      ],
+      "notes": "Abbreviation + program status"
+    },
+    {
+      "id": "simple-001",
+      "tool": "simple-search",
+      "query": "Ritu Goel",
+      "category": "person-lookup",
+      "expected_chunks": [
+        {
+          "chunk_id": "People/Ritu Goel.md::root",
+          "relevance": 3,
+          "reason": "Exact name match on person page"
+        }
+      ],
+      "notes": "Exact name lookup should hit person page directly"
+    },
+    {
+      "id": "simple-002",
+      "tool": "simple-search",
+      "query": "Brian Eriksson",
+      "category": "person-lookup",
+      "expected_chunks": [
+        {
+          "chunk_id": "People/Brian Eriksson.md::Brain Eriksson",
+          "relevance": 3,
+          "reason": "Exact match on person page"
+        }
+      ],
+      "notes": "Note: chunk has typo 'Brain' - testing robustness"
+    },
+    {
+      "id": "simple-003",
+      "tool": "simple-search",
+      "query": "#meetings/1x1",
+      "category": "meeting-recall",
+      "expected_chunks": [
+        {
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Meetings>[[Kosta Blank|Kosta]] #meetings/1x1",
+          "relevance": 3,
+          "reason": "Tag match"
+        }
+      ],
+      "notes": "Tag-based filtering"
+    }
+  ]
+}

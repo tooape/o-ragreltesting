@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "O-RAG Local Graph Query",
+  "description": "A test query for evaluating /local-graph tool",
+  "type": "object",
+  "required": ["id", "seed_path", "expected_neighbors"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique query identifier (e.g., 'graph-001')"
+    },
+    "seed_path": {
+      "type": "string",
+      "description": "The note path to start graph traversal from"
+    },
+    "hops": {
+      "type": "integer",
+      "default": 1,
+      "description": "Number of hops to traverse (1 or 2)"
+    },
+    "direction": {
+      "type": "string",
+      "enum": ["outbound", "inbound", "both"],
+      "default": "both",
+      "description": "Link direction to follow"
+    },
+    "filters": {
+      "type": "object",
+      "properties": {
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "pageType": { "type": "string" }
+      }
+    },
+    "expected_neighbors": {
+      "type": "array",
+      "description": "Notes that should appear in traversal results",
+      "items": {
+        "type": "object",
+        "required": ["note_path", "relevance"],
+        "properties": {
+          "note_path": { "type": "string" },
+          "link_type": {
+            "type": "string",
+            "enum": ["outbound", "inbound"],
+            "description": "How seed links to this neighbor"
+          },
+          "relevance": {
+            "type": "integer",
+            "enum": [1, 2, 3],
+            "description": "1=exists but tangential, 2=relevant, 3=highly relevant"
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

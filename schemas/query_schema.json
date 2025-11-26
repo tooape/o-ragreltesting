@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "O-RAG Evaluation Query",
+  "description": "A test query for evaluating O-RAG tool effectiveness",
+  "type": "object",
+  "required": ["id", "tool", "query", "expected_chunks"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique query identifier (e.g., 'smart-001', 'simple-015')"
+    },
+    "tool": {
+      "type": "string",
+      "enum": ["smart-search", "simple-search", "local-graph"],
+      "description": "Which O-RAG tool this query targets"
+    },
+    "query": {
+      "type": "string",
+      "description": "The actual query string sent to the tool"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "person-lookup",
+        "meeting-recall",
+        "project-status",
+        "technical-detail",
+        "hub-discovery",
+        "recent-activity",
+        "relationship-browse"
+      ],
+      "description": "Query category for analysis"
+    },
+    "filters": {
+      "type": "object",
+      "description": "Optional filters passed to the tool",
+      "properties": {
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "pageType": { "type": "string" },
+        "createdAfter": { "type": "string", "format": "date" },
+        "modifiedAfter": { "type": "string", "format": "date" }
+      }
+    },
+    "expected_chunks": {
+      "type": "array",
+      "description": "Chunks that should be retrieved, with relevance grades",
+      "items": {
+        "type": "object",
+        "required": ["chunk_id", "relevance"],
+        "properties": {
+          "chunk_id": {
+            "type": "string",
+            "description": "Chunk ID in format 'notePath::headingPath'"
+          },
+          "relevance": {
+            "type": "integer",
+            "enum": [0, 1, 2, 3],
+            "description": "0=not relevant, 1=marginally, 2=relevant, 3=highly relevant"
+          },
+          "reason": {
+            "type": "string",
+            "description": "Why this chunk is/isn't relevant (for debugging)"
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional context about this query"
+    }
+  }
+}
