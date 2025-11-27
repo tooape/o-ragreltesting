@@ -129,22 +129,22 @@
       "additional_queries_needed": [
         "LrD Lr Desktop contact Rithesh Vic Anuj"
       ],
-      "expected_answer": "Peter Baust - Group PM manager for Lightroom",
+      "expected_answer": "Benjamin Warde - LrD lead",
       "judgments": [
         {
           "doc_id": "Notes/Programs/Lightroom/Lr Home.md",
           "chunk_id": "Notes/Programs/Lightroom/Lr Home.md::Lightroom Home",
-          "relevance": 2,
-          "reason": "Hub page for Lightroom program"
+          "relevance": 1,
+          "reason": "Hub page for Lightroom program - doesn't identify LrD lead"
         },
         {
           "doc_id": "Notes/Misc/Lr Desktop Rollout.md",
           "chunk_id": "Notes/Misc/Lr Desktop Rollout.md::Relevance>Embedding testing",
-          "relevance": 2,
-          "reason": "Desktop rollout planning page"
+          "relevance": 1,
+          "reason": "Desktop rollout planning page - doesn't identify LrD lead"
         }
       ],
-      "notes": "Peter Baust is listed as Group PM manager for Lightroom. For technical contacts, Chhaya's work on embeddings is also mentioned in Lr Desktop Rollout.md."
+      "notes": "Correct answer is Benjamin Warde but vault doesn't explicitly identify him as LrD lead. He is mentioned in vault but not with this role."
     },
     {
       "id": "qrel-006",
