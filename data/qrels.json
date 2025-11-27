@@ -229,34 +229,28 @@
       "tool": "smart-search",
       "initial_search_query": "PsW Recs Photoshop Web Recommendations status",
       "additional_queries_needed": [],
-      "expected_answer": "PsW stock content is Q1 2026 must nail. POC use cases include preset adjustments and subject/background manipulation. PM contacts: Hao Xu, Jasper. Slack: ps-web-in-context-recommendation",
+      "expected_answer": "V1 is contextual stock content recs - keeping Hao focused on hitting this deliverable. PsW stock content is Q1 2026 must nail. Presets and other use cases are follow-on, not V1 scope. PM: Hao Xu.",
       "judgments": [
-        {
-          "doc_id": "Notes/Misc/Photoshop.md",
-          "chunk_id": "Notes/Misc/Photoshop.md::Photoshop Mobile",
-          "relevance": 3,
-          "reason": "Hub page with PsW Recs details, use cases, PM contacts"
-        },
-        {
-          "doc_id": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md",
-          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md::Notes>Q1 2026 Must Nails>[[Recommendations Home|Recs]]",
-          "relevance": 3,
-          "reason": "Q1 Must Nails listing PsW stock content"
-        },
         {
           "doc_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md",
           "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Meetings>[[Kosta Blank|Kosta]] #meetings/1x1",
           "relevance": 2,
-          "reason": "Kosta 1x1 mentions Ps Web recs priority over mobile"
+          "reason": "Kosta 1x1 confirms Ps Web recs priority, references Q1 must nails"
         },
         {
-          "doc_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md",
-          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md::Meetings>[[Brian Eriksson|Brian]] #meetings/1x1>[[Photoshop]]",
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md::Notes>Q1 2026 Must Nails>[[Recommendations Home|Recs]]",
           "relevance": 2,
-          "reason": "Brian meeting notes about not spending cycles on Ps Mobile"
+          "reason": "Lists PsW stock content as must nail - but doesn't clarify V1 scope"
+        },
+        {
+          "doc_id": "Notes/Misc/Photoshop.md",
+          "chunk_id": "Notes/Misc/Photoshop.md::Photoshop Web [[Recommendations Home|Recommendations]]>Content [[Recommendations Home|Recommendations]]",
+          "relevance": 1,
+          "reason": "Has PM contacts (Hao, Jasper) but doesn't clarify V1 is stock only"
         }
       ],
-      "notes": "Photoshop.md serves as the hub page with comprehensive info. Recent daily notes provide current status."
+      "notes": "Vault identifies PsW stock content as Q1 must nail but doesn't explicitly state V1 scope is stock-only (not presets). Correct answer requires context that presets/actions are follow-on."
     },
     {
       "id": "qrel-010",
