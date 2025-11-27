@@ -33,7 +33,7 @@
       "additional_queries_needed": [
         "Jayant 1x1 meeting"
       ],
-      "expected_answer": "March 25, 2024 - discussed prior case with not being read in around Artemis causing headaches, and long prompt",
+      "expected_answer": "October 15, 2025 - Intent swim lanes meeting discussing Swim lane 2 tasks (entity list, query data, eval plan). Jayant working with Kosta and Ayush on wiki.",
       "judgments": [
         {
           "doc_id": "People/Jayant Kumar.md",
@@ -42,13 +42,13 @@
           "reason": "Person page with profile info"
         },
         {
-          "doc_id": "Notes/Periodic Notes/Daily Notes/March 25, 2024.md",
-          "chunk_id": "Notes/Periodic Notes/Daily Notes/March 25, 2024.md::Meetings>jayant #meetings/1x1",
+          "doc_id": "Notes/Periodic Notes/Daily Notes/October 15, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/October 15, 2025.md::Meetings>[[Intent]] swim lanes #meetings",
           "relevance": 3,
-          "reason": "Contains the 1x1 meeting notes with Jayant"
+          "reason": "Most recent meeting mentioning Jayant - Intent swim lanes discussion"
         }
       ],
-      "notes": "Smart search returned Jayant person page quickly. Grep for '#meetings/1x1' pattern confirmed March 25, 2024 was the last 1x1."
+      "notes": "October 15, 2025 Intent swim lanes meeting is the most recent daily note linking to Jayant."
     },
     {
       "id": "qrel-002",
