@@ -1225,7 +1225,7 @@
     },
     {
       "id": "smart-055",
-      "prompt": "CPro strategy IATV",
+      "prompt": "CPro strategy video",
       "user_intent": "Where's the CPro strategy video link?",
       "category": "technical-detail",
       "tool": "smart-search",
