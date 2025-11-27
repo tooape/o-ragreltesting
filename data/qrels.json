@@ -1,0 +1,1563 @@
+{
+  "version": "1.0.0",
+  "description": "O-RAG evaluation qrels - consolidated query-document relevance judgments",
+  "created": "2025-11-26",
+  "stats": {
+    "total_queries": 69,
+    "total_judgments": 135,
+    "relevance_scale": {
+      "3": "highly relevant - directly answers query",
+      "2": "relevant - contains useful information",
+      "1": "marginally relevant - tangentially related",
+      "0": "not relevant"
+    },
+    "by_category": {
+      "person-lookup": 12,
+      "meeting-recall": 8,
+      "hub-discovery": 9,
+      "project-status": 11,
+      "technical-detail": 10,
+      "recent-activity": 4,
+      "relationship-browse": 5,
+      "multi-hop": 10
+    }
+  },
+  "qrels": [
+    {
+      "id": "qrel-001",
+      "prompt": "When was the last time I talked to Jayant, and what did we discuss?",
+      "user_intent": "Recall last 1x1 meeting with specific person",
+      "category": "meeting-recall",
+      "tool": "smart-search",
+      "initial_search_query": "Jayant meeting conversation",
+      "additional_queries_needed": [
+        "Jayant 1x1 meeting"
+      ],
+      "expected_answer": "March 25, 2024 - discussed prior case with not being read in around Artemis causing headaches, and long prompt",
+      "judgments": [
+        {
+          "doc_id": "People/Jayant Kumar.md",
+          "chunk_id": "People/Jayant Kumar.md::Jayant Kumar",
+          "relevance": 2,
+          "reason": "Person page with profile info"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/March 25, 2024.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/March 25, 2024.md::Meetings>jayant #meetings/1x1",
+          "relevance": 3,
+          "reason": "Contains the 1x1 meeting notes with Jayant"
+        }
+      ],
+      "notes": "Smart search returned Jayant person page quickly. Grep for '#meetings/1x1' pattern confirmed March 25, 2024 was the last 1x1."
+    },
+    {
+      "id": "qrel-002",
+      "prompt": "I had a meeting with Brian, and he asked about evals for photo styles, where's the link to the disc hub page for that?",
+      "user_intent": "Find specific URL mentioned in meeting",
+      "category": "technical-detail",
+      "tool": "smart-search",
+      "initial_search_query": "photo styles eval hub discovery",
+      "additional_queries_needed": [],
+      "expected_answer": "https://discovery-hub.corp.adobe.com:8080/photo-styles-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Notes",
+          "relevance": 3,
+          "reason": "Contains the Discovery Hub link for photo styles eval"
+        },
+        {
+          "doc_id": "Notes/Programs/Recommendations/Style Home.md",
+          "chunk_id": "Notes/Programs/Recommendations/Style Home.md::Style Description",
+          "relevance": 2,
+          "reason": "Hub page for photo styles program"
+        }
+      ],
+      "notes": "November 20, 2025 note explicitly mentions 'photo style understanding model eval is up in discovery Hub' with the link."
+    },
+    {
+      "id": "qrel-003",
+      "prompt": "Who was working on the transformer based relevance improvements to AdobeOne?",
+      "user_intent": "Find person working on specific technical project",
+      "category": "person-lookup",
+      "tool": "smart-search",
+      "initial_search_query": "transformer relevance improvements AdobeOne",
+      "additional_queries_needed": [],
+      "expected_answer": "Feng bin - has a project to fine tune AdobeOne V2 for failure cases, transformer based ranking",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md::Meetings>[[Ritu Goel|Ritu]] #meetings/1x1>[[Lr Home|Lr]]",
+          "relevance": 3,
+          "reason": "Contains mention of Feng bin's transformer-based ranking project"
+        }
+      ],
+      "notes": "Found in Ritu 1x1 meeting notes on November 19, 2025."
+    },
+    {
+      "id": "qrel-004",
+      "prompt": "Who is the PsM PM?",
+      "user_intent": "Find product manager for specific product",
+      "category": "person-lookup",
+      "tool": "smart-search",
+      "initial_search_query": "PsM PM Photoshop Mobile product manager",
+      "additional_queries_needed": [],
+      "expected_answer": "Michael Lewis",
+      "judgments": [
+        {
+          "doc_id": "People/Michael Lewis.md",
+          "chunk_id": "People/Michael Lewis.md::root",
+          "relevance": 3,
+          "reason": "Person page explicitly stating 'Photoshop Mobile PM'"
+        },
+        {
+          "doc_id": "Notes/Misc/Photoshop.md",
+          "chunk_id": "Notes/Misc/Photoshop.md::Photoshop Mobile",
+          "relevance": 2,
+          "reason": "Contains PM contact info for Photoshop"
+        }
+      ],
+      "notes": "Michael Lewis person page and Photoshop.md both provide this answer."
+    },
+    {
+      "id": "qrel-005",
+      "prompt": "Who should I ping for a question about Lr desktop?",
+      "user_intent": "Find contact for product questions",
+      "category": "person-lookup",
+      "tool": "smart-search",
+      "initial_search_query": "Lr desktop contact person Lightroom",
+      "additional_queries_needed": [
+        "LrD Lr Desktop contact Rithesh Vic Anuj"
+      ],
+      "expected_answer": "Peter Baust - Group PM manager for Lightroom",
+      "judgments": [
+        {
+          "doc_id": "Notes/Programs/Lightroom/Lr Home.md",
+          "chunk_id": "Notes/Programs/Lightroom/Lr Home.md::Lightroom Home",
+          "relevance": 2,
+          "reason": "Hub page for Lightroom program"
+        },
+        {
+          "doc_id": "Notes/Misc/Lr Desktop Rollout.md",
+          "chunk_id": "Notes/Misc/Lr Desktop Rollout.md::Relevance>Embedding testing",
+          "relevance": 2,
+          "reason": "Desktop rollout planning page"
+        }
+      ],
+      "notes": "Peter Baust is listed as Group PM manager for Lightroom. For technical contacts, Chhaya's work on embeddings is also mentioned in Lr Desktop Rollout.md."
+    },
+    {
+      "id": "qrel-006",
+      "prompt": "What is the current LrD rollout date for semantic search?",
+      "user_intent": "Find project timeline",
+      "category": "project-status",
+      "tool": "smart-search",
+      "initial_search_query": "LrD semantic search rollout date desktop April 2026",
+      "additional_queries_needed": [],
+      "expected_answer": "April 2026 - targeting GA in desktop",
+      "judgments": [
+        {
+          "doc_id": "Notes/Misc/Lr Desktop Rollout.md",
+          "chunk_id": "Notes/Misc/Lr Desktop Rollout.md::Relevance>Embedding testing",
+          "relevance": 3,
+          "reason": "States 'Targeting April 2026'"
+        },
+        {
+          "doc_id": "Notes/Programs/Lightroom/Lr Home.md",
+          "chunk_id": "Notes/Programs/Lightroom/Lr Home.md::Lightroom Home",
+          "relevance": 3,
+          "reason": "Contains link to LrD GA April 2026 wiki"
+        }
+      ],
+      "notes": "Both Lr Desktop Rollout.md and Lr Home.md confirm April 2026 target."
+    },
+    {
+      "id": "qrel-007",
+      "prompt": "What are the Q1 Must nails?",
+      "user_intent": "Find quarterly priorities",
+      "category": "project-status",
+      "tool": "smart-search",
+      "initial_search_query": "Q1 must nails 2026",
+      "additional_queries_needed": [],
+      "expected_answer": "Recs: Styles (icons/design assets, photo model), PsW stock content, DC Recs 100% rollout. Lr: LrD query strategy & migration plan. Intent/QU: Use case in prod (CKG4 + New MM model)",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md::Notes>Q1 2026 Must Nails>[[Recommendations Home|Recs]]",
+          "relevance": 3,
+          "reason": "Contains detailed Q1 2026 Must Nails section"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md::Notes",
+          "relevance": 2,
+          "reason": "References Q1 Must Nails via transclusion"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Notes",
+          "relevance": 2,
+          "reason": "References Q1 Must Nails via transclusion"
+        }
+      ],
+      "notes": "November 18, 2025 is the canonical source with the structured list."
+    },
+    {
+      "id": "qrel-008",
+      "prompt": "When was my last 1x1 with Ayush?",
+      "user_intent": "Find most recent meeting with person",
+      "category": "meeting-recall",
+      "tool": "smart-search",
+      "initial_search_query": "Ayush 1x1 meeting",
+      "additional_queries_needed": [],
+      "expected_answer": "November 13, 2025 - discussed stopping modeling and working on more generalized approach, golden set for MM swimlane 3 isn't correct",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 13, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 13, 2025.md::Meetings>[[Ayush Jaiswal|Ayush]] catchup #meetings/1x1",
+          "relevance": 3,
+          "reason": "Contains the most recent Ayush 1x1 meeting"
+        }
+      ],
+      "notes": "Grep confirmed November 13, 2025 as most recent. Smart search ranked October 22, 2025 higher due to ranking - needed grep to find correct answer."
+    },
+    {
+      "id": "qrel-009",
+      "prompt": "What is the latest on PsW Recs?",
+      "user_intent": "Get project status update",
+      "category": "project-status",
+      "tool": "smart-search",
+      "initial_search_query": "PsW Recs Photoshop Web Recommendations status",
+      "additional_queries_needed": [],
+      "expected_answer": "PsW stock content is Q1 2026 must nail. POC use cases include preset adjustments and subject/background manipulation. PM contacts: Hao Xu, Jasper. Slack: ps-web-in-context-recommendation",
+      "judgments": [
+        {
+          "doc_id": "Notes/Misc/Photoshop.md",
+          "chunk_id": "Notes/Misc/Photoshop.md::Photoshop Mobile",
+          "relevance": 3,
+          "reason": "Hub page with PsW Recs details, use cases, PM contacts"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md::Notes>Q1 2026 Must Nails>[[Recommendations Home|Recs]]",
+          "relevance": 3,
+          "reason": "Q1 Must Nails listing PsW stock content"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Meetings>[[Kosta Blank|Kosta]] #meetings/1x1",
+          "relevance": 2,
+          "reason": "Kosta 1x1 mentions Ps Web recs priority over mobile"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md::Meetings>[[Brian Eriksson|Brian]] #meetings/1x1>[[Photoshop]]",
+          "relevance": 2,
+          "reason": "Brian meeting notes about not spending cycles on Ps Mobile"
+        }
+      ],
+      "notes": "Photoshop.md serves as the hub page with comprehensive info. Recent daily notes provide current status."
+    },
+    {
+      "id": "qrel-010",
+      "prompt": "Is the new MM model done? Anywhere I can test it?",
+      "user_intent": "Check project status and find demo links",
+      "category": "project-status",
+      "tool": "smart-search",
+      "initial_search_query": "new MM model multi-modal testing status demo",
+      "additional_queries_needed": [
+        "MintV2 multi-modal model demo devbox test"
+      ],
+      "expected_answer": "Not done - roadmap targets production-ready service by November 28, 2025. Demo links available: Asset to GT demo and Context to GT demo on devbox. Current architecture uses AdobeOneV1 encoder + Llama-1.8B decoder.",
+      "judgments": [
+        {
+          "doc_id": "Clippings/Work/Multi-modal Intent and Content Understanding wiki.md",
+          "chunk_id": "Clippings/Work/Multi-modal Intent and Content Understanding wiki.md::[Multi-modal Intent and Content Understanding](https://wiki.corp.adobe.com/display/adobesearch/Multi-modal+Intent+and+Content+Understanding)>Summary",
+          "relevance": 3,
+          "reason": "Contains roadmap with November 28, 2025 target date"
+        },
+        {
+          "doc_id": "Notes/Programs/Intent/Intent AI Home.md",
+          "chunk_id": "Notes/Programs/Intent/Intent AI Home.md::2025",
+          "relevance": 3,
+          "reason": "Contains devbox demo links"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/October 14, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/October 14, 2025.md::Meetings>Multi Modal intent detection #meetings",
+          "relevance": 2,
+          "reason": "Multi Modal intent detection meeting with technical details"
+        },
+        {
+          "doc_id": "Notes/Misc/Multimodal intent.md",
+          "chunk_id": "Notes/Misc/Multimodal intent.md::Multimodal intent model",
+          "relevance": 2,
+          "reason": "Overview page linking to wiki and October 14 notes"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md::Notes>Q1 2026 Must Nails>Intent / [[Query Understanding|QU]]",
+          "relevance": 2,
+          "reason": "Q1 Must Nails mentions CKG4 + New MM model in prod"
+        }
+      ],
+      "notes": "Demo links in Intent AI Home: Asset to GT demo (https://session-8cb5d010-b1dc-48ff-8f80-596ea66fdbd8.devbox.training.adobesensei.io/test_port/), Context to GT demo (https://session-c52bfcf5-7fdb-4766-ae6d-7f01ca1d48d7.devbox.training.adobesensei.io/flask/)"
+    },
+    {
+      "id": "simple-001",
+      "prompt": "Ritu Goel",
+      "user_intent": "Who is Ritu?",
+      "category": "person-lookup",
+      "tool": "simple-search",
+      "judgments": [
+        {
+          "doc_id": "People/Ritu Goel.md",
+          "chunk_id": "People/Ritu Goel.md::root",
+          "relevance": 3,
+          "reason": "Person page - direct match"
+        }
+      ],
+      "notes": "Exact name lookup - I know the name, just need the page"
+    },
+    {
+      "id": "simple-002",
+      "prompt": "Brian Eriksson",
+      "user_intent": "Who is Brian?",
+      "category": "person-lookup",
+      "tool": "simple-search",
+      "judgments": [
+        {
+          "doc_id": "People/Brian Eriksson.md",
+          "chunk_id": "People/Brian Eriksson.md::Brain Eriksson",
+          "relevance": 3,
+          "reason": "Person page"
+        }
+      ],
+      "notes": "Exact name lookup"
+    },
+    {
+      "id": "simple-003",
+      "prompt": "Kosta Blank",
+      "user_intent": "Who is Kosta?",
+      "category": "person-lookup",
+      "tool": "simple-search",
+      "judgments": [
+        {
+          "doc_id": "People/Kosta Blank.md",
+          "chunk_id": "People/Kosta Blank.md::Kosta Blank",
+          "relevance": 3,
+          "reason": "Person page"
+        }
+      ],
+      "notes": "Exact name lookup"
+    },
+    {
+      "id": "simple-004",
+      "prompt": "Vipul Dalal",
+      "user_intent": "Who is Vipul?",
+      "category": "person-lookup",
+      "tool": "simple-search",
+      "judgments": [
+        {
+          "doc_id": "People/Vipul Dalal.md",
+          "chunk_id": "People/Vipul Dalal.md::root",
+          "relevance": 3,
+          "reason": "Person page - VP of SDC"
+        }
+      ],
+      "notes": "Exact name lookup"
+    },
+    {
+      "id": "simple-005",
+      "prompt": "Subhajit",
+      "user_intent": "Who is Subhajit?",
+      "category": "person-lookup",
+      "tool": "simple-search",
+      "judgments": [
+        {
+          "doc_id": "People/Subhajit.md",
+          "chunk_id": "People/Subhajit.md::Subhajit Sanyal",
+          "relevance": 3,
+          "reason": "Person page"
+        }
+      ],
+      "notes": "First name only - common pattern in vault"
+    },
+    {
+      "id": "simple-006",
+      "prompt": "Jayant Kumar",
+      "user_intent": "Who is Jayant?",
+      "category": "person-lookup",
+      "tool": "simple-search",
+      "judgments": [
+        {
+          "doc_id": "People/Jayant Kumar.md",
+          "chunk_id": "People/Jayant Kumar.md::Jayant Kumar",
+          "relevance": 3,
+          "reason": "Person page"
+        }
+      ],
+      "notes": "Exact name lookup"
+    },
+    {
+      "id": "simple-010",
+      "prompt": "#meetings/1x1",
+      "user_intent": "Show me all my 1x1 meetings",
+      "category": "meeting-recall",
+      "tool": "simple-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Meetings>[[Kosta Blank|Kosta]] #meetings/1x1",
+          "relevance": 3,
+          "reason": "Tagged 1x1"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md::Meetings>[[Ritu Goel|Ritu]] #meetings/1x1",
+          "relevance": 3,
+          "reason": "Tagged 1x1"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 13, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 13, 2025.md::Meetings>[[Ayush Jaiswal|Ayush]] catchup #meetings/1x1",
+          "relevance": 3,
+          "reason": "Tagged 1x1"
+        }
+      ],
+      "notes": "Tag-based filtering - exact match on tag"
+    },
+    {
+      "id": "simple-011",
+      "prompt": "#meetings/interviewer",
+      "user_intent": "Show me all my interview sessions",
+      "category": "meeting-recall",
+      "tool": "simple-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 14, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 14, 2025.md::Meetings>Armando #meetings/interviewer",
+          "relevance": 3,
+          "reason": "Interview meeting"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 13, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 13, 2025.md::Meetings>Maria Mora #meetings/interviewer",
+          "relevance": 3,
+          "reason": "Interview meeting"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 13, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 13, 2025.md::Meetings>Sophia Gao #meetings/interviewer",
+          "relevance": 3,
+          "reason": "Interview meeting"
+        }
+      ],
+      "notes": "Tag-based filtering for interviews"
+    },
+    {
+      "id": "simple-020",
+      "prompt": "CKG 4.0",
+      "user_intent": "Find the CKG 4.0 page",
+      "category": "hub-discovery",
+      "tool": "simple-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Programs/Intent/CKG 4.0.md",
+          "chunk_id": "Notes/Programs/Intent/CKG 4.0.md::[[Intent AI Home|CKG]] 4.0",
+          "relevance": 3,
+          "reason": "CKG 4.0 page"
+        }
+      ],
+      "notes": "Project version - exact match"
+    },
+    {
+      "id": "simple-021",
+      "prompt": "APS",
+      "user_intent": "Find the APS page",
+      "category": "hub-discovery",
+      "tool": "simple-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Misc/APS.md",
+          "chunk_id": "Notes/Misc/APS.md::Overview",
+          "relevance": 3,
+          "reason": "APS overview"
+        },
+        {
+          "doc_id": "Notes/Misc/APS.md",
+          "chunk_id": "Notes/Misc/APS.md::FY 2026",
+          "relevance": 2,
+          "reason": "APS FY 2026"
+        }
+      ],
+      "notes": "Acronym lookup"
+    },
+    {
+      "id": "simple-022",
+      "prompt": "PDF2Pres",
+      "user_intent": "Find the PDF2Pres page",
+      "category": "hub-discovery",
+      "tool": "simple-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Misc/PDF2Pres.md",
+          "chunk_id": "Notes/Misc/PDF2Pres.md::root",
+          "relevance": 3,
+          "reason": "PDF2Pres page"
+        }
+      ],
+      "notes": "Feature name - exact match"
+    },
+    {
+      "id": "smart-001",
+      "prompt": "direct manager reports to",
+      "user_intent": "Who is my manager?",
+      "category": "person-lookup",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "People/Ritu Goel.md",
+          "chunk_id": "People/Ritu Goel.md::root",
+          "relevance": 3,
+          "reason": "Contains 'Ritu is my direct manager'"
+        }
+      ],
+      "notes": "Looking for reporting relationship - key terms not question"
+    },
+    {
+      "id": "smart-002",
+      "prompt": "Query Understanding team lead",
+      "user_intent": "Who leads Query Understanding?",
+      "category": "person-lookup",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Programs/Intent/Query Understanding/Query Understanding.md",
+          "chunk_id": "Notes/Programs/Intent/Query Understanding/Query Understanding.md::Query Understanding Home",
+          "relevance": 3,
+          "reason": "Contains 'Lead by myself, Subhajit, and Jayant'"
+        },
+        {
+          "doc_id": "People/Subhajit.md",
+          "chunk_id": "People/Subhajit.md::Subhajit Sanyal",
+          "relevance": 2,
+          "reason": "QU team member"
+        },
+        {
+          "doc_id": "People/Jayant Kumar.md",
+          "chunk_id": "People/Jayant Kumar.md::Jayant Kumar",
+          "relevance": 2,
+          "reason": "QU team member"
+        }
+      ],
+      "notes": "Program + leadership role"
+    },
+    {
+      "id": "smart-003",
+      "prompt": "SDC VP",
+      "user_intent": "Who is the VP of SDC?",
+      "category": "person-lookup",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "People/Vipul Dalal.md",
+          "chunk_id": "People/Vipul Dalal.md::root",
+          "relevance": 3,
+          "reason": "Contains 'VP for SDC'"
+        }
+      ],
+      "notes": "Org + role - abbreviated"
+    },
+    {
+      "id": "smart-004",
+      "prompt": "Brian recommendations engineering",
+      "user_intent": "What's Brian's role on the recs team?",
+      "category": "person-lookup",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "People/Brian Eriksson.md",
+          "chunk_id": "People/Brian Eriksson.md::Brain Eriksson",
+          "relevance": 3,
+          "reason": "Contains 'Director of Engineering and my direct eng counterpart for the recommendations program'"
+        }
+      ],
+      "notes": "Person + program + function"
+    },
+    {
+      "id": "smart-005",
+      "prompt": "Firefly semantic search lead",
+      "user_intent": "Who is leading Firefly semantic search?",
+      "category": "person-lookup",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Meetings>Semantic Search for [[Firefly]] #meetings",
+          "relevance": 3,
+          "reason": "Contains 'Rhut is leading this one'"
+        }
+      ],
+      "notes": "Project + role"
+    },
+    {
+      "id": "smart-010",
+      "prompt": "Ritu 1x1",
+      "user_intent": "What did I discuss with Ritu in our last 1x1?",
+      "category": "meeting-recall",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md::Meetings>[[Ritu Goel|Ritu]] #meetings/1x1",
+          "relevance": 3,
+          "reason": "Recent Ritu 1x1"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md::Meetings>[[Ritu Goel|Ritu]] #meetings/1x1>Interns",
+          "relevance": 2,
+          "reason": "Subtopic"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md::Meetings>[[Ritu Goel|Ritu]] #meetings/1x1>Manager move",
+          "relevance": 2,
+          "reason": "Subtopic"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md::Meetings>[[Ritu Goel|Ritu]] #meetings/1x1>[[Lr Home|Lr]]",
+          "relevance": 2,
+          "reason": "Subtopic"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md::Meetings>[[Ritu Goel|Ritu]] #meetings/1x1>[[Query Understanding|QU]]",
+          "relevance": 2,
+          "reason": "Subtopic"
+        }
+      ],
+      "notes": "Person + meeting type - this is how I'd query it"
+    },
+    {
+      "id": "smart-011",
+      "prompt": "Brian 1x1",
+      "user_intent": "What did Brian and I discuss?",
+      "category": "meeting-recall",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md::Meetings>[[Brian Eriksson|Brian]] #meetings/1x1>Styles",
+          "relevance": 3,
+          "reason": "Brian 1x1 - Styles"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md::Meetings>[[Brian Eriksson|Brian]] #meetings/1x1>[[Photoshop]]",
+          "relevance": 3,
+          "reason": "Brian 1x1 - Photoshop"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md::Meetings>[[Brian Eriksson|Brian]] #meetings/1x1>Intent",
+          "relevance": 3,
+          "reason": "Brian 1x1 - Intent"
+        }
+      ],
+      "notes": "Person + meeting type"
+    },
+    {
+      "id": "smart-012",
+      "prompt": "Kosta 1x1",
+      "user_intent": "When did I last meet with Kosta?",
+      "category": "meeting-recall",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Meetings>[[Kosta Blank|Kosta]] #meetings/1x1",
+          "relevance": 3,
+          "reason": "Recent Kosta 1x1"
+        }
+      ],
+      "notes": "Person + meeting type"
+    },
+    {
+      "id": "smart-013",
+      "prompt": "Ritu staff",
+      "user_intent": "What was discussed in Ritu's staff meeting?",
+      "category": "meeting-recall",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Meetings>[[Ritu Goel|Ritu]] Staff #meetings",
+          "relevance": 3,
+          "reason": "Nov 20 Ritu staff"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 13, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 13, 2025.md::Meetings>[[Ritu Goel|Ritu]] Staff #meetings>Q1 planning",
+          "relevance": 3,
+          "reason": "Nov 13 Ritu staff"
+        }
+      ],
+      "notes": "Person + meeting type (staff)"
+    },
+    {
+      "id": "smart-014",
+      "prompt": "Asim 1x1",
+      "user_intent": "What did I discuss with Asim?",
+      "category": "meeting-recall",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 12, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 12, 2025.md::Meetings>[[Asim Kadav|Asim]] #meetings/1x1>[[Style Home|Photo styles]]",
+          "relevance": 3,
+          "reason": "Asim 1x1 - Photo styles"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 12, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 12, 2025.md::Meetings>[[Asim Kadav|Asim]] #meetings/1x1>[[Query Understanding|QU]]",
+          "relevance": 3,
+          "reason": "Asim 1x1 - QU"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 12, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 12, 2025.md::Meetings>[[Asim Kadav|Asim]] #meetings/1x1>[[Photoshop|Ps Web]] presets [[Recommendations Home|recs]] demo",
+          "relevance": 3,
+          "reason": "Asim 1x1 - Ps Web demo"
+        }
+      ],
+      "notes": "Person + meeting type"
+    },
+    {
+      "id": "smart-015",
+      "prompt": "Ayush 1x1",
+      "user_intent": "What did Ayush and I discuss?",
+      "category": "meeting-recall",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 13, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 13, 2025.md::Meetings>[[Ayush Jaiswal|Ayush]] catchup #meetings/1x1",
+          "relevance": 3,
+          "reason": "Ayush catchup meeting"
+        }
+      ],
+      "notes": "Person + meeting type"
+    },
+    {
+      "id": "smart-020",
+      "prompt": "Intent AI 2026 strategy",
+      "user_intent": "What's the Intent AI 2026 strategy?",
+      "category": "project-status",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Meetings>[[Intent AI Home|Intent]] Strategy 2026 White-paper #meetings",
+          "relevance": 3,
+          "reason": "Strategy whitepaper meeting"
+        },
+        {
+          "doc_id": "Notes/Programs/Intent/Intent AI Home.md",
+          "chunk_id": "Notes/Programs/Intent/Intent AI Home.md::2025",
+          "relevance": 2,
+          "reason": "Intent AI hub"
+        }
+      ],
+      "notes": "Program + year + topic"
+    },
+    {
+      "id": "smart-021",
+      "prompt": "Q1 2026 must nails",
+      "user_intent": "What are my Q1 2026 priorities?",
+      "category": "project-status",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md::Notes>Q1 2026 Must Nails>[[Recommendations Home|Recs]]",
+          "relevance": 3,
+          "reason": "Q1 must nails - Recs"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md::Notes>Q1 2026 Must Nails>[[Lr Home|Lr]]",
+          "relevance": 3,
+          "reason": "Q1 must nails - Lr"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md::Notes>Q1 2026 Must Nails>Intent / [[Query Understanding|QU]]",
+          "relevance": 3,
+          "reason": "Q1 must nails - Intent/QU"
+        }
+      ],
+      "notes": "Vault-specific terminology - exact phrase"
+    },
+    {
+      "id": "smart-022",
+      "prompt": "Lr Desktop semantic search rollout",
+      "user_intent": "What's the status of Lightroom Desktop rollout?",
+      "category": "project-status",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 12, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 12, 2025.md::Meetings>Semantic Search v2 #meetings",
+          "relevance": 3,
+          "reason": "Lr Desktop GA April 2026"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 17, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 17, 2025.md::Meetings>Semantic Search in [[Lr Home|Lr]] Desktop #meetings",
+          "relevance": 3,
+          "reason": "Lr Desktop requirements"
+        },
+        {
+          "doc_id": "Notes/Programs/Lightroom/Lr Home.md",
+          "chunk_id": "Notes/Programs/Lightroom/Lr Home.md::Lightroom Home",
+          "relevance": 2,
+          "reason": "Hub page"
+        }
+      ],
+      "notes": "Product + surface + feature - using Lr abbreviation"
+    },
+    {
+      "id": "smart-023",
+      "prompt": "Ps Web recs",
+      "user_intent": "What's the status of Photoshop Web recommendations?",
+      "category": "project-status",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Meetings>[[Kosta Blank|Kosta]] #meetings/1x1",
+          "relevance": 3,
+          "reason": "Contains Ps Web recs priority"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md::Meetings>[[Brian Eriksson|Brian]] #meetings/1x1>[[Photoshop]]",
+          "relevance": 2,
+          "reason": "Ps Mobile vs Ps Web discussion"
+        }
+      ],
+      "notes": "Abbreviations: Ps Web, recs"
+    },
+    {
+      "id": "smart-024",
+      "prompt": "DC Recs eval",
+      "user_intent": "Is there an eval strategy for DC Recs?",
+      "category": "project-status",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Meetings>[[Acrobat|DC]] [[Recommendations Home|Recs]] sync #meetings",
+          "relevance": 3,
+          "reason": "DC Recs eval strategy"
+        }
+      ],
+      "notes": "Abbreviations: DC, Recs, eval"
+    },
+    {
+      "id": "smart-025",
+      "prompt": "Express 2026 must nails",
+      "user_intent": "What are Express 2026 priorities?",
+      "category": "project-status",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md::Meetings>[[Express]] must nails for 2026 #meetings>Exec summary:",
+          "relevance": 3,
+          "reason": "Express must nails exec summary"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md::Meetings>[[Express]] must nails for 2026 #meetings>Must nails:",
+          "relevance": 3,
+          "reason": "Express must nails details"
+        }
+      ],
+      "notes": "Product + year + vault term"
+    },
+    {
+      "id": "smart-026",
+      "prompt": "CKG 4.0 production",
+      "user_intent": "What's the production use case for CKG 4.0?",
+      "category": "project-status",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md::Meetings>[[Brian Eriksson|Brian]] #meetings/1x1>Intent",
+          "relevance": 3,
+          "reason": "Prod use case discussion"
+        },
+        {
+          "doc_id": "Notes/Programs/Intent/CKG 4.0.md",
+          "chunk_id": "Notes/Programs/Intent/CKG 4.0.md::[[Intent AI Home|CKG]] 4.0>Technical Architecture>Use Cases",
+          "relevance": 2,
+          "reason": "CKG 4.0 use cases"
+        }
+      ],
+      "notes": "Project + deployment context"
+    },
+    {
+      "id": "smart-027",
+      "prompt": "photo styles status",
+      "user_intent": "What's the status of photo styles?",
+      "category": "project-status",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Meetings>[[Kosta Blank|Kosta]] #meetings/1x1",
+          "relevance": 3,
+          "reason": "Photo styles status discussion"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 12, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 12, 2025.md::Meetings>[[Asim Kadav|Asim]] #meetings/1x1>[[Style Home|Photo styles]]",
+          "relevance": 2,
+          "reason": "Photo styles alignment issue"
+        },
+        {
+          "doc_id": "Notes/Programs/Recommendations/Style Home.md",
+          "chunk_id": "Notes/Programs/Recommendations/Style Home.md::Style Description",
+          "relevance": 2,
+          "reason": "Style Home hub"
+        }
+      ],
+      "notes": "Feature + status"
+    },
+    {
+      "id": "smart-028",
+      "prompt": "UAB scope",
+      "user_intent": "What's the scope of Universal Asset Browser?",
+      "category": "project-status",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Meetings>Semantic Search for [[Firefly]] #meetings",
+          "relevance": 3,
+          "reason": "UAB scope details"
+        }
+      ],
+      "notes": "Abbreviation + topic"
+    },
+    {
+      "id": "smart-029",
+      "prompt": "contextual recs RPS load",
+      "user_intent": "What's the peak load for contextual recs?",
+      "category": "project-status",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Meetings>[[Kosta Blank|Kosta]] #meetings/1x1",
+          "relevance": 3,
+          "reason": "Contains 120RPS peak load"
+        }
+      ],
+      "notes": "Technical metric lookup"
+    },
+    {
+      "id": "smart-030",
+      "prompt": "Lr Desktop requirements",
+      "user_intent": "What are the requirements for Lr Desktop semantic search?",
+      "category": "project-status",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 17, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 17, 2025.md::Meetings>Semantic Search in [[Lr Home|Lr]] Desktop #meetings",
+          "relevance": 3,
+          "reason": "Requirements ranking"
+        }
+      ],
+      "notes": "Product + surface + topic"
+    },
+    {
+      "id": "smart-040",
+      "prompt": "Intent AI Home",
+      "user_intent": "Show me everything about Intent AI",
+      "category": "hub-discovery",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Programs/Intent/Intent AI Home.md",
+          "chunk_id": "Notes/Programs/Intent/Intent AI Home.md::2025",
+          "relevance": 3,
+          "reason": "Intent AI hub"
+        },
+        {
+          "doc_id": "Notes/Programs/Intent/CKG 4.0.md",
+          "chunk_id": "Notes/Programs/Intent/CKG 4.0.md::[[Intent AI Home|CKG]] 4.0",
+          "relevance": 2,
+          "reason": "CKG 4.0 part of Intent"
+        }
+      ],
+      "notes": "Hub page discovery - using page name"
+    },
+    {
+      "id": "smart-041",
+      "prompt": "Lr Home",
+      "user_intent": "Show me the Lightroom hub",
+      "category": "hub-discovery",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Programs/Lightroom/Lr Home.md",
+          "chunk_id": "Notes/Programs/Lightroom/Lr Home.md::Lightroom Home",
+          "relevance": 3,
+          "reason": "Lightroom hub"
+        },
+        {
+          "doc_id": "Notes/Programs/Lightroom/Lr Home.md",
+          "chunk_id": "Notes/Programs/Lightroom/Lr Home.md::2025",
+          "relevance": 2,
+          "reason": "Lr 2025 section"
+        }
+      ],
+      "notes": "Hub page - using vault alias"
+    },
+    {
+      "id": "smart-042",
+      "prompt": "Recommendations Home",
+      "user_intent": "Show me the Recommendations hub",
+      "category": "hub-discovery",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Programs/Recommendations/Recommendations Home.md",
+          "chunk_id": "Notes/Programs/Recommendations/Recommendations Home.md::Recommendations Home",
+          "relevance": 3,
+          "reason": "Recs hub"
+        }
+      ],
+      "notes": "Hub page discovery"
+    },
+    {
+      "id": "smart-043",
+      "prompt": "Query Understanding Home",
+      "user_intent": "Show me the Query Understanding hub",
+      "category": "hub-discovery",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Programs/Intent/Query Understanding/Query Understanding.md",
+          "chunk_id": "Notes/Programs/Intent/Query Understanding/Query Understanding.md::Query Understanding Home",
+          "relevance": 3,
+          "reason": "QU hub"
+        },
+        {
+          "doc_id": "Notes/Programs/Intent/Query Understanding/Query Understanding.md",
+          "chunk_id": "Notes/Programs/Intent/Query Understanding/Query Understanding.md::Overview",
+          "relevance": 2,
+          "reason": "QU overview"
+        }
+      ],
+      "notes": "Hub page discovery"
+    },
+    {
+      "id": "smart-044",
+      "prompt": "NER SRL",
+      "user_intent": "Find info about NER and SRL",
+      "category": "hub-discovery",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Programs/Intent/Query Understanding/NER & SRL.md",
+          "chunk_id": "Notes/Programs/Intent/Query Understanding/NER & SRL.md::NER & SRL Home",
+          "relevance": 3,
+          "reason": "NER & SRL hub"
+        }
+      ],
+      "notes": "Technical acronyms"
+    },
+    {
+      "id": "smart-045",
+      "prompt": "Style Home",
+      "user_intent": "Show me the Style understanding hub",
+      "category": "hub-discovery",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Programs/Recommendations/Style Home.md",
+          "chunk_id": "Notes/Programs/Recommendations/Style Home.md::Style Description",
+          "relevance": 3,
+          "reason": "Style description"
+        },
+        {
+          "doc_id": "Notes/Programs/Recommendations/Style Home.md",
+          "chunk_id": "Notes/Programs/Recommendations/Style Home.md::Style Description>Problem statement",
+          "relevance": 2,
+          "reason": "Problem statement"
+        }
+      ],
+      "notes": "Hub page - using vault name"
+    },
+    {
+      "id": "smart-050",
+      "prompt": "custom RAG architecture",
+      "user_intent": "How does the RAG plugin work?",
+      "category": "technical-detail",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Misc/Code Projects/customRAG/Smart Connections Enhancement - Custom RAG.md",
+          "chunk_id": "Notes/Misc/Code Projects/customRAG/Smart Connections Enhancement - Custom RAG.md::Smart Connections Enhancement",
+          "relevance": 3,
+          "reason": "Custom RAG overview"
+        },
+        {
+          "doc_id": "Notes/Misc/Code Projects/customRAG/Smart Connections Enhancement - Custom RAG.md",
+          "chunk_id": "Notes/Misc/Code Projects/customRAG/Smart Connections Enhancement - Custom RAG.md::Smart Connections Enhancement>Architecture Overview>The Problem",
+          "relevance": 2,
+          "reason": "Architecture - problem"
+        },
+        {
+          "doc_id": "Notes/Misc/Code Projects/customRAG/Smart Connections Enhancement - Custom RAG.md",
+          "chunk_id": "Notes/Misc/Code Projects/customRAG/Smart Connections Enhancement - Custom RAG.md::Smart Connections Enhancement>Architecture Overview>Recall Set Formation",
+          "relevance": 2,
+          "reason": "Architecture - recall"
+        }
+      ],
+      "notes": "Technical topic - key terms"
+    },
+    {
+      "id": "smart-051",
+      "prompt": "eval playbook offline",
+      "user_intent": "What's the offline evaluation methodology?",
+      "category": "technical-detail",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Misc/Evaluation.md",
+          "chunk_id": "Notes/Misc/Evaluation.md::Evaluations>Eval Playbook>Offline Methodology (Automated)>Query",
+          "relevance": 3,
+          "reason": "Offline eval - Query"
+        },
+        {
+          "doc_id": "Notes/Misc/Evaluation.md",
+          "chunk_id": "Notes/Misc/Evaluation.md::Evaluations>Eval Playbook>Offline Methodology (Automated)>MM",
+          "relevance": 3,
+          "reason": "Offline eval - MM"
+        },
+        {
+          "doc_id": "Notes/Misc/Evaluation.md",
+          "chunk_id": "Notes/Misc/Evaluation.md::Evaluations>Eval Playbook",
+          "relevance": 2,
+          "reason": "Eval playbook"
+        }
+      ],
+      "notes": "Key terms from vault"
+    },
+    {
+      "id": "smart-052",
+      "prompt": "SRL demo",
+      "user_intent": "Where's the SRL demo link?",
+      "category": "technical-detail",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 12, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 12, 2025.md::Meetings>[[Asim Kadav|Asim]] #meetings/1x1>[[Query Understanding|QU]]",
+          "relevance": 3,
+          "reason": "Contains SRL demo link"
+        }
+      ],
+      "notes": "Acronym + resource type"
+    },
+    {
+      "id": "smart-053",
+      "prompt": "CKG 4.0 timeline milestones",
+      "user_intent": "What's the CKG 4.0 implementation timeline?",
+      "category": "technical-detail",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Programs/Intent/CKG 4.0.md",
+          "chunk_id": "Notes/Programs/Intent/CKG 4.0.md::[[Intent AI Home|CKG]] 4.0>Implementation Timeline>Milestone 1 (Current)",
+          "relevance": 3,
+          "reason": "Timeline - M1"
+        },
+        {
+          "doc_id": "Notes/Programs/Intent/CKG 4.0.md",
+          "chunk_id": "Notes/Programs/Intent/CKG 4.0.md::[[Intent AI Home|CKG]] 4.0>Implementation Timeline>Production Rollout",
+          "relevance": 3,
+          "reason": "Timeline - production"
+        }
+      ],
+      "notes": "Project + planning terms"
+    },
+    {
+      "id": "smart-054",
+      "prompt": "Lr language support",
+      "user_intent": "What's the multi-language support for Lightroom?",
+      "category": "technical-detail",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Programs/Lightroom/Lr Language Support.md",
+          "chunk_id": "Notes/Programs/Lightroom/Lr Language Support.md::Lightroom Language Support>Context",
+          "relevance": 3,
+          "reason": "Lr language support context"
+        },
+        {
+          "doc_id": "Notes/Programs/Lightroom/Lr Language Support.md",
+          "chunk_id": "Notes/Programs/Lightroom/Lr Language Support.md::Lightroom Language Support>Key Constraint: Query Understanding Dependency",
+          "relevance": 2,
+          "reason": "QU dependency"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 12, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 12, 2025.md::Meetings>Semantic Search v2 #meetings",
+          "relevance": 2,
+          "reason": "Multi-language ask"
+        }
+      ],
+      "notes": "Product + feature"
+    },
+    {
+      "id": "smart-055",
+      "prompt": "CPro strategy IATV",
+      "user_intent": "Where's the CPro strategy video link?",
+      "category": "technical-detail",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Meetings>[[Ritu Goel|Ritu]] Staff #meetings",
+          "relevance": 3,
+          "reason": "CPro strategy IATV link"
+        }
+      ],
+      "notes": "Topic + platform"
+    },
+    {
+      "id": "smart-056",
+      "prompt": "Intent 2026 proposal Ayush",
+      "user_intent": "Where's Ayush's Intent AI 2026 proposal doc?",
+      "category": "technical-detail",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Meetings>[[Intent AI Home|Intent]] Strategy 2026 White-paper #meetings",
+          "relevance": 3,
+          "reason": "Ayush proposal doc link"
+        }
+      ],
+      "notes": "Program + year + person"
+    },
+    {
+      "id": "smart-057",
+      "prompt": "Lr cost wiki Chhaya",
+      "user_intent": "Where's the Lr cost optimization wiki?",
+      "category": "technical-detail",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 12, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 12, 2025.md::Meetings>[[Lr Home|Lr]] cost chat with [[Chhayakanta Padhi|Chhaya]] #meetings/1x1",
+          "relevance": 3,
+          "reason": "LR Cost Optimization wiki link"
+        }
+      ],
+      "notes": "Product + topic + person"
+    },
+    {
+      "id": "smart-058",
+      "prompt": "Ps Web presets demo Rohith",
+      "user_intent": "Where's the Ps Web presets demo video?",
+      "category": "technical-detail",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 12, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 12, 2025.md::Meetings>[[Asim Kadav|Asim]] #meetings/1x1>[[Photoshop|Ps Web]] presets [[Recommendations Home|recs]] demo",
+          "relevance": 3,
+          "reason": "Rohith demo video Slack link"
+        }
+      ],
+      "notes": "Product + feature + person"
+    },
+    {
+      "id": "smart-059",
+      "prompt": "UAB file types assets",
+      "user_intent": "What files are included in Universal Asset Browser search?",
+      "category": "technical-detail",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Meetings>Semantic Search for [[Firefly]] #meetings",
+          "relevance": 3,
+          "reason": "List of file types: PSD, AI, FF, Express, etc."
+        }
+      ],
+      "notes": "Abbreviation + detail type"
+    },
+    {
+      "id": "smart-060",
+      "prompt": "AdobeOne Lr ranking Feng",
+      "user_intent": "Who should I talk to about AdobeOne ranking for Lightroom?",
+      "category": "person-lookup",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md::Meetings>[[Ritu Goel|Ritu]] #meetings/1x1>[[Lr Home|Lr]]",
+          "relevance": 3,
+          "reason": "Feng bin AdobeOne V2 project"
+        }
+      ],
+      "notes": "System + product + partial name"
+    },
+    {
+      "id": "smart-070",
+      "prompt": "Lr meetings November",
+      "user_intent": "What are the recent Lightroom updates?",
+      "category": "recent-activity",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 17, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 17, 2025.md::Meetings>[[Lr Home|Lr]] sync #meetings",
+          "relevance": 3,
+          "reason": "Lr sync meeting"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 17, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 17, 2025.md::Meetings>Semantic Search in [[Lr Home|Lr]] Desktop #meetings",
+          "relevance": 3,
+          "reason": "Lr Desktop meeting"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 13, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 13, 2025.md::Meetings>[[Lr Home|Lightroom]] dashboard #meetings",
+          "relevance": 2,
+          "reason": "Lr dashboard meeting"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 11, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 11, 2025.md::Meetings>[[Lr Home|Lr]] Agent kick off #meetings",
+          "relevance": 2,
+          "reason": "Lr Agent kickoff"
+        }
+      ],
+      "notes": "Product + time filter"
+    },
+    {
+      "id": "smart-071",
+      "prompt": "Intent November meetings",
+      "user_intent": "What happened this week with Intent?",
+      "category": "recent-activity",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Meetings>[[Intent AI Home|Intent]] Strategy 2026 White-paper #meetings",
+          "relevance": 3,
+          "reason": "Intent strategy meeting"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md::Meetings>[[Brian Eriksson|Brian]] #meetings/1x1>Intent",
+          "relevance": 2,
+          "reason": "Brian 1x1 Intent discussion"
+        }
+      ],
+      "notes": "Program + time filter"
+    },
+    {
+      "id": "smart-072",
+      "prompt": "2026 intern candidates interviews",
+      "user_intent": "Show me the intern interviews",
+      "category": "recent-activity",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 14, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 14, 2025.md::Meetings>Armando #meetings/interviewer",
+          "relevance": 3,
+          "reason": "Armando interview - yes"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 13, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 13, 2025.md::Meetings>Maria Mora #meetings/interviewer",
+          "relevance": 3,
+          "reason": "Maria interview - yes"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 13, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 13, 2025.md::Meetings>Sophia Gao #meetings/interviewer",
+          "relevance": 3,
+          "reason": "Sophia interview - yes"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 14, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 14, 2025.md::Meetings>Sean Park #meetings/interviewer",
+          "relevance": 2,
+          "reason": "Sean interview - no"
+        },
+        {
+          "doc_id": "Notes/Programs/2026 Summer Internships - Ritu's Team.md",
+          "chunk_id": "Notes/Programs/2026 Summer Internships - Ritu's Team.md::2026 Summer Internships - Ritu's Team>Candidates",
+          "relevance": 2,
+          "reason": "Candidates list"
+        }
+      ],
+      "notes": "Year + topic"
+    },
+    {
+      "id": "smart-073",
+      "prompt": "intern verdict yes approved",
+      "user_intent": "Which intern candidates were approved?",
+      "category": "recent-activity",
+      "tool": "smart-search",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 14, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 14, 2025.md::Meetings>Armando #meetings/interviewer",
+          "relevance": 3,
+          "reason": "verdict: yes!"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 13, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 13, 2025.md::Meetings>Maria Mora #meetings/interviewer",
+          "relevance": 3,
+          "reason": "verdict: yes"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 13, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 13, 2025.md::Meetings>Sophia Gao #meetings/interviewer",
+          "relevance": 3,
+          "reason": "verdict: yes"
+        }
+      ],
+      "notes": "Looking for outcome keywords"
+    },
+    {
+      "id": "graph-001",
+      "prompt": "Notes/Programs/Intent/Intent AI Home.md",
+      "user_intent": "What's connected to Intent AI?",
+      "category": "relationship-browse",
+      "tool": "local-graph",
+      "judgments": [
+        {
+          "doc_id": "Notes/Programs/Intent/CKG 4.0.md",
+          "chunk_id": "Notes/Programs/Intent/CKG 4.0.md::[[Intent AI Home|CKG]] 4.0",
+          "relevance": 3,
+          "reason": "CKG 4.0 links to Intent AI Home"
+        },
+        {
+          "doc_id": "Notes/Programs/Intent/Query Understanding/Query Understanding.md",
+          "chunk_id": "Notes/Programs/Intent/Query Understanding/Query Understanding.md::Query Understanding Home",
+          "relevance": 2,
+          "reason": "QU part of Intent AI"
+        }
+      ],
+      "notes": "Graph traversal from hub"
+    },
+    {
+      "id": "graph-002",
+      "prompt": "Notes/Programs/Lightroom/Lr Home.md",
+      "user_intent": "What's connected to Lightroom?",
+      "category": "relationship-browse",
+      "tool": "local-graph",
+      "judgments": [
+        {
+          "doc_id": "Notes/Programs/Lightroom/Lr Language Support.md",
+          "chunk_id": "Notes/Programs/Lightroom/Lr Language Support.md::Lightroom Language Support>Context",
+          "relevance": 3,
+          "reason": "Language support links to Lr Home"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 17, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 17, 2025.md::Meetings>[[Lr Home|Lr]] sync #meetings",
+          "relevance": 2,
+          "reason": "Daily note linking to Lr"
+        }
+      ],
+      "notes": "Graph traversal from hub"
+    },
+    {
+      "id": "graph-003",
+      "prompt": "People/Ritu Goel.md",
+      "user_intent": "What notes mention Ritu?",
+      "category": "relationship-browse",
+      "tool": "local-graph",
+      "judgments": [
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md::Meetings>[[Ritu Goel|Ritu]] #meetings/1x1",
+          "relevance": 3,
+          "reason": "Ritu 1x1"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md::Meetings>[[Ritu Goel|Ritu]] Staff #meetings",
+          "relevance": 3,
+          "reason": "Ritu staff meeting"
+        }
+      ],
+      "notes": "Graph traversal from person"
+    },
+    {
+      "id": "graph-004",
+      "prompt": "Notes/Programs/Recommendations/Recommendations Home.md",
+      "user_intent": "What's connected to Recommendations?",
+      "category": "relationship-browse",
+      "tool": "local-graph",
+      "judgments": [
+        {
+          "doc_id": "Notes/Programs/Recommendations/Personalization Home.md",
+          "chunk_id": "Notes/Programs/Recommendations/Personalization Home.md::Personalization Home",
+          "relevance": 3,
+          "reason": "Personalization part of Recs"
+        },
+        {
+          "doc_id": "Notes/Programs/Recommendations/Style Home.md",
+          "chunk_id": "Notes/Programs/Recommendations/Style Home.md::Style Description",
+          "relevance": 2,
+          "reason": "Style part of Recs"
+        }
+      ],
+      "notes": "Graph traversal from hub"
+    },
+    {
+      "id": "graph-005",
+      "prompt": "Notes/Programs/Intent/Query Understanding/Query Understanding.md",
+      "user_intent": "What's connected to Query Understanding?",
+      "category": "relationship-browse",
+      "tool": "local-graph",
+      "judgments": [
+        {
+          "doc_id": "Notes/Programs/Intent/Query Understanding/NER & SRL.md",
+          "chunk_id": "Notes/Programs/Intent/Query Understanding/NER & SRL.md::NER & SRL Home",
+          "relevance": 3,
+          "reason": "NER & SRL part of QU"
+        },
+        {
+          "doc_id": "Notes/Programs/Intent/Query Understanding/Core Affinity Framework.md",
+          "chunk_id": "Notes/Programs/Intent/Query Understanding/Core Affinity Framework.md::Core Affinity Framework Home",
+          "relevance": 3,
+          "reason": "Core Affinity part of QU"
+        }
+      ],
+      "notes": "Graph traversal from hub"
+    }
+  ]
+}
