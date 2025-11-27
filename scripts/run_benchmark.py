@@ -124,8 +124,22 @@ class BenchmarkRunner:
             qrels_data = json.load(f)
 
         # Parse qrels and queries
-        if "queries" in qrels_data:
-            qrels = {}
+        qrels = {}
+
+        # Handle O-RAG qrels format (list with judgments)
+        if "qrels" in qrels_data and isinstance(qrels_data["qrels"], list):
+            for entry in qrels_data["qrels"]:
+                qid = entry.get("id", "")
+                judgments = entry.get("judgments", [])
+                relevant_chunks = [j["chunk_id"] for j in judgments if "chunk_id" in j]
+                if qid and relevant_chunks:
+                    qrels[qid] = relevant_chunks
+                    # Use prompt as query text
+                    if "prompt" in entry:
+                        self.queries[qid] = entry["prompt"]
+                    elif "initial_search_query" in entry:
+                        self.queries[qid] = entry["initial_search_query"]
+        elif "queries" in qrels_data:
             for qid, q in qrels_data["queries"].items():
                 qrels[qid] = q.get("relevant_chunks", q.get("relevant", []))
                 if "query_text" in q:
@@ -133,15 +147,17 @@ class BenchmarkRunner:
                 elif "query" in q:
                     self.queries[qid] = q["query"]
         else:
-            qrels = qrels_data
-            # Try to extract queries
+            # Try to extract queries from simple format
             for qid, v in qrels_data.items():
                 if isinstance(v, dict) and "query" in v:
                     self.queries[qid] = v["query"]
                     qrels[qid] = v.get("relevant", [])
+                elif isinstance(v, list):
+                    qrels[qid] = v
 
         self.evaluator = Evaluator(qrels)
         print(f"Loaded {len(qrels)} queries with relevance judgments")
+        print(f"Query texts extracted: {len(self.queries)}")
 
         # Load or compute embeddings
         if self.embeddings_file and self.embeddings_file.exists():

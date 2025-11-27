@@ -97,8 +97,18 @@ class Evaluator:
         with open(path) as f:
             data = json.load(f)
 
+        # Handle O-RAG qrels format (list with judgments)
+        if "qrels" in data and isinstance(data["qrels"], list):
+            qrels = {}
+            for entry in data["qrels"]:
+                qid = entry.get("id", "")
+                judgments = entry.get("judgments", [])
+                # Extract chunk_ids from judgments
+                relevant_chunks = [j["chunk_id"] for j in judgments if "chunk_id" in j]
+                if qid and relevant_chunks:
+                    qrels[qid] = relevant_chunks
         # Handle nested format
-        if "queries" in data:
+        elif "queries" in data:
             qrels = {
                 qid: q["relevant_chunks"]
                 for qid, q in data["queries"].items()
