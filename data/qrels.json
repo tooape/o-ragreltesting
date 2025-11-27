@@ -262,40 +262,40 @@
       "additional_queries_needed": [
         "MintV2 multi-modal model demo devbox test"
       ],
-      "expected_answer": "Not done - roadmap targets production-ready service by November 28, 2025. Demo links available: Asset to GT demo and Context to GT demo on devbox. Current architecture uses AdobeOneV1 encoder + Llama-1.8B decoder.",
+      "expected_answer": "Not done - roadmap targets production-ready service by November 28, 2025. Current architecture uses AdobeOneV1 encoder + Llama-1.8B decoder. No current demo links available.",
       "judgments": [
         {
           "doc_id": "Clippings/Work/Multi-modal Intent and Content Understanding wiki.md",
           "chunk_id": "Clippings/Work/Multi-modal Intent and Content Understanding wiki.md::[Multi-modal Intent and Content Understanding](https://wiki.corp.adobe.com/display/adobesearch/Multi-modal+Intent+and+Content+Understanding)>Summary",
           "relevance": 3,
-          "reason": "Contains roadmap with November 28, 2025 target date"
-        },
-        {
-          "doc_id": "Notes/Programs/Intent/Intent AI Home.md",
-          "chunk_id": "Notes/Programs/Intent/Intent AI Home.md::2025",
-          "relevance": 3,
-          "reason": "Contains devbox demo links"
+          "reason": "Contains roadmap with November 28, 2025 target date and architecture details"
         },
         {
           "doc_id": "Notes/Periodic Notes/Daily Notes/October 14, 2025.md",
           "chunk_id": "Notes/Periodic Notes/Daily Notes/October 14, 2025.md::Meetings>Multi Modal intent detection #meetings",
           "relevance": 2,
-          "reason": "Multi Modal intent detection meeting with technical details"
-        },
-        {
-          "doc_id": "Notes/Misc/Multimodal intent.md",
-          "chunk_id": "Notes/Misc/Multimodal intent.md::Multimodal intent model",
-          "relevance": 2,
-          "reason": "Overview page linking to wiki and October 14 notes"
+          "reason": "Multi Modal intent detection meeting with technical details (AdobeOne + Llama)"
         },
         {
           "doc_id": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md",
           "chunk_id": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md::Notes>Q1 2026 Must Nails>Intent / [[Query Understanding|QU]]",
           "relevance": 2,
           "reason": "Q1 Must Nails mentions CKG4 + New MM model in prod"
+        },
+        {
+          "doc_id": "Notes/Misc/Multimodal intent.md",
+          "chunk_id": "Notes/Misc/Multimodal intent.md::Multimodal intent model",
+          "relevance": 1,
+          "reason": "Overview page - links to wiki but contains dated demo references"
+        },
+        {
+          "doc_id": "Notes/Programs/Intent/Intent AI Home.md",
+          "chunk_id": "Notes/Programs/Intent/Intent AI Home.md::2025",
+          "relevance": 1,
+          "reason": "Contains dated Asset/Context to GT demo links (no longer relevant)"
         }
       ],
-      "notes": "Demo links in Intent AI Home: Asset to GT demo (https://session-8cb5d010-b1dc-48ff-8f80-596ea66fdbd8.devbox.training.adobesensei.io/test_port/), Context to GT demo (https://session-c52bfcf5-7fdb-4766-ae6d-7f01ca1d48d7.devbox.training.adobesensei.io/flask/)"
+      "notes": "Wiki and Oct 14 meeting have accurate technical details. Intent AI Home and Multimodal intent pages have dated demo links (Asset to GT, Context to GT) that are no longer relevant."
     },
     {
       "id": "simple-001",
