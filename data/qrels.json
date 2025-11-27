@@ -1305,7 +1305,7 @@
     },
     {
       "id": "smart-060",
-      "prompt": "AdobeOne Lr ranking Feng",
+      "prompt": "AdobeOne Lr ranking improvements?",
       "user_intent": "Who should I talk to about AdobeOne ranking for Lightroom?",
       "category": "person-lookup",
       "tool": "smart-search",
