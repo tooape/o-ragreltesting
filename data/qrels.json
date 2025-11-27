@@ -1423,7 +1423,7 @@
     },
     {
       "id": "smart-073",
-      "prompt": "intern verdict yes approved",
+      "prompt": "Which intern candidates were approved?",
       "user_intent": "Which intern candidates were approved?",
       "category": "recent-activity",
       "tool": "smart-search",
