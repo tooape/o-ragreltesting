@@ -1280,12 +1280,18 @@
       "judgments": [
         {
           "doc_id": "Notes/Periodic Notes/Daily Notes/November 12, 2025.md",
-          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 12, 2025.md::Meetings>[[Asim Kadav|Asim]] #meetings/1x1>[[Photoshop|Ps Web]] presets [[Recommendations Home|recs]] demo",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 12, 2025.md::Notes>Ps Web preset recommendations demo",
           "relevance": 3,
-          "reason": "Rohith demo video Slack link"
+          "reason": "Notes section with Ps Web presets demo link"
+        },
+        {
+          "doc_id": "Notes/Periodic Notes/Daily Notes/November 12, 2025.md",
+          "chunk_id": "Notes/Periodic Notes/Daily Notes/November 12, 2025.md::Meetings>[[Asim Kadav|Asim]] #meetings/1x1>[[Photoshop|Ps Web]] presets [[Recommendations Home|recs]] demo",
+          "relevance": 2,
+          "reason": "Asim 1x1 discussion of demo"
         }
       ],
-      "notes": "Product + feature + person"
+      "notes": "Demo link is in Notes section. Asim 1x1 also discusses."
     },
     {
       "id": "smart-059",
