@@ -1,0 +1,248 @@
+{
+  "evaluation_date": "2025-11-26",
+  "description": "Query relevance evaluation for RAG system testing - manual ground truth annotations",
+  "queries": [
+    {
+      "id": 1,
+      "query": "When was the last time I talked to Jayant, and what did we discuss?",
+      "initial_search_query": "Jayant meeting conversation",
+      "additional_queries_needed": ["Jayant 1x1 meeting"],
+      "expected_answer": "March 25, 2024 - discussed prior case with not being read in around Artemis causing headaches, and long prompt",
+      "relevant_documents": [
+        {
+          "path": "People/Jayant Kumar.md",
+          "relevance": "high",
+          "reason": "Person page with profile info"
+        },
+        {
+          "path": "Notes/Periodic Notes/Daily Notes/March 25, 2024.md",
+          "relevance": "high",
+          "reason": "Contains the 1x1 meeting notes with Jayant"
+        }
+      ],
+      "notes": "Smart search returned Jayant person page quickly. Grep for '#meetings/1x1' pattern confirmed March 25, 2024 was the last 1x1."
+    },
+    {
+      "id": 2,
+      "query": "I had a meeting with Brian, and he asked about evals for photo styles, where's the link to the disc hub page for that?",
+      "initial_search_query": "photo styles eval hub discovery",
+      "additional_queries_needed": [],
+      "expected_answer": "https://discovery-hub.corp.adobe.com:8080/photo-styles-search",
+      "relevant_documents": [
+        {
+          "path": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md",
+          "relevance": "high",
+          "reason": "Contains the Discovery Hub link for photo styles eval"
+        },
+        {
+          "path": "Notes/Programs/Recommendations/Style Home.md",
+          "relevance": "medium",
+          "reason": "Hub page for photo styles program"
+        }
+      ],
+      "notes": "November 20, 2025 note explicitly mentions 'photo style understanding model eval is up in discovery Hub' with the link."
+    },
+    {
+      "id": 3,
+      "query": "Who was working on the transformer based relevance improvements to AdobeOne?",
+      "initial_search_query": "transformer relevance improvements AdobeOne",
+      "additional_queries_needed": [],
+      "expected_answer": "Feng bin - has a project to fine tune AdobeOne V2 for failure cases, transformer based ranking",
+      "relevant_documents": [
+        {
+          "path": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md",
+          "relevance": "high",
+          "reason": "Contains mention of Feng bin's transformer-based ranking project"
+        }
+      ],
+      "notes": "Found in Ritu 1x1 meeting notes on November 19, 2025."
+    },
+    {
+      "id": 4,
+      "query": "Who is the PsM PM?",
+      "initial_search_query": "PsM PM Photoshop Mobile product manager",
+      "additional_queries_needed": [],
+      "expected_answer": "Michael Lewis",
+      "relevant_documents": [
+        {
+          "path": "People/Michael Lewis.md",
+          "relevance": "high",
+          "reason": "Person page explicitly stating 'Photoshop Mobile PM'"
+        },
+        {
+          "path": "Notes/Misc/Photoshop.md",
+          "relevance": "medium",
+          "reason": "Contains PM contact info for Photoshop"
+        }
+      ],
+      "notes": "Michael Lewis person page and Photoshop.md both provide this answer."
+    },
+    {
+      "id": 5,
+      "query": "Who should I ping for a question about Lr desktop?",
+      "initial_search_query": "Lr desktop contact person Lightroom",
+      "additional_queries_needed": ["LrD Lr Desktop contact Rithesh Vic Anuj"],
+      "expected_answer": "Peter Baust - Group PM manager for Lightroom",
+      "relevant_documents": [
+        {
+          "path": "People/Peter Baust.md",
+          "relevance": "high",
+          "reason": "Person page - Group PM manager for Lightroom"
+        },
+        {
+          "path": "Notes/Programs/Lightroom/Lr Home.md",
+          "relevance": "medium",
+          "reason": "Hub page for Lightroom program"
+        },
+        {
+          "path": "Notes/Misc/Lr Desktop Rollout.md",
+          "relevance": "medium",
+          "reason": "Desktop rollout planning page"
+        }
+      ],
+      "notes": "Peter Baust is listed as Group PM manager for Lightroom. For technical contacts, Chhaya's work on embeddings is also mentioned in Lr Desktop Rollout.md."
+    },
+    {
+      "id": 6,
+      "query": "What is the current LrD rollout date for semantic search?",
+      "initial_search_query": "LrD semantic search rollout date desktop April 2026",
+      "additional_queries_needed": [],
+      "expected_answer": "April 2026 - targeting GA in desktop",
+      "relevant_documents": [
+        {
+          "path": "Notes/Misc/Lr Desktop Rollout.md",
+          "relevance": "high",
+          "reason": "States 'Targeting April 2026'"
+        },
+        {
+          "path": "Notes/Programs/Lightroom/Lr Home.md",
+          "relevance": "high",
+          "reason": "Contains link to LrD GA April 2026 wiki"
+        }
+      ],
+      "notes": "Both Lr Desktop Rollout.md and Lr Home.md confirm April 2026 target."
+    },
+    {
+      "id": 7,
+      "query": "What are the Q1 Must nails?",
+      "initial_search_query": "Q1 must nails 2026",
+      "additional_queries_needed": [],
+      "expected_answer": "Recs: Styles (icons/design assets, photo model), PsW stock content, DC Recs 100% rollout. Lr: LrD query strategy & migration plan. Intent/QU: Use case in prod (CKG4 + New MM model)",
+      "relevant_documents": [
+        {
+          "path": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md",
+          "relevance": "high",
+          "reason": "Contains detailed Q1 2026 Must Nails section"
+        },
+        {
+          "path": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md",
+          "relevance": "medium",
+          "reason": "References Q1 Must Nails via transclusion"
+        },
+        {
+          "path": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md",
+          "relevance": "medium",
+          "reason": "References Q1 Must Nails via transclusion"
+        }
+      ],
+      "notes": "November 18, 2025 is the canonical source with the structured list."
+    },
+    {
+      "id": 8,
+      "query": "When was my last 1x1 with Ayush?",
+      "initial_search_query": "Ayush 1x1 meeting",
+      "additional_queries_needed": [],
+      "expected_answer": "November 13, 2025 - discussed stopping modeling and working on more generalized approach, golden set for MM swimlane 3 isn't correct",
+      "relevant_documents": [
+        {
+          "path": "Notes/Periodic Notes/Daily Notes/November 13, 2025.md",
+          "relevance": "high",
+          "reason": "Contains the most recent Ayush 1x1 meeting"
+        },
+        {
+          "path": "People/Ayush Jaiswal.md",
+          "relevance": "low",
+          "reason": "Person page"
+        }
+      ],
+      "notes": "Grep confirmed November 13, 2025 as most recent. Smart search ranked October 22, 2025 higher due to ranking - needed grep to find correct answer."
+    },
+    {
+      "id": 9,
+      "query": "What is the latest on PsW Recs?",
+      "initial_search_query": "PsW Recs Photoshop Web Recommendations status",
+      "additional_queries_needed": [],
+      "expected_answer": "PsW stock content is Q1 2026 must nail. POC use cases include preset adjustments and subject/background manipulation. PM contacts: Hao Xu, Jasper. Slack: ps-web-in-context-recommendation",
+      "relevant_documents": [
+        {
+          "path": "Notes/Misc/Photoshop.md",
+          "relevance": "high",
+          "reason": "Hub page with PsW Recs details, use cases, PM contacts"
+        },
+        {
+          "path": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md",
+          "relevance": "high",
+          "reason": "Q1 Must Nails listing PsW stock content"
+        },
+        {
+          "path": "Notes/Periodic Notes/Daily Notes/November 20, 2025.md",
+          "relevance": "medium",
+          "reason": "Kosta 1x1 mentions Ps Web recs priority over mobile"
+        },
+        {
+          "path": "Notes/Periodic Notes/Daily Notes/November 19, 2025.md",
+          "relevance": "medium",
+          "reason": "Brian meeting notes about not spending cycles on Ps Mobile"
+        }
+      ],
+      "notes": "Photoshop.md serves as the hub page with comprehensive info. Recent daily notes provide current status."
+    },
+    {
+      "id": 10,
+      "query": "Is the new MM model done? Anywhere I can test it?",
+      "initial_search_query": "new MM model multi-modal testing status demo",
+      "additional_queries_needed": ["MintV2 multi-modal model demo devbox test"],
+      "expected_answer": "Not done - roadmap targets production-ready service by November 28, 2025. Demo links available: Asset to GT demo and Context to GT demo on devbox. Current architecture uses AdobeOneV1 encoder + Llama-1.8B decoder.",
+      "relevant_documents": [
+        {
+          "path": "Clippings/Work/Multi-modal Intent and Content Understanding wiki.md",
+          "relevance": "high",
+          "reason": "Contains roadmap with November 28, 2025 target date"
+        },
+        {
+          "path": "Notes/Programs/Intent/Intent AI Home.md",
+          "relevance": "high",
+          "reason": "Contains devbox demo links"
+        },
+        {
+          "path": "Notes/Periodic Notes/Daily Notes/October 14, 2025.md",
+          "relevance": "medium",
+          "reason": "Multi Modal intent detection meeting with technical details"
+        },
+        {
+          "path": "Notes/Misc/Multimodal intent.md",
+          "relevance": "medium",
+          "reason": "Overview page linking to wiki and October 14 notes"
+        },
+        {
+          "path": "Notes/Periodic Notes/Daily Notes/November 18, 2025.md",
+          "relevance": "medium",
+          "reason": "Q1 Must Nails mentions CKG4 + New MM model in prod"
+        }
+      ],
+      "notes": "Demo links in Intent AI Home: Asset to GT demo (https://session-8cb5d010-b1dc-48ff-8f80-596ea66fdbd8.devbox.training.adobesensei.io/test_port/), Context to GT demo (https://session-c52bfcf5-7fdb-4766-ae6d-7f01ca1d48d7.devbox.training.adobesensei.io/flask/)"
+    }
+  ],
+  "evaluation_summary": {
+    "total_queries": 10,
+    "queries_answered_first_search": 8,
+    "queries_needing_additional_searches": 2,
+    "average_relevant_docs_per_query": 2.6,
+    "observations": [
+      "Smart search excels at finding hub pages and person pages",
+      "Temporal queries (last 1x1) sometimes miss most recent due to ranking vs grep accuracy",
+      "Multi-hop queries (who works on X) require following graph connections",
+      "Abbreviations (PsM, LrD, MM) are well-handled by alias expansion"
+    ]
+  }
+}
