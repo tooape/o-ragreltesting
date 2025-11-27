@@ -474,18 +474,18 @@
       "judgments": [
         {
           "doc_id": "Notes/Misc/APS.md",
-          "chunk_id": "Notes/Misc/APS.md::Overview",
+          "chunk_id": "Notes/Misc/APS.md::FY 2026",
           "relevance": 3,
-          "reason": "APS overview"
+          "reason": "APS FY 2026 - most relevant current info"
         },
         {
           "doc_id": "Notes/Misc/APS.md",
-          "chunk_id": "Notes/Misc/APS.md::FY 2026",
+          "chunk_id": "Notes/Misc/APS.md::Overview",
           "relevance": 2,
-          "reason": "APS FY 2026"
+          "reason": "APS overview"
         }
       ],
-      "notes": "Acronym lookup"
+      "notes": "Acronym lookup - FY 2026 chunk more relevant than general overview"
     },
     {
       "id": "simple-022",
