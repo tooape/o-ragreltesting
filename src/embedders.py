@@ -32,7 +32,7 @@ class EmbeddingGemmaEmbedder:
     Uses FP16 on GPU for faster inference.
     """
 
-    MODEL_NAME = "google/embedding-gemma-001"
+    MODEL_NAME = "google/embeddinggemma-300m"
     NATIVE_DIM = 768
 
     # Prompt templates from model card
