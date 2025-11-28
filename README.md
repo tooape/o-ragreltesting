@@ -11,11 +11,30 @@ This repo provides:
 
 ## Global Leaderboard
 
-| Rank | Strategy | MRR@5 | NDCG@5 | E2E Latency (ms) | Summary |
-|------|----------|-------|--------|------------------|---------|
-| - | TBD | - | - | - | Phase 1 in progress |
+| Rank | Strategy | MRR@5 | NDCG@5 | Best Params |
+|------|----------|-------|--------|-------------|
+| 1 | **c37_lambdamart** | **0.6575** | 0.5977 | first_stage_k=200, decay=13d |
+| 2 | p2_recency_decay | 0.6418 | 0.6009 | alpha=0.65, recency=0.35, decay=10d |
+| 3 | p1_recency_boost | 0.6418 | 0.6009 | alpha=0.65, recency=0.35, decay=10d |
+| 4 | c13_multi_signal_optimized | 0.6396 | - | BM25=0.25, semantic=0.45, graph=0.02, temporal=0.2, decay=15d |
+| 5 | p3_recency_tag_combo | 0.6370 | - | alpha=0.65, recency=0.35, tag=0.1, decay=10d |
+| 6 | c17_linear_decay_90d | 0.6326 | - | window=30d, min=0.07, temporal=0.4 |
+| 7 | c23_combined_metadata | 0.6198 | - | pagetype=1.2, tag=0.05, link=0.04, decay=35d |
+| 8 | c15_exp_decay_30d | 0.6118 | - | decay=20d, temporal=0.5 |
+| 9 | c19_sigmoid_boost | 0.6063 | - | midpoint=20d, steepness=13, temporal=0.4 |
+| 10 | c36_logistic_regression | 0.5857 | - | decay=38d |
 
-*Last updated: TBD*
+*Last updated: November 28, 2025*
+
+### Dimension Reduction Analysis (Top 3 Strategies)
+
+| Strategy | 768d MRR@5 | 512d MRR@5 (Δ%) | 256d MRR@5 (Δ%) | 256d Storage |
+|----------|------------|-----------------|-----------------|--------------|
+| c37_lambdamart | 0.6575 | 0.6164 (-6.2%) | 0.5913 (-10.1%) | 2.5MB |
+| p2_recency_decay | 0.6418 | 0.6329 (-1.4%) | 0.6075 (-5.3%) | 2.5MB |
+| p1_recency_boost | 0.6418 | 0.6329 (-1.4%) | 0.6075 (-5.3%) | 2.5MB |
+
+**Recommendation**: For production, use **p2_recency_decay** with **512d Matryoshka** embeddings - only 1.4% MRR drop with 33% storage reduction.
 
 ### Leaderboard Notes
 - **MRR@5**: Mean Reciprocal Rank at position 5 (higher is better, max 1.0)
@@ -26,7 +45,7 @@ This repo provides:
 ## Implementation Phases
 
 ### Phase 1: Strategy Baseline Evaluation
-**Status**: In Progress
+**Status**: Complete
 
 **Objective**: Establish baseline performance for all 40 ranking strategies using optimal model configuration.
 
@@ -41,7 +60,7 @@ This repo provides:
 3. Leaderboard updated with baseline results
 
 ### Phase 2: Coarse Hyperparameter Optimization
-**Status**: Not Started
+**Status**: Complete
 
 **Objective**: Coarse grid search optimization for the top 30 strategies from Phase 1.
 
@@ -57,7 +76,7 @@ This repo provides:
 4. Leaderboard updated with coarse-optimized results
 
 ### Phase 3: Fine Hyperparameter Optimization
-**Status**: Not Started
+**Status**: Complete
 
 **Objective**: Fine-grained grid search optimization for the top 10 strategies from Phase 2.
 
@@ -73,7 +92,7 @@ This repo provides:
 4. Leaderboard updated with fine-optimized results
 
 ### Phase 4: Model Optimization
-**Status**: Not Started
+**Status**: Complete
 
 **Objective**: Evaluate quality/performance tradeoffs with reduced dimensionality and quantization.
 

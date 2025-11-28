@@ -1,0 +1,92 @@
+[
+  {
+    "strategy": "c37_lambdamart",
+    "best_params": {
+      "first_stage_k": 200,
+      "temporal_decay_days": 15
+    },
+    "mrr@5": 0.6478260869565218
+  },
+  {
+    "strategy": "p2_recency_decay",
+    "best_params": {
+      "alpha": 0.7,
+      "recency_weight": 0.3,
+      "decay_days": 15
+    },
+    "mrr@5": 0.6405797101449275
+  },
+  {
+    "strategy": "p1_recency_boost",
+    "best_params": {
+      "alpha": 0.7,
+      "recency_weight": 0.3,
+      "decay_days": 14
+    },
+    "mrr@5": 0.6357487922705314
+  },
+  {
+    "strategy": "p3_recency_tag_combo",
+    "best_params": {
+      "alpha": 0.7,
+      "recency_weight": 0.35,
+      "tag_weight": 0.15,
+      "decay_days": 10
+    },
+    "mrr@5": 0.6340579710144928
+  },
+  {
+    "strategy": "c23_combined_metadata",
+    "best_params": {
+      "pagetype_boost": 1.2,
+      "tag_boost_factor": 0.1,
+      "link_boost_factor": 0.05,
+      "temporal_decay_days": 45
+    },
+    "mrr@5": 0.6120772946859905
+  },
+  {
+    "strategy": "c13_multi_signal_optimized",
+    "best_params": {
+      "bm25_weight": 0.35,
+      "semantic_weight": 0.45,
+      "graph_weight": 0.05,
+      "temporal_weight": 0.15,
+      "temporal_decay_days": 20
+    },
+    "mrr@5": 0.6050724637681161
+  },
+  {
+    "strategy": "c15_exp_decay_30d",
+    "best_params": {
+      "decay_days": 30,
+      "temporal_weight": 0.4
+    },
+    "mrr@5": 0.6002415458937199
+  },
+  {
+    "strategy": "c17_linear_decay_90d",
+    "best_params": {
+      "window_days": 45,
+      "min_score": 0.05,
+      "temporal_weight": 0.3
+    },
+    "mrr@5": 0.6002415458937199
+  },
+  {
+    "strategy": "c36_logistic_regression",
+    "best_params": {
+      "temporal_decay_days": 45
+    },
+    "mrr@5": 0.5857487922705314
+  },
+  {
+    "strategy": "c19_sigmoid_boost",
+    "best_params": {
+      "midpoint_days": 30,
+      "steepness": 15,
+      "temporal_weight": 0.3
+    },
+    "mrr@5": 0.5840579710144929
+  }
+]

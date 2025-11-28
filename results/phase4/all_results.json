@@ -1,0 +1,214 @@
+[
+  {
+    "strategy": "c37_lambdamart",
+    "best_params": {
+      "first_stage_k": 200,
+      "temporal_decay_days": 13
+    },
+    "phase3_baseline": {
+      "mrr@5": 0.657487922705314,
+      "ndcg@5": 0.5977386488974326
+    },
+    "dimension_results": [
+      {
+        "dimension": 768,
+        "name": "768d (full)",
+        "mrr@5": 0.657487922705314,
+        "ndcg@5": 0.5977386488974326,
+        "recall@5": 0.6495169082125604,
+        "precision@5": 0,
+        "embed_time_sec": 11.242813348770142,
+        "eval_time_sec": 0.4649500846862793,
+        "embedding_shape": [
+          2509,
+          768
+        ],
+        "storage_mb": 7.3505859375,
+        "mrr_delta": 0.0,
+        "ndcg_delta": 0.0,
+        "mrr_pct_change": 0.0,
+        "ndcg_pct_change": 0.0
+      },
+      {
+        "dimension": 512,
+        "name": "512d (Matryoshka)",
+        "mrr@5": 0.6164251207729469,
+        "ndcg@5": 0.5579933628489727,
+        "recall@5": 0.6205314009661835,
+        "precision@5": 0,
+        "embed_time_sec": 10.295434474945068,
+        "eval_time_sec": 0.40279507637023926,
+        "embedding_shape": [
+          2509,
+          512
+        ],
+        "storage_mb": 4.900390625,
+        "mrr_delta": -0.04106280193236711,
+        "ndcg_delta": -0.03974528604845984,
+        "mrr_pct_change": -6.245407788390883,
+        "ndcg_pct_change": -6.649274916683501
+      },
+      {
+        "dimension": 256,
+        "name": "256d (Matryoshka)",
+        "mrr@5": 0.5913043478260869,
+        "ndcg@5": 0.539245487700523,
+        "recall@5": 0.6026570048309178,
+        "precision@5": 0,
+        "embed_time_sec": 10.177030086517334,
+        "eval_time_sec": 0.34213852882385254,
+        "embedding_shape": [
+          2509,
+          256
+        ],
+        "storage_mb": 2.4501953125,
+        "mrr_delta": -0.0661835748792271,
+        "ndcg_delta": -0.058493161196909504,
+        "mrr_pct_change": -10.066127847171206,
+        "ndcg_pct_change": -9.785741863070744
+      }
+    ]
+  },
+  {
+    "strategy": "p2_recency_decay",
+    "best_params": {
+      "alpha": 0.6499999999999999,
+      "recency_weight": 0.35,
+      "decay_days": 10
+    },
+    "phase3_baseline": {
+      "mrr@5": 0.6417874396135266,
+      "ndcg@5": 0.6008848149609488
+    },
+    "dimension_results": [
+      {
+        "dimension": 768,
+        "name": "768d (full)",
+        "mrr@5": 0.6417874396135266,
+        "ndcg@5": 0.6008848149609488,
+        "recall@5": 0.6606280193236715,
+        "precision@5": 0,
+        "embed_time_sec": 10.552978038787842,
+        "eval_time_sec": 2.3276524543762207,
+        "embedding_shape": [
+          2509,
+          768
+        ],
+        "storage_mb": 7.3505859375,
+        "mrr_delta": 0.0,
+        "ndcg_delta": 0.0,
+        "mrr_pct_change": 0.0,
+        "ndcg_pct_change": 0.0
+      },
+      {
+        "dimension": 512,
+        "name": "512d (Matryoshka)",
+        "mrr@5": 0.6328502415458936,
+        "ndcg@5": 0.588826252367577,
+        "recall@5": 0.6442028985507247,
+        "precision@5": 0,
+        "embed_time_sec": 10.12031626701355,
+        "eval_time_sec": 2.2687835693359375,
+        "embedding_shape": [
+          2509,
+          512
+        ],
+        "storage_mb": 4.900390625,
+        "mrr_delta": -0.008937198067632934,
+        "ndcg_delta": -0.012058562593371791,
+        "mrr_pct_change": -1.3925479864508976,
+        "ndcg_pct_change": -2.0068010196189547
+      },
+      {
+        "dimension": 256,
+        "name": "256d (Matryoshka)",
+        "mrr@5": 0.6074879227053139,
+        "ndcg@5": 0.565500274608534,
+        "recall@5": 0.6147342995169082,
+        "precision@5": 0,
+        "embed_time_sec": 10.27717900276184,
+        "eval_time_sec": 2.4440996646881104,
+        "embedding_shape": [
+          2509,
+          256
+        ],
+        "storage_mb": 2.4501953125,
+        "mrr_delta": -0.034299516908212646,
+        "ndcg_delta": -0.035384540352414784,
+        "mrr_pct_change": -5.34437335340611,
+        "ndcg_pct_change": -5.888739317653485
+      }
+    ]
+  },
+  {
+    "strategy": "p1_recency_boost",
+    "best_params": {
+      "alpha": 0.6499999999999999,
+      "recency_weight": 0.35,
+      "decay_days": 10
+    },
+    "phase3_baseline": {
+      "mrr@5": 0.6417874396135266,
+      "ndcg@5": 0.6008848149609488
+    },
+    "dimension_results": [
+      {
+        "dimension": 768,
+        "name": "768d (full)",
+        "mrr@5": 0.6417874396135266,
+        "ndcg@5": 0.6008848149609488,
+        "recall@5": 0.6606280193236715,
+        "precision@5": 0,
+        "embed_time_sec": 10.309974908828735,
+        "eval_time_sec": 2.2975828647613525,
+        "embedding_shape": [
+          2509,
+          768
+        ],
+        "storage_mb": 7.3505859375,
+        "mrr_delta": 0.0,
+        "ndcg_delta": 0.0,
+        "mrr_pct_change": 0.0,
+        "ndcg_pct_change": 0.0
+      },
+      {
+        "dimension": 512,
+        "name": "512d (Matryoshka)",
+        "mrr@5": 0.6328502415458936,
+        "ndcg@5": 0.588826252367577,
+        "recall@5": 0.6442028985507247,
+        "precision@5": 0,
+        "embed_time_sec": 10.274811267852783,
+        "eval_time_sec": 2.2293355464935303,
+        "embedding_shape": [
+          2509,
+          512
+        ],
+        "storage_mb": 4.900390625,
+        "mrr_delta": -0.008937198067632934,
+        "ndcg_delta": -0.012058562593371791,
+        "mrr_pct_change": -1.3925479864508976,
+        "ndcg_pct_change": -2.0068010196189547
+      },
+      {
+        "dimension": 256,
+        "name": "256d (Matryoshka)",
+        "mrr@5": 0.6074879227053139,
+        "ndcg@5": 0.565500274608534,
+        "recall@5": 0.6147342995169082,
+        "precision@5": 0,
+        "embed_time_sec": 10.514317989349365,
+        "eval_time_sec": 2.2400505542755127,
+        "embedding_shape": [
+          2509,
+          256
+        ],
+        "storage_mb": 2.4501953125,
+        "mrr_delta": -0.034299516908212646,
+        "ndcg_delta": -0.035384540352414784,
+        "mrr_pct_change": -5.34437335340611,
+        "ndcg_pct_change": -5.888739317653485
+      }
+    ]
+  }
+]

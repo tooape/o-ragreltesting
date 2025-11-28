@@ -1,0 +1,120 @@
+{
+  "phase": "Phase 4: Model Optimization",
+  "strategies_evaluated": 3,
+  "dimensions_tested": [
+    768,
+    512,
+    256
+  ],
+  "strategies": [
+    {
+      "strategy": "c37_lambdamart",
+      "best_params": {
+        "first_stage_k": 200,
+        "temporal_decay_days": 13
+      },
+      "baseline_mrr@5": 0.657487922705314,
+      "baseline_ndcg@5": 0.5977386488974326,
+      "dimension_comparison": [
+        {
+          "dimension": 768,
+          "mrr@5": 0.657487922705314,
+          "ndcg@5": 0.5977386488974326,
+          "mrr_change_pct": 0.0,
+          "storage_mb": 7.3505859375
+        },
+        {
+          "dimension": 512,
+          "mrr@5": 0.6164251207729469,
+          "ndcg@5": 0.5579933628489727,
+          "mrr_change_pct": -6.245407788390883,
+          "storage_mb": 4.900390625
+        },
+        {
+          "dimension": 256,
+          "mrr@5": 0.5913043478260869,
+          "ndcg@5": 0.539245487700523,
+          "mrr_change_pct": -10.066127847171206,
+          "storage_mb": 2.4501953125
+        }
+      ]
+    },
+    {
+      "strategy": "p2_recency_decay",
+      "best_params": {
+        "alpha": 0.6499999999999999,
+        "recency_weight": 0.35,
+        "decay_days": 10
+      },
+      "baseline_mrr@5": 0.6417874396135266,
+      "baseline_ndcg@5": 0.6008848149609488,
+      "dimension_comparison": [
+        {
+          "dimension": 768,
+          "mrr@5": 0.6417874396135266,
+          "ndcg@5": 0.6008848149609488,
+          "mrr_change_pct": 0.0,
+          "storage_mb": 7.3505859375
+        },
+        {
+          "dimension": 512,
+          "mrr@5": 0.6328502415458936,
+          "ndcg@5": 0.588826252367577,
+          "mrr_change_pct": -1.3925479864508976,
+          "storage_mb": 4.900390625
+        },
+        {
+          "dimension": 256,
+          "mrr@5": 0.6074879227053139,
+          "ndcg@5": 0.565500274608534,
+          "mrr_change_pct": -5.34437335340611,
+          "storage_mb": 2.4501953125
+        }
+      ]
+    },
+    {
+      "strategy": "p1_recency_boost",
+      "best_params": {
+        "alpha": 0.6499999999999999,
+        "recency_weight": 0.35,
+        "decay_days": 10
+      },
+      "baseline_mrr@5": 0.6417874396135266,
+      "baseline_ndcg@5": 0.6008848149609488,
+      "dimension_comparison": [
+        {
+          "dimension": 768,
+          "mrr@5": 0.6417874396135266,
+          "ndcg@5": 0.6008848149609488,
+          "mrr_change_pct": 0.0,
+          "storage_mb": 7.3505859375
+        },
+        {
+          "dimension": 512,
+          "mrr@5": 0.6328502415458936,
+          "ndcg@5": 0.588826252367577,
+          "mrr_change_pct": -1.3925479864508976,
+          "storage_mb": 4.900390625
+        },
+        {
+          "dimension": 256,
+          "mrr@5": 0.6074879227053139,
+          "ndcg@5": 0.565500274608534,
+          "mrr_change_pct": -5.34437335340611,
+          "storage_mb": 2.4501953125
+        }
+      ]
+    }
+  ],
+  "recommendation": {
+    "message": "256d Matryoshka offers 2.5MB storage with -10.1% MRR change",
+    "production_config": {
+      "strategy": "c37_lambdamart",
+      "dimension": 256,
+      "params": {
+        "first_stage_k": 200,
+        "temporal_decay_days": 13
+      }
+    }
+  }
+}

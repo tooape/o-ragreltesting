@@ -1,0 +1,31 @@
+[
+  {
+    "strategy": "c37_lambdamart",
+    "best_params": {
+      "first_stage_k": 200,
+      "temporal_decay_days": 13
+    },
+    "mrr@5": 0.657487922705314,
+    "ndcg@5": 0.5977386488974326
+  },
+  {
+    "strategy": "p2_recency_decay",
+    "best_params": {
+      "alpha": 0.6499999999999999,
+      "recency_weight": 0.35,
+      "decay_days": 10
+    },
+    "mrr@5": 0.6417874396135266,
+    "ndcg@5": 0.6008848149609488
+  },
+  {
+    "strategy": "p1_recency_boost",
+    "best_params": {
+      "alpha": 0.6499999999999999,
+      "recency_weight": 0.35,
+      "decay_days": 10
+    },
+    "mrr@5": 0.6417874396135266,
+    "ndcg@5": 0.6008848149609488
+  }
+]
