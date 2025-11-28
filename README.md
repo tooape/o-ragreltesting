@@ -1,13 +1,83 @@
 # O-RAG Relevance Testing
 
-Evaluation framework for O-RAG (Obsidian RAG) tools with chunk-level ground truth.
+Evaluation framework for O-RAG (Obsidian RAG) ranking strategies with chunk-level ground truth.
 
 ## Overview
 
 This repo provides:
 1. **Hierarchical Markdown Chunker** - Chunks vault by heading hierarchy (H1-H6)
-2. **Query/QRels Schema** - Chunk-level relevance judgments for three tools
-3. **Evaluation Harness** - MRR, NDCG@k, Recall@k metrics (TODO)
+2. **Query/QRels Schema** - Chunk-level relevance judgments for ranking evaluation
+3. **Evaluation Harness** - MRR, NDCG@k, Recall@k metrics with ranking strategy comparison
+
+## Global Leaderboard
+
+| Rank | Strategy | MRR@5 | NDCG@5 | E2E Latency (ms) | Summary |
+|------|----------|-------|--------|------------------|---------|
+| - | TBD | - | - | - | Phase 1 in progress |
+
+*Last updated: TBD*
+
+### Leaderboard Notes
+- **MRR@5**: Mean Reciprocal Rank at position 5 (higher is better, max 1.0)
+- **NDCG@5**: Normalized Discounted Cumulative Gain at position 5 (higher is better, max 1.0)
+- **E2E Latency**: End-to-end query latency including retrieval and ranking
+- Evaluated on full test query set with chunk-level relevance judgments
+
+## Implementation Phases
+
+### Phase 1: Strategy Baseline Evaluation
+**Status**: In Progress
+
+**Objective**: Establish baseline performance for all ranking strategies using optimal model configuration.
+
+**Configuration**:
+- Model: EmbeddingGemma (768 dimensions, unquantized)
+- All strategies evaluated with default hyperparameters
+- Metrics: MRR@5, NDCG@5, Recall@5, Precision@5, end-to-end latency
+
+**Deliverables**:
+1. Performance metrics for all strategies
+2. Top 10 strategies identified for hyperparameter optimization
+3. Leaderboard updated with baseline results
+
+### Phase 2: Hyperparameter Optimization
+**Status**: Not Started
+
+**Objective**: Optimize hyperparameters for the top 10 strategies from Phase 1.
+
+**Configuration**:
+- Model: EmbeddingGemma (768 dimensions, unquantized)
+- Grid search optimization for each strategy's hyperparameters
+- Same metrics as Phase 1
+
+**Deliverables**:
+1. Optimized hyperparameters for each of the 10 strategies
+2. Performance improvement deltas vs. baseline
+3. Top 3 strategies selected for model optimization phase
+4. Leaderboard updated with optimized results
+
+### Phase 3: Model Optimization
+**Status**: Not Started
+
+**Objective**: Evaluate quality/performance tradeoffs with reduced dimensionality and quantization.
+
+**Configuration**:
+- Models evaluated:
+  - EmbeddingGemma (768d, unquantized) - baseline
+  - EmbeddingGemma (512d, unquantized)
+  - EmbeddingGemma (256d, unquantized)
+  - EmbeddingGemma QAT (768d, quantized)
+  - EmbeddingGemma QAT (512d, quantized)
+  - EmbeddingGemma QAT (256d, quantized)
+- Top 3 strategies from Phase 2 with optimized hyperparameters
+- Same metrics as Phase 1 & 2
+
+**Deliverables**:
+1. Quality degradation analysis for dimensionality reduction
+2. Quality degradation analysis for quantization (QAT)
+3. Latency improvements from reduced dimensions and quantization
+4. Final production recommendation (strategy + model config)
+5. Leaderboard updated with final optimized configurations
 
 ## O-RAG Tools Being Evaluated
 
