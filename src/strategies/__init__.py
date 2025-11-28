@@ -1,14 +1,18 @@
 """
-O-RAG Ranking Strategies
+O-RAG Ranking Strategies - Aligned to Test Candidates File
 
-37 strategies organized into categories:
-- C1-C6: Single Signal (dense only, BM25 only, Matryoshka dims)
-- C7-C12: Simple Fusion (RRF, CombMNZ, CombSUM, interpolation)
-- C13-C18: Weighted Hybrid (dense-heavy, BM25-heavy, weighted RRF)
-- C19-C24: Temporal/Metadata Boost (recency, tags, pageType)
-- C25-C30: Two-Stage (BM25->dense, dense->BM25, three-stage)
-- C31-C33: Query-Adaptive (query type, length, confidence)
-- C34-C37: Learned Fusion (grid search, Bayesian, ensemble)
+Categories:
+- P1-P3: Proven Baselines (November 2025 benchmark winners)
+- C1-C5: Fusion Methods (CombMNZ, CombSUM variants)
+- C6-C9: Score Normalization Variants
+- C10-C14: Custom Weights (data-driven)
+- C15-C19: Temporal Boosting Variants
+- C20-C23: Metadata-Enhanced Reranking
+- C24-C27: Two-Stage Approaches
+- C28-C29: Query-Adaptive Strategies
+- C30-C32: Advanced Reranking
+- C33-C35: BM25 Parameter Tuning
+- C36-C37: Learned Fusion
 """
 
 from .base import (
@@ -26,67 +30,82 @@ from .base import (
 )
 
 # Import all strategy modules to trigger registration
-from . import single_signal
-from . import simple_fusion
-from . import weighted_hybrid
-from . import temporal_metadata
+from . import proven_baselines
+from . import fusion_methods
+from . import normalization
+from . import custom_weights
+from . import temporal_boosting
+from . import metadata_enhanced
 from . import two_stage
 from . import query_adaptive
+from . import advanced_reranking
+from . import bm25_tuning
 from . import learned_fusion
 
 
-# Strategy categories for easy access
+# Strategy categories aligned to test candidates file
 CATEGORIES = {
-    "single_signal": [
-        "c1_dense_only",
-        "c2_bm25_only",
-        "c3_dense_256",
-        "c4_dense_512",
-        "c5_dense_768",
-        "c6_bm25_plus",
+    "proven_baselines": [
+        "p1_recency_boost",
+        "p2_recency_decay",
+        "p3_recency_tag_combo",
     ],
-    "simple_fusion": [
-        "c7_rrf_basic",
-        "c8_rrf_low_k",
-        "c9_combmnz",
-        "c10_combsum",
-        "c11_interpolation",
-        "c12_max_fusion",
+    "fusion_methods": [
+        "c1_combmnz_basic",
+        "c2_combmnz_graph",
+        "c3_combmnz_all",
+        "c4_combsum_basic",
+        "c5_combsum_all",
     ],
-    "weighted_hybrid": [
-        "c13_dense_heavy",
-        "c14_bm25_heavy",
-        "c15_weighted_rrf",
-        "c16_zscore_norm",
-        "c17_rank_norm",
-        "c18_multi_rrf",
+    "normalization": [
+        "c6_softmax_weighted",
+        "c7_rank_weighted",
+        "c8_percentile_weighted",
+        "c9_logscale_weighted",
     ],
-    "temporal_metadata": [
-        "c19_recency_boost",
-        "c20_recency_decay",
-        "c21_tag_boost",
-        "c22_pagetype_boost",
-        "c23_recency_tag_combo",
-        "c24_full_metadata",
+    "custom_weights": [
+        "c10_bm25_heavy",
+        "c11_semantic_heavy",
+        "c12_equal_weight",
+        "c13_multi_signal_optimized",
+        "c14_multi_signal_bm25_dominant",
+    ],
+    "temporal_boosting": [
+        "c15_exp_decay_30d",
+        "c16_exp_decay_60d",
+        "c17_linear_decay_90d",
+        "c18_step_function",
+        "c19_sigmoid_boost",
+    ],
+    "metadata_enhanced": [
+        "c20_pagetype_aware",
+        "c21_tag_overlap",
+        "c22_link_density",
+        "c23_combined_metadata",
     ],
     "two_stage": [
-        "c25_bm25_then_dense",
-        "c26_dense_then_bm25",
-        "c27_hybrid_then_dense",
-        "c28_bm25_then_hybrid",
-        "c29_three_stage",
-        "c30_large_first_stage",
+        "c24_bm25_then_combmnz",
+        "c25_semantic_then_combmnz",
+        "c26_union_then_metadata",
+        "c27_confidence_routing",
     ],
     "query_adaptive": [
-        "c31_query_type_adaptive",
-        "c32_length_adaptive",
-        "c33_confidence_adaptive",
+        "c28_query_type_router",
+        "c29_acronym_aware",
+    ],
+    "advanced_reranking": [
+        "c30_cached_gemma",
+        "c31_mixedbread_reranker",
+        "c32_multi_stage_progressive",
+    ],
+    "bm25_tuning": [
+        "c33_bm25_short_docs",
+        "c34_bm25_long_docs",
+        "c35_bm25_plus_expansion",
     ],
     "learned_fusion": [
-        "c34_grid_search",
-        "c35_bayesian",
-        "c36_per_query",
-        "c37_ensemble",
+        "c36_logistic_regression",
+        "c37_lambdamart",
     ],
 }
 
@@ -94,8 +113,9 @@ CATEGORIES = {
 ALL_STRATEGIES = [
     sid
     for category in [
-        "single_signal", "simple_fusion", "weighted_hybrid",
-        "temporal_metadata", "two_stage", "query_adaptive", "learned_fusion"
+        "proven_baselines", "fusion_methods", "normalization", "custom_weights",
+        "temporal_boosting", "metadata_enhanced", "two_stage", "query_adaptive",
+        "advanced_reranking", "bm25_tuning", "learned_fusion"
     ]
     for sid in CATEGORIES[category]
 ]
@@ -115,7 +135,7 @@ def create_strategy(strategy_id: str, **kwargs) -> BaseStrategy:
     """Create a strategy instance by ID.
 
     Args:
-        strategy_id: Strategy identifier (e.g., 'c1_dense_only')
+        strategy_id: Strategy identifier (e.g., 'p1_recency_boost')
         **kwargs: Strategy-specific parameters
 
     Returns:

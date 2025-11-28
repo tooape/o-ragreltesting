@@ -1,7 +1,7 @@
 """
-Query-Adaptive Strategies (C31-C33)
+Query-Adaptive Strategies (C28-C29)
 
-Strategies that adapt their behavior based on query characteristics.
+Strategies that adapt based on query characteristics.
 """
 
 import re
@@ -10,112 +10,99 @@ from typing import Dict, List, Any, Optional
 
 from .base import (
     QueryAdaptiveStrategy,
-    BaseStrategy,
     FusionStrategy,
+    BaseStrategy,
     RankingResult,
     register_strategy,
 )
 
 
-class QueryClassifier:
-    """Classify queries by type for adaptive retrieval."""
-
-    # Keywords indicating different query types
-    ENTITY_KEYWORDS = {
-        "who", "person", "pm", "manager", "engineer", "lead", "contact",
-    }
-    STATUS_KEYWORDS = {
-        "status", "current", "latest", "recent", "update", "progress",
-        "where", "state", "now",
-    }
-    LOOKUP_KEYWORDS = {
-        "what", "when", "date", "time", "link", "url", "page", "find",
-        "where", "meeting", "last",
-    }
-    CONCEPTUAL_KEYWORDS = {
-        "how", "why", "explain", "understand", "overview", "summary",
-        "difference", "compare",
-    }
-
-    @classmethod
-    def classify(cls, query: str) -> str:
-        """Classify a query into a type.
-
-        Types:
-        - entity: Looking for a person/team
-        - status: Looking for current state of something
-        - lookup: Looking for specific information
-        - conceptual: Looking for understanding/explanation
-
-        Returns:
-            Query type string
-        """
-        query_lower = query.lower()
-        words = set(re.findall(r'\w+', query_lower))
-
-        # Score each type
-        entity_score = len(words & cls.ENTITY_KEYWORDS)
-        status_score = len(words & cls.STATUS_KEYWORDS)
-        lookup_score = len(words & cls.LOOKUP_KEYWORDS)
-        conceptual_score = len(words & cls.CONCEPTUAL_KEYWORDS)
-
-        # Add heuristics
-        if any(word in query_lower for word in ["1x1", "meeting with"]):
-            entity_score += 2
-        if "?" in query:
-            lookup_score += 1
-        if len(words) <= 3:
-            lookup_score += 1  # Short queries are often lookups
-
-        scores = {
-            "entity": entity_score,
-            "status": status_score,
-            "lookup": lookup_score,
-            "conceptual": conceptual_score,
-        }
-
-        # Return highest scoring type, default to lookup
-        best_type = max(scores, key=scores.get)
-        if scores[best_type] == 0:
-            return "lookup"
-        return best_type
-
-
 @register_strategy
-class C31_QueryTypeAdaptive(QueryAdaptiveStrategy):
-    """C31: Adapt strategy based on query type classification."""
+class C28_QueryTypeRouter(QueryAdaptiveStrategy, FusionStrategy):
+    """C28: Query Type Router
 
-    STRATEGY_ID = "c31_query_type_adaptive"
+    Routes to different strategies based on query type:
+    - Person query (has names): BM25-heavy (0.8, 0.2)
+    - Temporal query (recent/latest): Temporal-boosted CombMNZ
+    - Graph query (related/connected): Graph-heavy (0.3, 0.3, 0.4, 0.0)
+    - Conceptual query: Semantic-heavy (0.3, 0.7)
+    - Default: Balanced CombMNZ
+    """
+
+    STRATEGY_ID = "c28_query_type_router"
     CATEGORY = "query_adaptive"
-    DESCRIPTION = "Adapt ranking weights based on query type"
+    DESCRIPTION = "Routes queries to optimal strategy by type"
 
-    def __init__(self, top_k: int = 20, **kwargs):
-        super().__init__(**kwargs)
+    # Keywords for classification
+    PERSON_PATTERNS = [
+        r'\b[A-Z][a-z]+\s+[A-Z][a-z]+\b',  # "First Last"
+        r'\b1x1\b', r'\b1:1\b',
+        r'\bwho\b', r'\bperson\b',
+    ]
+    TEMPORAL_KEYWORDS = {"recent", "latest", "today", "yesterday", "last", "new", "this week", "status"}
+    GRAPH_KEYWORDS = {"related", "connected", "linked", "similar", "hub", "references"}
+
+    def __init__(
+        self,
+        top_k: int = 20,
+        temporal_decay_days: float = 30,
+        **kwargs,
+    ):
+        FusionStrategy.__init__(self, **kwargs)
         self.top_k = top_k
-        self.classifier = QueryClassifier()
-
-        # Strategy parameters per query type
-        self.type_configs = {
-            "entity": {"alpha": 0.6, "recency_weight": 0.2},  # Dense + recency
-            "status": {"alpha": 0.4, "recency_weight": 0.3},  # More BM25 + strong recency
-            "lookup": {"alpha": 0.5, "recency_weight": 0.1},  # Balanced
-            "conceptual": {"alpha": 0.7, "recency_weight": 0.0},  # Dense-heavy
-        }
-
-    @property
-    def requires_bm25(self) -> bool:
-        return True
+        self.temporal_decay_days = temporal_decay_days
 
     def classify_query(
         self,
         query: str,
         query_embedding: Optional[np.ndarray] = None,
     ) -> str:
-        return self.classifier.classify(query)
+        """Classify query type."""
+        query_lower = query.lower()
+
+        # Check for person queries
+        for pattern in self.PERSON_PATTERNS:
+            if re.search(pattern, query, re.IGNORECASE):
+                return "person"
+
+        # Check for temporal queries
+        if any(kw in query_lower for kw in self.TEMPORAL_KEYWORDS):
+            return "temporal"
+
+        # Check for graph queries
+        if any(kw in query_lower for kw in self.GRAPH_KEYWORDS):
+            return "graph"
+
+        # Default to conceptual (semantic-heavy)
+        return "conceptual"
 
     def get_strategy_for_query_type(self, query_type: str) -> BaseStrategy:
-        # Not used directly - we inline the logic
-        pass
+        """Get strategy for query type (not used directly, logic embedded in rank)."""
+        return self  # We handle routing internally
+
+    def get_temporal_scores(self, chunks: List[Dict]) -> np.ndarray:
+        from datetime import datetime
+        scores = np.zeros(len(chunks))
+        now = datetime.now()
+        for i, chunk in enumerate(chunks):
+            metadata = chunk.get("metadata", {})
+            created = metadata.get("created", "")
+            try:
+                dt = datetime.strptime(str(created)[:10], "%Y-%m-%d")
+                days = (now - dt).days
+                scores[i] = np.exp(-days / self.temporal_decay_days)
+            except (ValueError, TypeError):
+                pass
+        return scores
+
+    def get_graph_scores(self, chunks: List[Dict]) -> np.ndarray:
+        scores = np.zeros(len(chunks))
+        for i, chunk in enumerate(chunks):
+            metadata = chunk.get("metadata", {})
+            pagerank = metadata.get("pagerank", 0.0)
+            link_count = metadata.get("link_count", 0)
+            scores[i] = pagerank if pagerank > 0 else np.log1p(link_count) / 10.0
+        return scores
 
     def rank(
         self,
@@ -127,57 +114,139 @@ class C31_QueryTypeAdaptive(QueryAdaptiveStrategy):
         metadata: Optional[Dict[str, Any]] = None,
     ) -> RankingResult:
         if query_embedding is None:
-            raise ValueError("C31 requires query embeddings")
+            raise ValueError("C28 requires query embeddings")
         if bm25_scores is None:
-            raise ValueError("C31 requires BM25 scores")
+            raise ValueError("C28 requires BM25 scores")
 
-        # Classify query
         query_type = self.classify_query(query, query_embedding)
-        config = self.type_configs.get(query_type, self.type_configs["lookup"])
 
-        alpha = config["alpha"]
-        recency_weight = config["recency_weight"]
+        # Compute dense scores
+        q_norm = query_embedding / (np.linalg.norm(query_embedding) + 1e-8)
+        c_norms = chunk_embeddings / (np.linalg.norm(chunk_embeddings, axis=1, keepdims=True) + 1e-8)
+        dense_scores = np.dot(c_norms, q_norm)
+
+        # Normalize
+        dense_norm = self.normalize_scores(dense_scores)
+        bm25_norm = self.normalize_scores(bm25_scores)
+
+        if query_type == "person":
+            # BM25-heavy for exact name matching
+            fused = 0.8 * bm25_norm + 0.2 * dense_norm
+
+        elif query_type == "temporal":
+            # Temporal-boosted CombMNZ
+            temporal = self.get_temporal_scores(chunks)
+            temporal_norm = self.normalize_scores(temporal)
+            base = self.combmnz([dense_scores, bm25_scores], normalize=True)
+            fused = 0.7 * base + 0.3 * temporal_norm
+
+        elif query_type == "graph":
+            # Graph-heavy
+            graph = self.get_graph_scores(chunks)
+            graph_norm = self.normalize_scores(graph)
+            fused = 0.3 * bm25_norm + 0.3 * dense_norm + 0.4 * graph_norm
+
+        else:  # conceptual
+            # Semantic-heavy
+            fused = 0.3 * bm25_norm + 0.7 * dense_norm
+
+        indices = np.argsort(fused)[::-1][:self.top_k]
+
+        ranked_ids = []
+        score_dict = {}
+        for idx in indices:
+            chunk_id = chunks[idx].get("id", str(idx))
+            ranked_ids.append(chunk_id)
+            score_dict[chunk_id] = float(fused[idx])
+
+        return RankingResult(
+            query_id="",
+            ranked_chunk_ids=ranked_ids,
+            scores=score_dict,
+            metadata={"strategy": self.STRATEGY_ID, "query_type": query_type},
+        )
+
+
+@register_strategy
+class C29_AcronymAware(FusionStrategy):
+    """C29: Acronym-Aware Routing
+
+    If query has acronyms (CKG, PsW, Lr, etc.):
+        Use BM25-heavy fusion (0.85, 0.15)
+    Else:
+        Use Semantic-heavy (0.4, 0.6)
+
+    Test: Acronyms need exact matching.
+    """
+
+    STRATEGY_ID = "c29_acronym_aware"
+    CATEGORY = "query_adaptive"
+    DESCRIPTION = "Routes based on acronym detection (BM25 for acronyms)"
+
+    # Common acronyms in the vault
+    KNOWN_ACRONYMS = {
+        "ckg", "psw", "lr", "ai", "ml", "srl", "ner", "qa", "rag",
+        "sdl", "ps", "ae", "cc", "dxf", "api", "ui", "ux", "pm",
+        "prm", "okr", "kpi", "sdc", "kb", "llm", "gpu", "cpu",
+    }
+
+    # Pattern for potential acronyms (2-5 uppercase letters)
+    ACRONYM_PATTERN = re.compile(r'\b[A-Z]{2,5}\b')
+
+    def __init__(
+        self,
+        top_k: int = 20,
+        bm25_weight_acronym: float = 0.85,
+        bm25_weight_normal: float = 0.40,
+        **kwargs,
+    ):
+        super().__init__(**kwargs)
+        self.top_k = top_k
+        self.bm25_weight_acronym = bm25_weight_acronym
+        self.bm25_weight_normal = bm25_weight_normal
+
+    def has_acronyms(self, query: str) -> bool:
+        """Check if query contains acronyms."""
+        # Check known acronyms (case-insensitive)
+        query_lower = query.lower()
+        for acronym in self.KNOWN_ACRONYMS:
+            if acronym in query_lower.split():
+                return True
+
+        # Check for uppercase patterns
+        if self.ACRONYM_PATTERN.search(query):
+            return True
+
+        return False
+
+    def rank(
+        self,
+        query: str,
+        query_embedding: Optional[np.ndarray],
+        chunk_embeddings: np.ndarray,
+        chunks: List[Dict],
+        bm25_scores: Optional[np.ndarray] = None,
+        metadata: Optional[Dict[str, Any]] = None,
+    ) -> RankingResult:
+        if query_embedding is None:
+            raise ValueError("C29 requires query embeddings")
+        if bm25_scores is None:
+            raise ValueError("C29 requires BM25 scores")
+
+        # Detect acronyms
+        has_acro = self.has_acronyms(query)
+        bm25_weight = self.bm25_weight_acronym if has_acro else self.bm25_weight_normal
+        semantic_weight = 1.0 - bm25_weight
 
         # Compute scores
         q_norm = query_embedding / (np.linalg.norm(query_embedding) + 1e-8)
         c_norms = chunk_embeddings / (np.linalg.norm(chunk_embeddings, axis=1, keepdims=True) + 1e-8)
         dense_scores = np.dot(c_norms, q_norm)
 
-        # Normalize
-        def normalize(s):
-            min_s, max_s = s.min(), s.max()
-            if max_s - min_s > 0:
-                return (s - min_s) / (max_s - min_s)
-            return np.zeros_like(s)
+        dense_norm = self.normalize_scores(dense_scores)
+        bm25_norm = self.normalize_scores(bm25_scores)
 
-        dense_norm = normalize(dense_scores)
-        bm25_norm = normalize(bm25_scores)
-
-        # Recency scores
-        from datetime import datetime
-
-        def parse_date(d):
-            if not d:
-                return None
-            for fmt in ["%Y-%m-%d", "%Y-%m-%dT%H:%M:%S"]:
-                try:
-                    return datetime.strptime(str(d), fmt)
-                except:
-                    pass
-            return None
-
-        recency_scores = np.zeros(len(chunks))
-        for i, chunk in enumerate(chunks):
-            meta = chunk.get("metadata", {})
-            created = meta.get("created") or meta.get("dateLink")
-            dt = parse_date(created)
-            if dt:
-                days = (datetime.now() - dt).days
-                recency_scores[i] = np.exp(-days / 30)
-
-        # Combine
-        hybrid = alpha * dense_norm + (1 - alpha) * bm25_norm
-        fused = (1 - recency_weight) * hybrid + recency_weight * recency_scores
+        fused = bm25_weight * bm25_norm + semantic_weight * dense_norm
 
         indices = np.argsort(fused)[::-1][:self.top_k]
 
@@ -194,206 +263,7 @@ class C31_QueryTypeAdaptive(QueryAdaptiveStrategy):
             scores=score_dict,
             metadata={
                 "strategy": self.STRATEGY_ID,
-                "query_type": query_type,
-                "alpha": alpha,
-                "recency_weight": recency_weight,
-            },
-        )
-
-
-@register_strategy
-class C32_LengthAdaptive(QueryAdaptiveStrategy):
-    """C32: Adapt based on query length."""
-
-    STRATEGY_ID = "c32_length_adaptive"
-    CATEGORY = "query_adaptive"
-    DESCRIPTION = "Adapt strategy based on query length"
-
-    def __init__(self, top_k: int = 20, **kwargs):
-        super().__init__(**kwargs)
-        self.top_k = top_k
-
-    @property
-    def requires_bm25(self) -> bool:
-        return True
-
-    def classify_query(
-        self,
-        query: str,
-        query_embedding: Optional[np.ndarray] = None,
-    ) -> str:
-        words = len(query.split())
-        if words <= 2:
-            return "short"
-        elif words <= 5:
-            return "medium"
-        else:
-            return "long"
-
-    def get_strategy_for_query_type(self, query_type: str) -> BaseStrategy:
-        pass
-
-    def rank(
-        self,
-        query: str,
-        query_embedding: Optional[np.ndarray],
-        chunk_embeddings: np.ndarray,
-        chunks: List[Dict],
-        bm25_scores: Optional[np.ndarray] = None,
-        metadata: Optional[Dict[str, Any]] = None,
-    ) -> RankingResult:
-        if query_embedding is None:
-            raise ValueError("C32 requires query embeddings")
-        if bm25_scores is None:
-            raise ValueError("C32 requires BM25 scores")
-
-        length_type = self.classify_query(query, query_embedding)
-
-        # Short queries: favor BM25 (more precise keyword match)
-        # Long queries: favor dense (better semantic understanding)
-        if length_type == "short":
-            alpha = 0.3  # BM25-heavy
-        elif length_type == "medium":
-            alpha = 0.5  # Balanced
-        else:
-            alpha = 0.7  # Dense-heavy
-
-        q_norm = query_embedding / (np.linalg.norm(query_embedding) + 1e-8)
-        c_norms = chunk_embeddings / (np.linalg.norm(chunk_embeddings, axis=1, keepdims=True) + 1e-8)
-        dense_scores = np.dot(c_norms, q_norm)
-
-        def normalize(s):
-            min_s, max_s = s.min(), s.max()
-            if max_s - min_s > 0:
-                return (s - min_s) / (max_s - min_s)
-            return np.zeros_like(s)
-
-        dense_norm = normalize(dense_scores)
-        bm25_norm = normalize(bm25_scores)
-
-        fused = alpha * dense_norm + (1 - alpha) * bm25_norm
-
-        indices = np.argsort(fused)[::-1][:self.top_k]
-
-        ranked_ids = []
-        score_dict = {}
-        for idx in indices:
-            chunk_id = chunks[idx].get("id", str(idx))
-            ranked_ids.append(chunk_id)
-            score_dict[chunk_id] = float(fused[idx])
-
-        return RankingResult(
-            query_id="",
-            ranked_chunk_ids=ranked_ids,
-            scores=score_dict,
-            metadata={
-                "strategy": self.STRATEGY_ID,
-                "length_type": length_type,
-                "alpha": alpha,
-            },
-        )
-
-
-@register_strategy
-class C33_SignalConfidenceAdaptive(QueryAdaptiveStrategy):
-    """C33: Adapt based on signal confidence/agreement."""
-
-    STRATEGY_ID = "c33_confidence_adaptive"
-    CATEGORY = "query_adaptive"
-    DESCRIPTION = "Adapt fusion weights based on signal agreement"
-
-    def __init__(self, top_k: int = 20, **kwargs):
-        super().__init__(**kwargs)
-        self.top_k = top_k
-
-    @property
-    def requires_bm25(self) -> bool:
-        return True
-
-    def classify_query(
-        self,
-        query: str,
-        query_embedding: Optional[np.ndarray] = None,
-    ) -> str:
-        # Classification is done dynamically based on signal agreement
-        return "adaptive"
-
-    def get_strategy_for_query_type(self, query_type: str) -> BaseStrategy:
-        pass
-
-    def compute_signal_agreement(
-        self,
-        dense_scores: np.ndarray,
-        bm25_scores: np.ndarray,
-        top_k: int = 10,
-    ) -> float:
-        """Compute how much dense and BM25 agree on top results.
-
-        Returns value in [0, 1] where 1 = perfect agreement.
-        """
-        dense_top = set(np.argsort(dense_scores)[::-1][:top_k])
-        bm25_top = set(np.argsort(bm25_scores)[::-1][:top_k])
-
-        overlap = len(dense_top & bm25_top)
-        return overlap / top_k
-
-    def rank(
-        self,
-        query: str,
-        query_embedding: Optional[np.ndarray],
-        chunk_embeddings: np.ndarray,
-        chunks: List[Dict],
-        bm25_scores: Optional[np.ndarray] = None,
-        metadata: Optional[Dict[str, Any]] = None,
-    ) -> RankingResult:
-        if query_embedding is None:
-            raise ValueError("C33 requires query embeddings")
-        if bm25_scores is None:
-            raise ValueError("C33 requires BM25 scores")
-
-        q_norm = query_embedding / (np.linalg.norm(query_embedding) + 1e-8)
-        c_norms = chunk_embeddings / (np.linalg.norm(chunk_embeddings, axis=1, keepdims=True) + 1e-8)
-        dense_scores = np.dot(c_norms, q_norm)
-
-        # Compute agreement
-        agreement = self.compute_signal_agreement(dense_scores, bm25_scores)
-
-        # If signals agree, use equal weighting
-        # If they disagree, lean toward dense (more semantic understanding)
-        if agreement > 0.5:
-            alpha = 0.5  # High agreement - equal weights
-        elif agreement > 0.3:
-            alpha = 0.6  # Medium agreement - slight dense preference
-        else:
-            alpha = 0.7  # Low agreement - trust dense more
-
-        def normalize(s):
-            min_s, max_s = s.min(), s.max()
-            if max_s - min_s > 0:
-                return (s - min_s) / (max_s - min_s)
-            return np.zeros_like(s)
-
-        dense_norm = normalize(dense_scores)
-        bm25_norm = normalize(bm25_scores)
-
-        fused = alpha * dense_norm + (1 - alpha) * bm25_norm
-
-        indices = np.argsort(fused)[::-1][:self.top_k]
-
-        ranked_ids = []
-        score_dict = {}
-        for idx in indices:
-            chunk_id = chunks[idx].get("id", str(idx))
-            ranked_ids.append(chunk_id)
-            score_dict[chunk_id] = float(fused[idx])
-
-        return RankingResult(
-            query_id="",
-            ranked_chunk_ids=ranked_ids,
-            scores=score_dict,
-            metadata={
-                "strategy": self.STRATEGY_ID,
-                "agreement": agreement,
-                "alpha": alpha,
+                "has_acronyms": has_acro,
+                "bm25_weight": bm25_weight,
             },
         )

@@ -1,288 +1,142 @@
 """
-Learned Fusion Strategies (C34-C37)
+Learned Fusion (C36-C37)
 
-Strategies that use learned parameters or optimization for fusion.
+Strategies using learned/optimized models for fusion.
 """
 
 import numpy as np
-from typing import Dict, List, Any, Optional, Tuple
-from dataclasses import dataclass
+from typing import Dict, List, Any, Optional
 
 from .base import (
-    BaseStrategy,
     FusionStrategy,
     RankingResult,
     register_strategy,
 )
 
 
-@dataclass
-class OptimizedWeights:
-    """Container for learned/optimized weights."""
-    dense_weight: float = 0.5
-    bm25_weight: float = 0.5
-    recency_weight: float = 0.0
-    tag_weight: float = 0.0
-    pagetype_weight: float = 0.0
-    rrf_k: int = 60
-
-    @classmethod
-    def from_dict(cls, d: Dict) -> "OptimizedWeights":
-        return cls(**{k: v for k, v in d.items() if k in cls.__dataclass_fields__})
-
-
 @register_strategy
-class C34_GridSearchOptimal(FusionStrategy):
-    """C34: Grid-search optimized weights (placeholder for learned values)."""
+class C36_LogisticRegression(FusionStrategy):
+    """C36: Logistic Regression Fusion
 
-    STRATEGY_ID = "c34_grid_search"
+    Features (7 total):
+      1. Dense similarity score
+      2. BM25 score
+      3. PageRank / link count
+      4. Temporal recency
+      5. Tag overlap
+      6. PageType match
+      7. Title match score
+
+    Combines features with pre-trained logistic regression weights.
+    Note: This is a simulation - actual weights would be learned from labeled data.
+    """
+
+    STRATEGY_ID = "c36_logistic_regression"
     CATEGORY = "learned_fusion"
-    DESCRIPTION = "Grid-search optimized fusion weights"
+    DESCRIPTION = "Logistic regression fusion with 7 features"
+
+    # Pre-trained weights (simulated - would be learned from labeled data)
+    # Positive weights indicate features that increase relevance
+    FEATURE_WEIGHTS = {
+        "dense": 0.45,
+        "bm25": 0.30,
+        "pagerank": 0.08,
+        "recency": 0.07,
+        "tag_overlap": 0.04,
+        "pagetype": 0.03,
+        "title_match": 0.03,
+    }
+    BIAS = -0.1
 
     def __init__(
         self,
-        top_k: int = 20,
-        weights: Optional[OptimizedWeights] = None,
+        top_k: int = 10,
+        temporal_decay_days: float = 30,
         **kwargs,
     ):
         super().__init__(**kwargs)
         self.top_k = top_k
-        # Default weights - will be replaced by grid search results
-        self.weights = weights or OptimizedWeights(
-            dense_weight=0.55,
-            bm25_weight=0.35,
-            recency_weight=0.1,
-        )
+        self.temporal_decay_days = temporal_decay_days
 
-    def rank(
+    def extract_features(
         self,
         query: str,
-        query_embedding: Optional[np.ndarray],
+        query_embedding: np.ndarray,
         chunk_embeddings: np.ndarray,
         chunks: List[Dict],
-        bm25_scores: Optional[np.ndarray] = None,
-        metadata: Optional[Dict[str, Any]] = None,
-    ) -> RankingResult:
-        if query_embedding is None:
-            raise ValueError("C34 requires query embeddings")
-        if bm25_scores is None:
-            raise ValueError("C34 requires BM25 scores")
-
-        w = self.weights
-
-        q_norm = query_embedding / (np.linalg.norm(query_embedding) + 1e-8)
-        c_norms = chunk_embeddings / (np.linalg.norm(chunk_embeddings, axis=1, keepdims=True) + 1e-8)
-        dense_scores = np.dot(c_norms, q_norm)
-
-        dense_norm = self.normalize_scores(dense_scores)
-        bm25_norm = self.normalize_scores(bm25_scores)
-
-        # Recency
+        bm25_scores: np.ndarray,
+    ) -> np.ndarray:
+        """Extract 7 features for each document."""
         from datetime import datetime
 
-        def parse_date(d):
-            if not d:
-                return None
-            for fmt in ["%Y-%m-%d", "%Y-%m-%dT%H:%M:%S"]:
-                try:
-                    return datetime.strptime(str(d), fmt)
-                except:
-                    pass
-            return None
+        n_docs = len(chunks)
+        features = np.zeros((n_docs, 7))
+        query_terms = set(query.lower().split())
+        now = datetime.now()
 
-        recency_scores = np.zeros(len(chunks))
-        if w.recency_weight > 0:
-            for i, chunk in enumerate(chunks):
-                meta = chunk.get("metadata", {})
-                created = meta.get("created") or meta.get("dateLink")
-                dt = parse_date(created)
-                if dt:
-                    days = (datetime.now() - dt).days
-                    recency_scores[i] = np.exp(-days / 30)
-
-        # Combine with optimized weights
-        total_weight = w.dense_weight + w.bm25_weight + w.recency_weight
-        fused = (
-            (w.dense_weight / total_weight) * dense_norm
-            + (w.bm25_weight / total_weight) * bm25_norm
-            + (w.recency_weight / total_weight) * recency_scores
-        )
-
-        indices = np.argsort(fused)[::-1][:self.top_k]
-
-        ranked_ids = []
-        score_dict = {}
-        for idx in indices:
-            chunk_id = chunks[idx].get("id", str(idx))
-            ranked_ids.append(chunk_id)
-            score_dict[chunk_id] = float(fused[idx])
-
-        return RankingResult(
-            query_id="",
-            ranked_chunk_ids=ranked_ids,
-            scores=score_dict,
-            metadata={
-                "strategy": self.STRATEGY_ID,
-                "weights": {
-                    "dense": w.dense_weight,
-                    "bm25": w.bm25_weight,
-                    "recency": w.recency_weight,
-                },
-            },
-        )
-
-
-@register_strategy
-class C35_BayesianOptimal(FusionStrategy):
-    """C35: Bayesian-optimized weights (placeholder for Optuna results)."""
-
-    STRATEGY_ID = "c35_bayesian"
-    CATEGORY = "learned_fusion"
-    DESCRIPTION = "Bayesian-optimized fusion weights (Optuna)"
-
-    def __init__(
-        self,
-        top_k: int = 20,
-        weights: Optional[OptimizedWeights] = None,
-        **kwargs,
-    ):
-        super().__init__(**kwargs)
-        self.top_k = top_k
-        # Placeholder - will be set by Optuna optimization
-        self.weights = weights or OptimizedWeights(
-            dense_weight=0.6,
-            bm25_weight=0.3,
-            recency_weight=0.1,
-            rrf_k=45,
-        )
-
-    def rank(
-        self,
-        query: str,
-        query_embedding: Optional[np.ndarray],
-        chunk_embeddings: np.ndarray,
-        chunks: List[Dict],
-        bm25_scores: Optional[np.ndarray] = None,
-        metadata: Optional[Dict[str, Any]] = None,
-    ) -> RankingResult:
-        if query_embedding is None:
-            raise ValueError("C35 requires query embeddings")
-        if bm25_scores is None:
-            raise ValueError("C35 requires BM25 scores")
-
-        w = self.weights
-
+        # Feature 1: Dense similarity
         q_norm = query_embedding / (np.linalg.norm(query_embedding) + 1e-8)
         c_norms = chunk_embeddings / (np.linalg.norm(chunk_embeddings, axis=1, keepdims=True) + 1e-8)
-        dense_scores = np.dot(c_norms, q_norm)
+        features[:, 0] = np.dot(c_norms, q_norm)
 
-        # Weighted RRF with optimized k and weights
-        dense_ranks = np.argsort(np.argsort(-dense_scores))
-        bm25_ranks = np.argsort(np.argsort(-bm25_scores))
+        # Feature 2: BM25
+        features[:, 1] = bm25_scores
 
-        n_docs = len(chunks)
-        rrf_scores = np.zeros(n_docs)
-        for doc_idx in range(n_docs):
-            rrf_scores[doc_idx] = (
-                w.dense_weight / (w.rrf_k + dense_ranks[doc_idx] + 1)
-                + w.bm25_weight / (w.rrf_k + bm25_ranks[doc_idx] + 1)
-            )
+        for i, chunk in enumerate(chunks):
+            metadata = chunk.get("metadata", {})
 
-        # Add recency boost
-        if w.recency_weight > 0:
-            from datetime import datetime
+            # Feature 3: PageRank / link density
+            pagerank = metadata.get("pagerank", 0.0)
+            link_count = metadata.get("link_count", 0)
+            content = chunk.get("content", "")
+            if link_count == 0 and content:
+                link_count = content.count("[[")
+            features[i, 2] = pagerank if pagerank > 0 else np.log1p(link_count) / 10.0
 
-            def parse_date(d):
-                if not d:
-                    return None
-                for fmt in ["%Y-%m-%d", "%Y-%m-%dT%H:%M:%S"]:
-                    try:
-                        return datetime.strptime(str(d), fmt)
-                    except:
-                        pass
-                return None
+            # Feature 4: Temporal recency
+            created = metadata.get("created") or metadata.get("dateLink")
+            if created:
+                try:
+                    dt = datetime.strptime(str(created)[:10], "%Y-%m-%d")
+                    days = (now - dt).days
+                    features[i, 3] = np.exp(-days / self.temporal_decay_days)
+                except (ValueError, TypeError):
+                    pass
 
-            recency_scores = np.zeros(n_docs)
-            for i, chunk in enumerate(chunks):
-                meta = chunk.get("metadata", {})
-                created = meta.get("created") or meta.get("dateLink")
-                dt = parse_date(created)
-                if dt:
-                    days = (datetime.now() - dt).days
-                    recency_scores[i] = np.exp(-days / 30)
+            # Feature 5: Tag overlap
+            tags = metadata.get("tags", [])
+            if isinstance(tags, str):
+                tags = [tags]
+            tag_terms = set()
+            for tag in tags:
+                tag_clean = tag.lower().replace("#", "")
+                tag_terms.add(tag_clean)
+                tag_terms.update(tag_clean.split("/"))
+            overlap = len(query_terms & tag_terms)
+            features[i, 4] = overlap / max(len(query_terms), 1)
 
-            rrf_norm = self.normalize_scores(rrf_scores)
-            fused = (1 - w.recency_weight) * rrf_norm + w.recency_weight * recency_scores
-        else:
-            fused = rrf_scores
+            # Feature 6: PageType match
+            pagetype = str(metadata.get("pageType", "")).lower()
+            if pagetype in ("home", "programhome", "hub"):
+                features[i, 5] = 1.0
+            elif pagetype in ("person", "personnote"):
+                features[i, 5] = 0.8
+            elif pagetype == "daily":
+                features[i, 5] = 0.5
 
-        indices = np.argsort(fused)[::-1][:self.top_k]
+            # Feature 7: Title match
+            title = metadata.get("title", "").lower()
+            title_terms = set(title.split())
+            title_overlap = len(query_terms & title_terms)
+            features[i, 6] = title_overlap / max(len(query_terms), 1)
 
-        ranked_ids = []
-        score_dict = {}
-        for idx in indices:
-            chunk_id = chunks[idx].get("id", str(idx))
-            ranked_ids.append(chunk_id)
-            score_dict[chunk_id] = float(fused[idx])
+        # Normalize each feature to [0, 1]
+        for col in range(features.shape[1]):
+            col_min, col_max = features[:, col].min(), features[:, col].max()
+            if col_max - col_min > 0:
+                features[:, col] = (features[:, col] - col_min) / (col_max - col_min)
 
-        return RankingResult(
-            query_id="",
-            ranked_chunk_ids=ranked_ids,
-            scores=score_dict,
-            metadata={
-                "strategy": self.STRATEGY_ID,
-                "rrf_k": w.rrf_k,
-                "weights": {
-                    "dense": w.dense_weight,
-                    "bm25": w.bm25_weight,
-                    "recency": w.recency_weight,
-                },
-            },
-        )
-
-
-@register_strategy
-class C36_PerQueryOptimal(FusionStrategy):
-    """C36: Per-query type optimized weights."""
-
-    STRATEGY_ID = "c36_per_query"
-    CATEGORY = "learned_fusion"
-    DESCRIPTION = "Per-query-type optimized fusion weights"
-
-    def __init__(
-        self,
-        top_k: int = 20,
-        type_weights: Optional[Dict[str, OptimizedWeights]] = None,
-        **kwargs,
-    ):
-        super().__init__(**kwargs)
-        self.top_k = top_k
-        # Default per-type weights - will be learned
-        self.type_weights = type_weights or {
-            "entity": OptimizedWeights(dense_weight=0.6, bm25_weight=0.2, recency_weight=0.2),
-            "status": OptimizedWeights(dense_weight=0.4, bm25_weight=0.3, recency_weight=0.3),
-            "lookup": OptimizedWeights(dense_weight=0.5, bm25_weight=0.4, recency_weight=0.1),
-            "conceptual": OptimizedWeights(dense_weight=0.7, bm25_weight=0.3, recency_weight=0.0),
-        }
-
-    def classify_query(self, query: str) -> str:
-        """Simple query classification."""
-        import re
-
-        query_lower = query.lower()
-        words = set(re.findall(r'\w+', query_lower))
-
-        entity_kw = {"who", "person", "pm", "manager", "engineer", "lead"}
-        status_kw = {"status", "current", "latest", "recent", "update", "progress"}
-        conceptual_kw = {"how", "why", "explain", "understand", "overview"}
-
-        if words & entity_kw or "1x1" in query_lower:
-            return "entity"
-        if words & status_kw:
-            return "status"
-        if words & conceptual_kw:
-            return "conceptual"
-        return "lookup"
+        return features
 
     def rank(
         self,
@@ -298,54 +152,34 @@ class C36_PerQueryOptimal(FusionStrategy):
         if bm25_scores is None:
             raise ValueError("C36 requires BM25 scores")
 
-        query_type = self.classify_query(query)
-        w = self.type_weights.get(query_type, self.type_weights["lookup"])
-
-        q_norm = query_embedding / (np.linalg.norm(query_embedding) + 1e-8)
-        c_norms = chunk_embeddings / (np.linalg.norm(chunk_embeddings, axis=1, keepdims=True) + 1e-8)
-        dense_scores = np.dot(c_norms, q_norm)
-
-        dense_norm = self.normalize_scores(dense_scores)
-        bm25_norm = self.normalize_scores(bm25_scores)
-
-        # Recency
-        from datetime import datetime
-
-        def parse_date(d):
-            if not d:
-                return None
-            for fmt in ["%Y-%m-%d", "%Y-%m-%dT%H:%M:%S"]:
-                try:
-                    return datetime.strptime(str(d), fmt)
-                except:
-                    pass
-            return None
-
-        recency_scores = np.zeros(len(chunks))
-        if w.recency_weight > 0:
-            for i, chunk in enumerate(chunks):
-                meta = chunk.get("metadata", {})
-                created = meta.get("created") or meta.get("dateLink")
-                dt = parse_date(created)
-                if dt:
-                    days = (datetime.now() - dt).days
-                    recency_scores[i] = np.exp(-days / 30)
-
-        total_weight = w.dense_weight + w.bm25_weight + w.recency_weight
-        fused = (
-            (w.dense_weight / total_weight) * dense_norm
-            + (w.bm25_weight / total_weight) * bm25_norm
-            + (w.recency_weight / total_weight) * recency_scores
+        # Extract features
+        features = self.extract_features(
+            query, query_embedding, chunk_embeddings, chunks, bm25_scores
         )
 
-        indices = np.argsort(fused)[::-1][:self.top_k]
+        # Apply logistic regression weights
+        weights = np.array([
+            self.FEATURE_WEIGHTS["dense"],
+            self.FEATURE_WEIGHTS["bm25"],
+            self.FEATURE_WEIGHTS["pagerank"],
+            self.FEATURE_WEIGHTS["recency"],
+            self.FEATURE_WEIGHTS["tag_overlap"],
+            self.FEATURE_WEIGHTS["pagetype"],
+            self.FEATURE_WEIGHTS["title_match"],
+        ])
+
+        # Compute logits and apply sigmoid
+        logits = np.dot(features, weights) + self.BIAS
+        scores = 1 / (1 + np.exp(-logits))  # Sigmoid
+
+        indices = np.argsort(scores)[::-1][:self.top_k]
 
         ranked_ids = []
         score_dict = {}
         for idx in indices:
             chunk_id = chunks[idx].get("id", str(idx))
             ranked_ids.append(chunk_id)
-            score_dict[chunk_id] = float(fused[idx])
+            score_dict[chunk_id] = float(scores[idx])
 
         return RankingResult(
             query_id="",
@@ -353,70 +187,172 @@ class C36_PerQueryOptimal(FusionStrategy):
             scores=score_dict,
             metadata={
                 "strategy": self.STRATEGY_ID,
-                "query_type": query_type,
-                "weights": {
-                    "dense": w.dense_weight,
-                    "bm25": w.bm25_weight,
-                    "recency": w.recency_weight,
-                },
+                "n_features": 7,
             },
         )
 
 
 @register_strategy
-class C37_EnsembleVoting(FusionStrategy):
-    """C37: Ensemble voting from multiple strategies."""
+class C37_LambdaMART(FusionStrategy):
+    """C37: LambdaMART Reranking (Simulated)
 
-    STRATEGY_ID = "c37_ensemble"
+    Two-stage approach:
+      Stage 1: CombMNZ to get top 100 candidates
+      Stage 2: Gradient-boosted tree reranking (simulated)
+
+    Uses same 7 features as C36 but with nonlinear combination
+    to simulate decision tree ensemble behavior.
+
+    Note: In production, would use XGBoost/LightGBM with actual trained model.
+    """
+
+    STRATEGY_ID = "c37_lambdamart"
     CATEGORY = "learned_fusion"
-    DESCRIPTION = "Ensemble voting from top strategies"
+    DESCRIPTION = "LambdaMART-style gradient boosting reranking"
 
     def __init__(
         self,
-        top_k: int = 20,
-        ensemble_size: int = 5,
+        top_k: int = 10,
+        first_stage_k: int = 100,
+        temporal_decay_days: float = 30,
         **kwargs,
     ):
         super().__init__(**kwargs)
         self.top_k = top_k
-        self.ensemble_size = ensemble_size
+        self.first_stage_k = first_stage_k
+        self.temporal_decay_days = temporal_decay_days
 
-    def run_substrategy(
+    def extract_features(
         self,
-        strategy_type: str,
+        query: str,
         query_embedding: np.ndarray,
         chunk_embeddings: np.ndarray,
-        bm25_scores: np.ndarray,
         chunks: List[Dict],
-    ) -> List[int]:
-        """Run a sub-strategy and return top-k indices."""
+        bm25_scores: np.ndarray,
+        indices: List[int],
+    ) -> np.ndarray:
+        """Extract features for candidate documents."""
+        from datetime import datetime
+
+        n_cands = len(indices)
+        features = np.zeros((n_cands, 7))
+        query_terms = set(query.lower().split())
+        now = datetime.now()
+
         q_norm = query_embedding / (np.linalg.norm(query_embedding) + 1e-8)
-        c_norms = chunk_embeddings / (np.linalg.norm(chunk_embeddings, axis=1, keepdims=True) + 1e-8)
-        dense_scores = np.dot(c_norms, q_norm)
 
-        def normalize(s):
-            min_s, max_s = s.min(), s.max()
-            if max_s - min_s > 0:
-                return (s - min_s) / (max_s - min_s)
-            return np.zeros_like(s)
+        for i, idx in enumerate(indices):
+            chunk = chunks[idx]
+            metadata = chunk.get("metadata", {})
 
-        dense_norm = normalize(dense_scores)
-        bm25_norm = normalize(bm25_scores)
+            # Feature 1: Dense similarity
+            c_emb = chunk_embeddings[idx]
+            c_norm = c_emb / (np.linalg.norm(c_emb) + 1e-8)
+            features[i, 0] = np.dot(c_norm, q_norm)
 
-        if strategy_type == "dense":
-            scores = dense_norm
-        elif strategy_type == "bm25":
-            scores = bm25_norm
-        elif strategy_type == "balanced":
-            scores = 0.5 * dense_norm + 0.5 * bm25_norm
-        elif strategy_type == "dense_heavy":
-            scores = 0.7 * dense_norm + 0.3 * bm25_norm
-        elif strategy_type == "bm25_heavy":
-            scores = 0.3 * dense_norm + 0.7 * bm25_norm
-        else:
-            scores = dense_norm
+            # Feature 2: BM25
+            features[i, 1] = bm25_scores[idx]
 
-        return np.argsort(scores)[::-1][:self.top_k * 2].tolist()
+            # Feature 3: PageRank / link density
+            pagerank = metadata.get("pagerank", 0.0)
+            link_count = metadata.get("link_count", 0)
+            content = chunk.get("content", "")
+            if link_count == 0 and content:
+                link_count = content.count("[[")
+            features[i, 2] = pagerank if pagerank > 0 else np.log1p(link_count) / 10.0
+
+            # Feature 4: Temporal recency
+            created = metadata.get("created") or metadata.get("dateLink")
+            if created:
+                try:
+                    dt = datetime.strptime(str(created)[:10], "%Y-%m-%d")
+                    days = (now - dt).days
+                    features[i, 3] = np.exp(-days / self.temporal_decay_days)
+                except (ValueError, TypeError):
+                    pass
+
+            # Feature 5: Tag overlap
+            tags = metadata.get("tags", [])
+            if isinstance(tags, str):
+                tags = [tags]
+            tag_terms = set()
+            for tag in tags:
+                tag_clean = tag.lower().replace("#", "")
+                tag_terms.add(tag_clean)
+                tag_terms.update(tag_clean.split("/"))
+            overlap = len(query_terms & tag_terms)
+            features[i, 4] = overlap / max(len(query_terms), 1)
+
+            # Feature 6: PageType match
+            pagetype = str(metadata.get("pageType", "")).lower()
+            if pagetype in ("home", "programhome", "hub"):
+                features[i, 5] = 1.0
+            elif pagetype in ("person", "personnote"):
+                features[i, 5] = 0.8
+            elif pagetype == "daily":
+                features[i, 5] = 0.5
+
+            # Feature 7: Title match
+            title = metadata.get("title", "").lower()
+            title_terms = set(title.split())
+            title_overlap = len(query_terms & title_terms)
+            features[i, 6] = title_overlap / max(len(query_terms), 1)
+
+        return features
+
+    def simulate_gbdt_score(self, features: np.ndarray) -> np.ndarray:
+        """Simulate gradient boosted decision tree scoring.
+
+        This approximates what a trained LambdaMART model would do:
+        - Nonlinear feature interactions
+        - Threshold-based splits
+        - Ensemble of weak learners
+
+        In production, would use xgboost.Booster.predict()
+        """
+        n_docs = features.shape[0]
+        scores = np.zeros(n_docs)
+
+        # Simulate tree 1: Dense + BM25 interaction
+        dense, bm25 = features[:, 0], features[:, 1]
+        tree1 = np.where(
+            dense > 0.5,
+            0.3 + 0.2 * dense,  # High dense: use dense
+            0.2 * dense + 0.3 * bm25  # Low dense: rely more on BM25
+        )
+
+        # Simulate tree 2: Recency gate
+        recency = features[:, 3]
+        tree2 = np.where(
+            recency > 0.3,
+            0.15 * recency,  # Recent: add recency bonus
+            0.0  # Old: no bonus
+        )
+
+        # Simulate tree 3: PageType + PageRank interaction
+        pagetype, pagerank = features[:, 5], features[:, 2]
+        tree3 = np.where(
+            pagetype > 0.7,
+            0.1 + 0.1 * pagerank,  # Hub page: boost based on links
+            0.05 * pagetype + 0.05 * pagerank
+        )
+
+        # Simulate tree 4: Title match boost
+        title_match = features[:, 6]
+        tree4 = np.where(
+            title_match > 0.5,
+            0.15 * title_match,  # Strong title match: big boost
+            0.05 * title_match
+        )
+
+        # Simulate tree 5: Tag relevance
+        tag_overlap = features[:, 4]
+        tree5 = 0.05 * tag_overlap
+
+        # Combine trees (LambdaMART uses additive model)
+        scores = tree1 + tree2 + tree3 + tree4 + tree5
+
+        return scores
 
     def rank(
         self,
@@ -432,40 +368,39 @@ class C37_EnsembleVoting(FusionStrategy):
         if bm25_scores is None:
             raise ValueError("C37 requires BM25 scores")
 
-        # Run ensemble of strategies
-        strategies = ["dense", "bm25", "balanced", "dense_heavy", "bm25_heavy"]
+        # Stage 1: CombMNZ to get candidates
+        q_norm = query_embedding / (np.linalg.norm(query_embedding) + 1e-8)
+        c_norms = chunk_embeddings / (np.linalg.norm(chunk_embeddings, axis=1, keepdims=True) + 1e-8)
+        dense_scores = np.dot(c_norms, q_norm)
 
-        # Collect votes
-        vote_counts = {}
-        vote_positions = {}
+        stage1_scores = self.combmnz([dense_scores, bm25_scores], normalize=True)
+        stage1_indices = np.argsort(stage1_scores)[::-1][:self.first_stage_k].tolist()
 
-        for strat in strategies[:self.ensemble_size]:
-            top_indices = self.run_substrategy(
-                strat, query_embedding, chunk_embeddings, bm25_scores, chunks
-            )
-            for pos, idx in enumerate(top_indices):
-                if idx not in vote_counts:
-                    vote_counts[idx] = 0
-                    vote_positions[idx] = []
-                vote_counts[idx] += 1
-                vote_positions[idx].append(pos)
+        # Stage 2: GBDT reranking on candidates
+        features = self.extract_features(
+            query, query_embedding, chunk_embeddings, chunks, bm25_scores, stage1_indices
+        )
 
-        # Score by: votes * (1 / avg_position)
-        final_scores = {}
-        for idx, votes in vote_counts.items():
-            avg_pos = np.mean(vote_positions[idx])
-            final_scores[idx] = votes / (avg_pos + 1)
+        # Normalize features
+        for col in range(features.shape[1]):
+            col_min, col_max = features[:, col].min(), features[:, col].max()
+            if col_max - col_min > 0:
+                features[:, col] = (features[:, col] - col_min) / (col_max - col_min)
 
-        # Rank by final scores
-        sorted_indices = sorted(final_scores.keys(), key=lambda x: final_scores[x], reverse=True)
-        top_indices = sorted_indices[:self.top_k]
+        # Apply simulated GBDT scoring
+        stage2_scores = self.simulate_gbdt_score(features)
+
+        # Get final ranking
+        rerank_order = np.argsort(stage2_scores)[::-1][:self.top_k]
+        final_indices = [stage1_indices[i] for i in rerank_order]
+        final_scores = stage2_scores[rerank_order]
 
         ranked_ids = []
         score_dict = {}
-        for idx in top_indices:
+        for idx, score in zip(final_indices, final_scores):
             chunk_id = chunks[idx].get("id", str(idx))
             ranked_ids.append(chunk_id)
-            score_dict[chunk_id] = float(final_scores[idx])
+            score_dict[chunk_id] = float(score)
 
         return RankingResult(
             query_id="",
@@ -473,6 +408,7 @@ class C37_EnsembleVoting(FusionStrategy):
             scores=score_dict,
             metadata={
                 "strategy": self.STRATEGY_ID,
-                "ensemble_size": self.ensemble_size,
+                "stages": 2,
+                "first_stage_k": self.first_stage_k,
             },
         )
