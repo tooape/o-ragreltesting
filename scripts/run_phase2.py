@@ -557,7 +557,7 @@ def main():
         description="Phase 2: Coarse Hyperparameter Optimization",
     )
 
-    parser.add_argument("--chunks", type=Path, default=Path("data/vault_chunks.json"))
+    parser.add_argument("--chunks", type=Path, default=Path("data/chunks.json"))
     parser.add_argument("--qrels", type=Path, default=Path("data/qrels.json"))
     parser.add_argument("--output", type=Path, default=Path("results/phase2"))
     parser.add_argument("--phase1", type=Path, default=Path("results/phase1/leaderboard.json"))
