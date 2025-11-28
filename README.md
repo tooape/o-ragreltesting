@@ -28,7 +28,7 @@ This repo provides:
 ### Phase 1: Strategy Baseline Evaluation
 **Status**: In Progress
 
-**Objective**: Establish baseline performance for all ranking strategies using optimal model configuration.
+**Objective**: Establish baseline performance for all 40 ranking strategies using optimal model configuration.
 
 **Configuration**:
 - Model: EmbeddingGemma (768 dimensions, unquantized)
@@ -36,27 +36,43 @@ This repo provides:
 - Metrics: MRR@5, NDCG@5, Recall@5, Precision@5, end-to-end latency
 
 **Deliverables**:
-1. Performance metrics for all strategies
-2. Top 10 strategies identified for hyperparameter optimization
+1. Performance metrics for all 40 strategies
+2. Top 30 strategies identified for coarse optimization
 3. Leaderboard updated with baseline results
 
-### Phase 2: Hyperparameter Optimization
+### Phase 2: Coarse Hyperparameter Optimization
 **Status**: Not Started
 
-**Objective**: Optimize hyperparameters for the top 10 strategies from Phase 1.
+**Objective**: Coarse grid search optimization for the top 30 strategies from Phase 1.
 
 **Configuration**:
 - Model: EmbeddingGemma (768 dimensions, unquantized)
-- Grid search optimization for each strategy's hyperparameters
+- Coarse grid search over key hyperparameters per strategy
 - Same metrics as Phase 1
 
 **Deliverables**:
-1. Optimized hyperparameters for each of the 10 strategies
+1. Coarse-optimized hyperparameters for each of the 30 strategies
 2. Performance improvement deltas vs. baseline
-3. Top 3 strategies selected for model optimization phase
-4. Leaderboard updated with optimized results
+3. Top 10 strategies selected for fine optimization
+4. Leaderboard updated with coarse-optimized results
 
-### Phase 3: Model Optimization
+### Phase 3: Fine Hyperparameter Optimization
+**Status**: Not Started
+
+**Objective**: Fine-grained grid search optimization for the top 10 strategies from Phase 2.
+
+**Configuration**:
+- Model: EmbeddingGemma (768 dimensions, unquantized)
+- Fine grid search around coarse optima
+- Same metrics as Phase 1 & 2
+
+**Deliverables**:
+1. Fine-tuned hyperparameters for each of the 10 strategies
+2. Performance improvement deltas vs. coarse optimization
+3. Top 3 strategies selected for model optimization phase
+4. Leaderboard updated with fine-optimized results
+
+### Phase 4: Model Optimization
 **Status**: Not Started
 
 **Objective**: Evaluate quality/performance tradeoffs with reduced dimensionality and quantization.
@@ -69,8 +85,8 @@ This repo provides:
   - EmbeddingGemma QAT (768d, quantized)
   - EmbeddingGemma QAT (512d, quantized)
   - EmbeddingGemma QAT (256d, quantized)
-- Top 3 strategies from Phase 2 with optimized hyperparameters
-- Same metrics as Phase 1 & 2
+- Top 3 strategies from Phase 3 with fine-tuned hyperparameters
+- Same metrics as previous phases
 
 **Deliverables**:
 1. Quality degradation analysis for dimensionality reduction

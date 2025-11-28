@@ -29,7 +29,10 @@ class EmbeddingGemmaEmbedder:
     """EmbeddingGemma with O-RAG prompt templates.
 
     Supports Matryoshka dimension truncation (256, 512, or 768).
-    Uses FP16 on GPU for faster inference.
+
+    NOTE: Uses BF16 by default on supported GPUs. FP16 produces NaN values
+    with EmbeddingGemma on A100 (tested with CUDA 12.8). BF16 provides
+    similar memory savings with better numerical stability.
     """
 
     MODEL_NAME = "google/embeddinggemma-300m"
@@ -44,14 +47,14 @@ class EmbeddingGemmaEmbedder:
         self,
         device: Optional[str] = None,
         truncate_dim: int = 256,
-        use_fp16: bool = True,
+        use_fp16: bool = True,  # Uses BF16 on supported GPUs (safer than FP16)
     ):
         """Initialize EmbeddingGemma.
 
         Args:
             device: 'cuda', 'cuda:0', 'cpu', etc. Auto-detects if None.
             truncate_dim: Matryoshka dimension (256, 512, or 768)
-            use_fp16: Use FP16 on GPU for faster inference
+            use_fp16: Use reduced precision on GPU (BF16 if supported, else FP16)
         """
         if not ST_AVAILABLE:
             raise ImportError("sentence-transformers required: pip install sentence-transformers")
@@ -72,10 +75,15 @@ class EmbeddingGemmaEmbedder:
         print(f"Loading {self.MODEL_NAME} on {self.device}...")
         self.model = SentenceTransformer(self.MODEL_NAME, device=self.device)
 
-        # Enable FP16 for GPU
+        # Enable reduced precision for GPU (BF16 preferred over FP16 for numerical stability)
         if use_fp16 and "cuda" in self.device:
-            self.model = self.model.half()
-            print("Using FP16 for faster inference")
+            if TORCH_AVAILABLE and torch.cuda.is_bf16_supported():
+                self.model = self.model.to(torch.bfloat16)
+                print("Using BF16 for faster inference (better numerical stability than FP16)")
+            else:
+                # Fallback to FP16 with warning
+                print("WARNING: Using FP16 - may produce NaN on some models. Consider FP32.")
+                self.model = self.model.half()
 
         print(f"Model loaded. Native dim: {self.NATIVE_DIM}, Truncated dim: {truncate_dim}")
 

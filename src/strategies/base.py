@@ -1,7 +1,8 @@
 """
 Base strategy class for O-RAG ranking strategies.
 
-All 37 ranking strategies inherit from this base class.
+All 40 ranking strategies inherit from this base class.
+(3 proven baselines P1-P3, plus 37 candidates C1-C37)
 """
 
 from abc import ABC, abstractmethod

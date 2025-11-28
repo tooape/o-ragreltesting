@@ -1,0 +1,639 @@
+{
+  "benchmark_id": "benchmark_20251128_183907",
+  "benchmark_name": "O-RAG Strategy Benchmark",
+  "status": "completed",
+  "started_at": "2025-11-28T18:39:07.527599",
+  "completed_at": "2025-11-28T18:39:43.791418",
+  "total_tasks": 40,
+  "completed_tasks": 39,
+  "progress_percent": 97.5,
+  "elapsed_seconds": 36.750937,
+  "eta_seconds": 0.9423325384615384,
+  "current_phase": null,
+  "config": {
+    "strategies": [
+      "p1_recency_boost",
+      "p2_recency_decay",
+      "p3_recency_tag_combo",
+      "c1_combmnz_basic",
+      "c2_combmnz_graph",
+      "c3_combmnz_all",
+      "c4_combsum_basic",
+      "c5_combsum_all",
+      "c6_softmax_weighted",
+      "c7_rank_weighted",
+      "c8_percentile_weighted",
+      "c9_logscale_weighted",
+      "c10_bm25_heavy",
+      "c11_semantic_heavy",
+      "c12_equal_weight",
+      "c13_multi_signal_optimized",
+      "c14_multi_signal_bm25_dominant",
+      "c15_exp_decay_30d",
+      "c16_exp_decay_60d",
+      "c17_linear_decay_90d",
+      "c18_step_function",
+      "c19_sigmoid_boost",
+      "c20_pagetype_aware",
+      "c21_tag_overlap",
+      "c22_link_density",
+      "c23_combined_metadata",
+      "c24_bm25_then_combmnz",
+      "c25_semantic_then_combmnz",
+      "c26_union_then_metadata",
+      "c27_confidence_routing",
+      "c28_query_type_router",
+      "c29_acronym_aware",
+      "c30_cached_gemma",
+      "c31_mixedbread_reranker",
+      "c32_multi_stage_progressive",
+      "c33_bm25_short_docs",
+      "c34_bm25_long_docs",
+      "c35_bm25_plus_expansion",
+      "c36_logistic_regression",
+      "c37_lambdamart"
+    ],
+    "top_k": 20,
+    "device": "cuda:0",
+    "truncate_dim": 768
+  },
+  "metrics": {
+    "best_strategy": "p1_recency_boost",
+    "best_mrr@5": 0.6374396135265701,
+    "strategies_completed": 39
+  },
+  "errors": [],
+  "phases": [
+    {
+      "phase_id": "strategy_eval",
+      "phase_name": "Strategy Evaluation",
+      "status": "completed",
+      "started_at": "2025-11-28T18:39:07.529961",
+      "completed_at": "2025-11-28T18:39:43.788268",
+      "total_tasks": 40,
+      "completed_tasks": 39,
+      "failed_tasks": 1,
+      "progress_percent": 97.5,
+      "tasks": [
+        {
+          "task_id": "p1_recency_boost",
+          "task_name": "Evaluate p1_recency_boost",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:07.532438",
+          "completed_at": "2025-11-28T18:39:09.995424",
+          "duration_seconds": 2.462994,
+          "result": {
+            "mrr@5": 0.6374396135265701
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "p2_recency_decay",
+          "task_name": "Evaluate p2_recency_decay",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:10.009527",
+          "completed_at": "2025-11-28T18:39:12.478350",
+          "duration_seconds": 2.46883,
+          "result": {
+            "mrr@5": 0.6316425120772947
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "p3_recency_tag_combo",
+          "task_name": "Evaluate p3_recency_tag_combo",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:12.492401",
+          "completed_at": "2025-11-28T18:39:15.192952",
+          "duration_seconds": 2.700557,
+          "result": {
+            "mrr@5": 0.5758454106280193
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c1_combmnz_basic",
+          "task_name": "Evaluate c1_combmnz_basic",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:15.207658",
+          "completed_at": "2025-11-28T18:39:15.500426",
+          "duration_seconds": 0.292775,
+          "result": {
+            "mrr@5": 0.5130434782608695
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c2_combmnz_graph",
+          "task_name": "Evaluate c2_combmnz_graph",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:15.514511",
+          "completed_at": "2025-11-28T18:39:16.055140",
+          "duration_seconds": 0.540637,
+          "result": {
+            "mrr@5": 0.5130434782608695
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c3_combmnz_all",
+          "task_name": "Evaluate c3_combmnz_all",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:16.069409",
+          "completed_at": "2025-11-28T18:39:17.718618",
+          "duration_seconds": 1.649215,
+          "result": {
+            "mrr@5": 0.46473429951690814
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c4_combsum_basic",
+          "task_name": "Evaluate c4_combsum_basic",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:17.732858",
+          "completed_at": "2025-11-28T18:39:18.023013",
+          "duration_seconds": 0.290162,
+          "result": {
+            "mrr@5": 0.5130434782608695
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c5_combsum_all",
+          "task_name": "Evaluate c5_combsum_all",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:18.037287",
+          "completed_at": "2025-11-28T18:39:19.680116",
+          "duration_seconds": 1.642835,
+          "result": {
+            "mrr@5": 0.5328502415458938
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c6_softmax_weighted",
+          "task_name": "Evaluate c6_softmax_weighted",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:19.694352",
+          "completed_at": "2025-11-28T18:39:19.990842",
+          "duration_seconds": 0.296498,
+          "result": {
+            "mrr@5": 0.46521739130434786
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c7_rank_weighted",
+          "task_name": "Evaluate c7_rank_weighted",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:20.005129",
+          "completed_at": "2025-11-28T18:39:20.307551",
+          "duration_seconds": 0.302429,
+          "result": {
+            "mrr@5": 0.4333333333333333
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c8_percentile_weighted",
+          "task_name": "Evaluate c8_percentile_weighted",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:20.346448",
+          "completed_at": "2025-11-28T18:39:20.662872",
+          "duration_seconds": 0.316431,
+          "result": {
+            "mrr@5": 0.43623188405797103
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c9_logscale_weighted",
+          "task_name": "Evaluate c9_logscale_weighted",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:20.677197",
+          "completed_at": "2025-11-28T18:39:20.966652",
+          "duration_seconds": 0.289461,
+          "result": {
+            "mrr@5": 0.5002415458937198
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c10_bm25_heavy",
+          "task_name": "Evaluate c10_bm25_heavy",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:20.980855",
+          "completed_at": "2025-11-28T18:39:21.266500",
+          "duration_seconds": 0.285651,
+          "result": {
+            "mrr@5": 0.48333333333333334
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c11_semantic_heavy",
+          "task_name": "Evaluate c11_semantic_heavy",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:21.280837",
+          "completed_at": "2025-11-28T18:39:21.563501",
+          "duration_seconds": 0.282671,
+          "result": {
+            "mrr@5": 0.505072463768116
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c12_equal_weight",
+          "task_name": "Evaluate c12_equal_weight",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:21.577911",
+          "completed_at": "2025-11-28T18:39:21.855928",
+          "duration_seconds": 0.278024,
+          "result": {
+            "mrr@5": 0.5130434782608695
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c13_multi_signal_optimized",
+          "task_name": "Evaluate c13_multi_signal_optimized",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:21.870323",
+          "completed_at": "2025-11-28T18:39:23.509974",
+          "duration_seconds": 1.639657,
+          "result": {
+            "mrr@5": 0.5601449275362319
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c14_multi_signal_bm25_dominant",
+          "task_name": "Evaluate c14_multi_signal_bm25_dominant",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:23.524580",
+          "completed_at": "2025-11-28T18:39:25.162229",
+          "duration_seconds": 1.637656,
+          "result": {
+            "mrr@5": 0.5243961352657004
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c15_exp_decay_30d",
+          "task_name": "Evaluate c15_exp_decay_30d",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:25.176872",
+          "completed_at": "2025-11-28T18:39:26.997252",
+          "duration_seconds": 1.820386,
+          "result": {
+            "mrr@5": 0.5644927536231884
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c16_exp_decay_60d",
+          "task_name": "Evaluate c16_exp_decay_60d",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:27.011885",
+          "completed_at": "2025-11-28T18:39:28.829431",
+          "duration_seconds": 1.817552,
+          "result": {
+            "mrr@5": 0.5577294685990338
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c17_linear_decay_90d",
+          "task_name": "Evaluate c17_linear_decay_90d",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:28.844099",
+          "completed_at": "2025-11-28T18:39:30.610564",
+          "duration_seconds": 1.766472,
+          "result": {
+            "mrr@5": 0.561352657004831
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c18_step_function",
+          "task_name": "Evaluate c18_step_function",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:30.625201",
+          "completed_at": "2025-11-28T18:39:32.387773",
+          "duration_seconds": 1.762578,
+          "result": {
+            "mrr@5": 0.5166666666666666
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c19_sigmoid_boost",
+          "task_name": "Evaluate c19_sigmoid_boost",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:32.402361",
+          "completed_at": "2025-11-28T18:39:34.259935",
+          "duration_seconds": 1.85758,
+          "result": {
+            "mrr@5": 0.563768115942029
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c20_pagetype_aware",
+          "task_name": "Evaluate c20_pagetype_aware",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:34.274385",
+          "completed_at": "2025-11-28T18:39:34.638141",
+          "duration_seconds": 0.363764,
+          "result": {
+            "mrr@5": 0.5690821256038647
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c21_tag_overlap",
+          "task_name": "Evaluate c21_tag_overlap",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:34.652980",
+          "completed_at": "2025-11-28T18:39:35.180810",
+          "duration_seconds": 0.527838,
+          "result": {
+            "mrr@5": 0.5130434782608695
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c22_link_density",
+          "task_name": "Evaluate c22_link_density",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:35.195175",
+          "completed_at": "2025-11-28T18:39:35.852974",
+          "duration_seconds": 0.657807,
+          "result": {
+            "mrr@5": 0.49782608695652175
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c23_combined_metadata",
+          "task_name": "Evaluate c23_combined_metadata",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:35.867487",
+          "completed_at": "2025-11-28T18:39:37.962999",
+          "duration_seconds": 2.095519,
+          "result": {
+            "mrr@5": 0.5966183574879227
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c24_bm25_then_combmnz",
+          "task_name": "Evaluate c24_bm25_then_combmnz",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:37.977612",
+          "completed_at": "2025-11-28T18:39:38.111001",
+          "duration_seconds": 0.133395,
+          "result": {
+            "mrr@5": 0.48333333333333334
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c25_semantic_then_combmnz",
+          "task_name": "Evaluate c25_semantic_then_combmnz",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:38.125363",
+          "completed_at": "2025-11-28T18:39:38.412391",
+          "duration_seconds": 0.287034,
+          "result": {
+            "mrr@5": 0.49057971014492757
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c26_union_then_metadata",
+          "task_name": "Evaluate c26_union_then_metadata",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:38.426907",
+          "completed_at": "2025-11-28T18:39:38.792511",
+          "duration_seconds": 0.365611,
+          "result": {
+            "mrr@5": 0.5560386473429951
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c27_confidence_routing",
+          "task_name": "Evaluate c27_confidence_routing",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:38.807106",
+          "completed_at": "2025-11-28T18:39:39.360933",
+          "duration_seconds": 0.553836,
+          "result": {
+            "mrr@5": 0.5130434782608695
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c28_query_type_router",
+          "task_name": "Evaluate c28_query_type_router",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:39.375556",
+          "completed_at": "2025-11-28T18:39:39.670117",
+          "duration_seconds": 0.29457,
+          "result": {
+            "mrr@5": 0.49347826086956526
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c29_acronym_aware",
+          "task_name": "Evaluate c29_acronym_aware",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:39.684799",
+          "completed_at": "2025-11-28T18:39:39.963745",
+          "duration_seconds": 0.278955,
+          "result": {
+            "mrr@5": 0.47294685990338164
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c30_cached_gemma",
+          "task_name": "Evaluate c30_cached_gemma",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:39.978338",
+          "completed_at": "2025-11-28T18:39:40.271164",
+          "duration_seconds": 0.292835,
+          "result": {
+            "mrr@5": 0.47922705314009656
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c31_mixedbread_reranker",
+          "task_name": "Evaluate c31_mixedbread_reranker",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:40.285716",
+          "completed_at": "2025-11-28T18:39:40.571333",
+          "duration_seconds": 0.285626,
+          "result": {
+            "mrr@5": 0.4770531400966183
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c32_multi_stage_progressive",
+          "task_name": "Evaluate c32_multi_stage_progressive",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:40.585902",
+          "completed_at": "2025-11-28T18:39:40.755427",
+          "duration_seconds": 0.169531,
+          "result": {
+            "mrr@5": 0.5492753623188406
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c33_bm25_short_docs",
+          "task_name": "Evaluate c33_bm25_short_docs",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:40.769841",
+          "completed_at": "2025-11-28T18:39:40.894293",
+          "duration_seconds": 0.124459,
+          "result": {
+            "mrr@5": 0.4002415458937198
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c34_bm25_long_docs",
+          "task_name": "Evaluate c34_bm25_long_docs",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:40.908592",
+          "completed_at": "2025-11-28T18:39:41.032212",
+          "duration_seconds": 0.123626,
+          "result": {
+            "mrr@5": 0.4002415458937198
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c35_bm25_plus_expansion",
+          "task_name": "Evaluate c35_bm25_plus_expansion",
+          "status": "failed",
+          "started_at": "2025-11-28T18:39:41.046634",
+          "completed_at": "2025-11-28T18:39:41.153852",
+          "duration_seconds": 0.107224,
+          "result": null,
+          "error": "'NoneType' object is not iterable",
+          "retry_count": 1,
+          "metadata": {}
+        },
+        {
+          "task_id": "c36_logistic_regression",
+          "task_name": "Evaluate c36_logistic_regression",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:41.156652",
+          "completed_at": "2025-11-28T18:39:43.320618",
+          "duration_seconds": 2.163974,
+          "result": {
+            "mrr@5": 0.5847826086956521
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        },
+        {
+          "task_id": "c37_lambdamart",
+          "task_name": "Evaluate c37_lambdamart",
+          "status": "completed",
+          "started_at": "2025-11-28T18:39:43.335426",
+          "completed_at": "2025-11-28T18:39:43.773469",
+          "duration_seconds": 0.43805,
+          "result": {
+            "mrr@5": 0.6026570048309179
+          },
+          "error": null,
+          "retry_count": 0,
+          "metadata": {}
+        }
+      ]
+    }
+  ]
+}
