@@ -1,0 +1,4593 @@
+[
+  {
+    "strategy": "c37_lambdamart",
+    "best_params": {
+      "first_stage_k": 250,
+      "temporal_decay_days": 30
+    },
+    "best_metrics": {
+      "mrr@5": 0.6193236714975846,
+      "ndcg@5": 0.5637397292885872,
+      "recall@5": 0.6301932367149758
+    },
+    "num_configs": 5,
+    "all_results": [
+      {
+        "params": {
+          "first_stage_k": 100,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6019323671497584,
+        "ndcg@5": 0.5547792875422335,
+        "recall@5": 0.6301932367149758
+      },
+      {
+        "params": {
+          "first_stage_k": 150,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6157004830917875,
+        "ndcg@5": 0.5619792643699076,
+        "recall@5": 0.6229468599033816
+      },
+      {
+        "params": {
+          "first_stage_k": 200,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6028985507246377,
+        "ndcg@5": 0.5594015625271037,
+        "recall@5": 0.6422705314009661
+      },
+      {
+        "params": {
+          "first_stage_k": 250,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6193236714975846,
+        "ndcg@5": 0.5637397292885872,
+        "recall@5": 0.6301932367149758
+      },
+      {
+        "params": {
+          "first_stage_k": 300,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6140096618357487,
+        "ndcg@5": 0.5630611469726337,
+        "recall@5": 0.6306763285024154
+      }
+    ]
+  },
+  {
+    "strategy": "p2_recency_decay",
+    "best_params": {
+      "alpha": 0.55,
+      "recency_weight": 0.25,
+      "decay_days": 30
+    },
+    "best_metrics": {
+      "mrr@5": 0.6219806763285025,
+      "ndcg@5": 0.5811587174082676,
+      "recall@5": 0.6666666666666666
+    },
+    "num_configs": 42,
+    "all_results": [
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5801932367149758,
+        "ndcg@5": 0.5518686788441628,
+        "recall@5": 0.6227053140096619
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5801932367149759,
+        "ndcg@5": 0.5597665808326439,
+        "recall@5": 0.6497584541062801
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.25,
+          "decay_days": 30
+        },
+        "mrr@5": 0.6028985507246378,
+        "ndcg@5": 0.5695545696710757,
+        "recall@5": 0.6690821256038647
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.3,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5966183574879228,
+        "ndcg@5": 0.5568669960847763,
+        "recall@5": 0.6369565217391304
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.35,
+          "decay_days": 30
+        },
+        "mrr@5": 0.560144927536232,
+        "ndcg@5": 0.5194804396185901,
+        "recall@5": 0.5789855072463769
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.4,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5272946859903381,
+        "ndcg@5": 0.5000278534066489,
+        "recall@5": 0.5722222222222222
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5787439613526569,
+        "ndcg@5": 0.555109614949108,
+        "recall@5": 0.6256038647342996
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5881642512077296,
+        "ndcg@5": 0.566006155746431,
+        "recall@5": 0.6545893719806763
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.25,
+          "decay_days": 30
+        },
+        "mrr@5": 0.6219806763285025,
+        "ndcg@5": 0.5811587174082676,
+        "recall@5": 0.6666666666666666
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.3,
+          "decay_days": 30
+        },
+        "mrr@5": 0.6004830917874396,
+        "ndcg@5": 0.5566657778558634,
+        "recall@5": 0.6297101449275363
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.35,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5553140096618358,
+        "ndcg@5": 0.5071724352752616,
+        "recall@5": 0.5620772946859903
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.4,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5340579710144928,
+        "ndcg@5": 0.499825676658005,
+        "recall@5": 0.5673913043478261
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5683574879227054,
+        "ndcg@5": 0.5455733171722322,
+        "recall@5": 0.6130434782608696
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5884057971014492,
+        "ndcg@5": 0.5612866890430049,
+        "recall@5": 0.6396135265700483
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.25,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5985507246376811,
+        "ndcg@5": 0.5665655095956105,
+        "recall@5": 0.6502415458937199
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.3,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5985507246376812,
+        "ndcg@5": 0.5576711359509999,
+        "recall@5": 0.6393719806763285
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.35,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5420289855072463,
+        "ndcg@5": 0.5023554589437023,
+        "recall@5": 0.560144927536232
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.4,
+          "decay_days": 30
+        },
+        "mrr@5": 0.52512077294686,
+        "ndcg@5": 0.49181023302488674,
+        "recall@5": 0.5572463768115943
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5739130434782608,
+        "ndcg@5": 0.5478774519929857,
+        "recall@5": 0.6130434782608696
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5891304347826086,
+        "ndcg@5": 0.5627914378334855,
+        "recall@5": 0.6396135265700483
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.25,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5995169082125604,
+        "ndcg@5": 0.5656376529620135,
+        "recall@5": 0.640096618357488
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.3,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5946859903381643,
+        "ndcg@5": 0.5603117463501952,
+        "recall@5": 0.6429951690821256
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.35,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5584541062801932,
+        "ndcg@5": 0.5127351773931247,
+        "recall@5": 0.560144927536232
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.4,
+          "decay_days": 30
+        },
+        "mrr@5": 0.527536231884058,
+        "ndcg@5": 0.4999356639899029,
+        "recall@5": 0.5673913043478261
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5693236714975846,
+        "ndcg@5": 0.5411853266875333,
+        "recall@5": 0.6004830917874396
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5794685990338164,
+        "ndcg@5": 0.555032823990826,
+        "recall@5": 0.629951690821256
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.25,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5946859903381643,
+        "ndcg@5": 0.5660404904676715,
+        "recall@5": 0.6429951690821256
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.3,
+          "decay_days": 30
+        },
+        "mrr@5": 0.583816425120773,
+        "ndcg@5": 0.5554277358905786,
+        "recall@5": 0.6381642512077295
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.35,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5398550724637681,
+        "ndcg@5": 0.508811236749554,
+        "recall@5": 0.5717391304347826
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.4,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5222222222222223,
+        "ndcg@5": 0.492913147792621,
+        "recall@5": 0.5596618357487922
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5830917874396135,
+        "ndcg@5": 0.5454229318338566,
+        "recall@5": 0.5961352657004831
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5794685990338164,
+        "ndcg@5": 0.5517764788873604,
+        "recall@5": 0.6207729468599034
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.25,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5826086956521739,
+        "ndcg@5": 0.5594781046744864,
+        "recall@5": 0.6454106280193237
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.3,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5821256038647342,
+        "ndcg@5": 0.5556771149528124,
+        "recall@5": 0.6309178743961352
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.35,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5432367149758455,
+        "ndcg@5": 0.519625286733745,
+        "recall@5": 0.6007246376811595
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.4,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5053140096618357,
+        "ndcg@5": 0.4839807700410252,
+        "recall@5": 0.5524154589371981
+      },
+      {
+        "params": {
+          "alpha": 0.8,
+          "recency_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.582608695652174,
+        "ndcg@5": 0.5351255907474585,
+        "recall@5": 0.578743961352657
+      },
+      {
+        "params": {
+          "alpha": 0.8,
+          "recency_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5908212560386473,
+        "ndcg@5": 0.5499578684439953,
+        "recall@5": 0.6086956521739131
+      },
+      {
+        "params": {
+          "alpha": 0.8,
+          "recency_weight": 0.25,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5775362318840579,
+        "ndcg@5": 0.5536912662387251,
+        "recall@5": 0.6454106280193237
+      },
+      {
+        "params": {
+          "alpha": 0.8,
+          "recency_weight": 0.3,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5649758454106281,
+        "ndcg@5": 0.538399556764161,
+        "recall@5": 0.6224637681159421
+      },
+      {
+        "params": {
+          "alpha": 0.8,
+          "recency_weight": 0.35,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5400966183574879,
+        "ndcg@5": 0.5177934476382438,
+        "recall@5": 0.6007246376811595
+      },
+      {
+        "params": {
+          "alpha": 0.8,
+          "recency_weight": 0.4,
+          "decay_days": 30
+        },
+        "mrr@5": 0.49541062801932373,
+        "ndcg@5": 0.4770067592356401,
+        "recall@5": 0.5524154589371981
+      }
+    ]
+  },
+  {
+    "strategy": "p1_recency_boost",
+    "best_params": {
+      "alpha": 0.55,
+      "recency_weight": 0.25,
+      "decay_days": 30
+    },
+    "best_metrics": {
+      "mrr@5": 0.6219806763285025,
+      "ndcg@5": 0.5811587174082676,
+      "recall@5": 0.6666666666666666
+    },
+    "num_configs": 42,
+    "all_results": [
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5801932367149758,
+        "ndcg@5": 0.5518686788441628,
+        "recall@5": 0.6227053140096619
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5801932367149759,
+        "ndcg@5": 0.5597665808326439,
+        "recall@5": 0.6497584541062801
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.25,
+          "decay_days": 30
+        },
+        "mrr@5": 0.6028985507246378,
+        "ndcg@5": 0.5695545696710757,
+        "recall@5": 0.6690821256038647
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.3,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5966183574879228,
+        "ndcg@5": 0.5568669960847763,
+        "recall@5": 0.6369565217391304
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.35,
+          "decay_days": 30
+        },
+        "mrr@5": 0.560144927536232,
+        "ndcg@5": 0.5194804396185901,
+        "recall@5": 0.5789855072463769
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.4,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5272946859903381,
+        "ndcg@5": 0.5000278534066489,
+        "recall@5": 0.5722222222222222
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5787439613526569,
+        "ndcg@5": 0.555109614949108,
+        "recall@5": 0.6256038647342996
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5881642512077296,
+        "ndcg@5": 0.566006155746431,
+        "recall@5": 0.6545893719806763
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.25,
+          "decay_days": 30
+        },
+        "mrr@5": 0.6219806763285025,
+        "ndcg@5": 0.5811587174082676,
+        "recall@5": 0.6666666666666666
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.3,
+          "decay_days": 30
+        },
+        "mrr@5": 0.6004830917874396,
+        "ndcg@5": 0.5566657778558634,
+        "recall@5": 0.6297101449275363
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.35,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5553140096618358,
+        "ndcg@5": 0.5071724352752616,
+        "recall@5": 0.5620772946859903
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.4,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5340579710144928,
+        "ndcg@5": 0.499825676658005,
+        "recall@5": 0.5673913043478261
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5683574879227054,
+        "ndcg@5": 0.5455733171722322,
+        "recall@5": 0.6130434782608696
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5884057971014492,
+        "ndcg@5": 0.5612866890430049,
+        "recall@5": 0.6396135265700483
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.25,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5985507246376811,
+        "ndcg@5": 0.5665655095956105,
+        "recall@5": 0.6502415458937199
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.3,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5985507246376812,
+        "ndcg@5": 0.5576711359509999,
+        "recall@5": 0.6393719806763285
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.35,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5420289855072463,
+        "ndcg@5": 0.5023554589437023,
+        "recall@5": 0.560144927536232
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.4,
+          "decay_days": 30
+        },
+        "mrr@5": 0.52512077294686,
+        "ndcg@5": 0.49181023302488674,
+        "recall@5": 0.5572463768115943
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5739130434782608,
+        "ndcg@5": 0.5478774519929857,
+        "recall@5": 0.6130434782608696
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5891304347826086,
+        "ndcg@5": 0.5627914378334855,
+        "recall@5": 0.6396135265700483
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.25,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5995169082125604,
+        "ndcg@5": 0.5656376529620135,
+        "recall@5": 0.640096618357488
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.3,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5946859903381643,
+        "ndcg@5": 0.5603117463501952,
+        "recall@5": 0.6429951690821256
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.35,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5584541062801932,
+        "ndcg@5": 0.5127351773931247,
+        "recall@5": 0.560144927536232
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.4,
+          "decay_days": 30
+        },
+        "mrr@5": 0.527536231884058,
+        "ndcg@5": 0.4999356639899029,
+        "recall@5": 0.5673913043478261
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5693236714975846,
+        "ndcg@5": 0.5411853266875333,
+        "recall@5": 0.6004830917874396
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5794685990338164,
+        "ndcg@5": 0.555032823990826,
+        "recall@5": 0.629951690821256
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.25,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5946859903381643,
+        "ndcg@5": 0.5660404904676715,
+        "recall@5": 0.6429951690821256
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.3,
+          "decay_days": 30
+        },
+        "mrr@5": 0.583816425120773,
+        "ndcg@5": 0.5554277358905786,
+        "recall@5": 0.6381642512077295
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.35,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5398550724637681,
+        "ndcg@5": 0.508811236749554,
+        "recall@5": 0.5717391304347826
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.4,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5222222222222223,
+        "ndcg@5": 0.492913147792621,
+        "recall@5": 0.5596618357487922
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5830917874396135,
+        "ndcg@5": 0.5454229318338566,
+        "recall@5": 0.5961352657004831
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5794685990338164,
+        "ndcg@5": 0.5517764788873604,
+        "recall@5": 0.6207729468599034
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.25,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5826086956521739,
+        "ndcg@5": 0.5594781046744864,
+        "recall@5": 0.6454106280193237
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.3,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5821256038647342,
+        "ndcg@5": 0.5556771149528124,
+        "recall@5": 0.6309178743961352
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.35,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5432367149758455,
+        "ndcg@5": 0.519625286733745,
+        "recall@5": 0.6007246376811595
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.4,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5053140096618357,
+        "ndcg@5": 0.4839807700410252,
+        "recall@5": 0.5524154589371981
+      },
+      {
+        "params": {
+          "alpha": 0.8,
+          "recency_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.582608695652174,
+        "ndcg@5": 0.5351255907474585,
+        "recall@5": 0.578743961352657
+      },
+      {
+        "params": {
+          "alpha": 0.8,
+          "recency_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5908212560386473,
+        "ndcg@5": 0.5499578684439953,
+        "recall@5": 0.6086956521739131
+      },
+      {
+        "params": {
+          "alpha": 0.8,
+          "recency_weight": 0.25,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5775362318840579,
+        "ndcg@5": 0.5536912662387251,
+        "recall@5": 0.6454106280193237
+      },
+      {
+        "params": {
+          "alpha": 0.8,
+          "recency_weight": 0.3,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5649758454106281,
+        "ndcg@5": 0.538399556764161,
+        "recall@5": 0.6224637681159421
+      },
+      {
+        "params": {
+          "alpha": 0.8,
+          "recency_weight": 0.35,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5400966183574879,
+        "ndcg@5": 0.5177934476382438,
+        "recall@5": 0.6007246376811595
+      },
+      {
+        "params": {
+          "alpha": 0.8,
+          "recency_weight": 0.4,
+          "decay_days": 30
+        },
+        "mrr@5": 0.49541062801932373,
+        "ndcg@5": 0.4770067592356401,
+        "recall@5": 0.5524154589371981
+      }
+    ]
+  },
+  {
+    "strategy": "c13_multi_signal_optimized",
+    "best_params": {
+      "bm25_weight": 0.35,
+      "semantic_weight": 0.4,
+      "graph_weight": 0.0,
+      "temporal_weight": 0.2,
+      "temporal_decay_days": 30
+    },
+    "best_metrics": {
+      "mrr@5": 0.6241545893719809,
+      "ndcg@5": 0.5843809556754984,
+      "recall@5": 0.6739130434782609
+    },
+    "num_configs": 192,
+    "all_results": [
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5995169082125604,
+        "ndcg@5": 0.5656376529620135,
+        "recall@5": 0.640096618357488
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5939613526570049,
+        "ndcg@5": 0.5549344306187319,
+        "recall@5": 0.6345410628019323
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.551207729468599,
+        "ndcg@5": 0.5082768049514718,
+        "recall@5": 0.560144927536232
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5323671497584541,
+        "ndcg@5": 0.502324821056228,
+        "recall@5": 0.5673913043478261
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5995169082125604,
+        "ndcg@5": 0.5656376529620135,
+        "recall@5": 0.640096618357488
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5939613526570049,
+        "ndcg@5": 0.5549344306187319,
+        "recall@5": 0.6345410628019323
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.551207729468599,
+        "ndcg@5": 0.5082768049514718,
+        "recall@5": 0.560144927536232
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5323671497584541,
+        "ndcg@5": 0.502324821056228,
+        "recall@5": 0.5673913043478261
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5995169082125604,
+        "ndcg@5": 0.5656376529620135,
+        "recall@5": 0.640096618357488
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5939613526570049,
+        "ndcg@5": 0.5549344306187319,
+        "recall@5": 0.6345410628019323
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.551207729468599,
+        "ndcg@5": 0.5082768049514718,
+        "recall@5": 0.560144927536232
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5323671497584541,
+        "ndcg@5": 0.502324821056228,
+        "recall@5": 0.5673913043478261
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5893719806763285,
+        "ndcg@5": 0.5546087865327567,
+        "recall@5": 0.6207729468599034
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5801932367149759,
+        "ndcg@5": 0.5537031915889884,
+        "recall@5": 0.6429951690821256
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.567391304347826,
+        "ndcg@5": 0.5270662530453811,
+        "recall@5": 0.5910628019323672
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5504830917874396,
+        "ndcg@5": 0.5069090307916175,
+        "recall@5": 0.560144927536232
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5893719806763285,
+        "ndcg@5": 0.5546087865327567,
+        "recall@5": 0.6207729468599034
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5801932367149759,
+        "ndcg@5": 0.5537031915889884,
+        "recall@5": 0.6429951690821256
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.567391304347826,
+        "ndcg@5": 0.5270662530453811,
+        "recall@5": 0.5910628019323672
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5504830917874396,
+        "ndcg@5": 0.5069090307916175,
+        "recall@5": 0.560144927536232
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5893719806763285,
+        "ndcg@5": 0.5546087865327567,
+        "recall@5": 0.6207729468599034
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5801932367149759,
+        "ndcg@5": 0.5537031915889884,
+        "recall@5": 0.6429951690821256
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.567391304347826,
+        "ndcg@5": 0.5270662530453811,
+        "recall@5": 0.5910628019323672
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5504830917874396,
+        "ndcg@5": 0.5069090307916175,
+        "recall@5": 0.560144927536232
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.585024154589372,
+        "ndcg@5": 0.5570490468704267,
+        "recall@5": 0.6251207729468599
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5772946859903381,
+        "ndcg@5": 0.5536005786182164,
+        "recall@5": 0.6357487922705314
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.567391304347826,
+        "ndcg@5": 0.5473839866000345,
+        "recall@5": 0.6345410628019323
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5483091787439612,
+        "ndcg@5": 0.506349899918557,
+        "recall@5": 0.5572463768115943
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.585024154589372,
+        "ndcg@5": 0.5570490468704267,
+        "recall@5": 0.6251207729468599
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5772946859903381,
+        "ndcg@5": 0.5536005786182164,
+        "recall@5": 0.6357487922705314
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.567391304347826,
+        "ndcg@5": 0.5473839866000345,
+        "recall@5": 0.6345410628019323
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5483091787439612,
+        "ndcg@5": 0.506349899918557,
+        "recall@5": 0.5572463768115943
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.585024154589372,
+        "ndcg@5": 0.5570490468704267,
+        "recall@5": 0.6251207729468599
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5772946859903381,
+        "ndcg@5": 0.5536005786182164,
+        "recall@5": 0.6357487922705314
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.567391304347826,
+        "ndcg@5": 0.5473839866000345,
+        "recall@5": 0.6345410628019323
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5483091787439612,
+        "ndcg@5": 0.506349899918557,
+        "recall@5": 0.5572463768115943
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5772946859903381,
+        "ndcg@5": 0.5496416713110553,
+        "recall@5": 0.6154589371980677
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5833333333333334,
+        "ndcg@5": 0.5573106287895166,
+        "recall@5": 0.6357487922705314
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5640096618357489,
+        "ndcg@5": 0.5449159518081239,
+        "recall@5": 0.6309178743961352
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5509661835748793,
+        "ndcg@5": 0.5243375249850254,
+        "recall@5": 0.6055555555555555
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5772946859903381,
+        "ndcg@5": 0.5496416713110553,
+        "recall@5": 0.6154589371980677
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5833333333333334,
+        "ndcg@5": 0.5573106287895166,
+        "recall@5": 0.6357487922705314
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5640096618357489,
+        "ndcg@5": 0.5449159518081239,
+        "recall@5": 0.6309178743961352
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5509661835748793,
+        "ndcg@5": 0.5243375249850254,
+        "recall@5": 0.6055555555555555
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5772946859903381,
+        "ndcg@5": 0.5496416713110553,
+        "recall@5": 0.6154589371980677
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5833333333333334,
+        "ndcg@5": 0.5573106287895166,
+        "recall@5": 0.6357487922705314
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5640096618357489,
+        "ndcg@5": 0.5449159518081239,
+        "recall@5": 0.6309178743961352
+      },
+      {
+        "params": {
+          "bm25_weight": 0.2,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5509661835748793,
+        "ndcg@5": 0.5243375249850254,
+        "recall@5": 0.6055555555555555
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6164251207729469,
+        "ndcg@5": 0.5808392975887451,
+        "recall@5": 0.6690821256038648
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6009661835748793,
+        "ndcg@5": 0.558272455550429,
+        "recall@5": 0.6429951690821256
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5565217391304348,
+        "ndcg@5": 0.510093822420254,
+        "recall@5": 0.5620772946859903
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5384057971014492,
+        "ndcg@5": 0.5047578598845773,
+        "recall@5": 0.5693236714975847
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6164251207729469,
+        "ndcg@5": 0.5808392975887451,
+        "recall@5": 0.6690821256038648
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6009661835748793,
+        "ndcg@5": 0.558272455550429,
+        "recall@5": 0.6429951690821256
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5565217391304348,
+        "ndcg@5": 0.510093822420254,
+        "recall@5": 0.5620772946859903
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5384057971014492,
+        "ndcg@5": 0.5047578598845773,
+        "recall@5": 0.5693236714975847
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6164251207729469,
+        "ndcg@5": 0.5808392975887451,
+        "recall@5": 0.6690821256038648
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6009661835748793,
+        "ndcg@5": 0.558272455550429,
+        "recall@5": 0.6429951690821256
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5565217391304348,
+        "ndcg@5": 0.510093822420254,
+        "recall@5": 0.5620772946859903
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5384057971014492,
+        "ndcg@5": 0.5047578598845773,
+        "recall@5": 0.5693236714975847
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5830917874396135,
+        "ndcg@5": 0.5583051117739075,
+        "recall@5": 0.6396135265700483
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5951690821256038,
+        "ndcg@5": 0.5575383211617537,
+        "recall@5": 0.6429951690821256
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5963768115942029,
+        "ndcg@5": 0.5538030141368012,
+        "recall@5": 0.620048309178744
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.55,
+        "ndcg@5": 0.5080023546015535,
+        "recall@5": 0.560144927536232
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5830917874396135,
+        "ndcg@5": 0.5583051117739075,
+        "recall@5": 0.6396135265700483
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5951690821256038,
+        "ndcg@5": 0.5575383211617537,
+        "recall@5": 0.6429951690821256
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5963768115942029,
+        "ndcg@5": 0.5538030141368012,
+        "recall@5": 0.620048309178744
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.55,
+        "ndcg@5": 0.5080023546015535,
+        "recall@5": 0.560144927536232
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5830917874396135,
+        "ndcg@5": 0.5583051117739075,
+        "recall@5": 0.6396135265700483
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5951690821256038,
+        "ndcg@5": 0.5575383211617537,
+        "recall@5": 0.6429951690821256
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5963768115942029,
+        "ndcg@5": 0.5538030141368012,
+        "recall@5": 0.620048309178744
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.55,
+        "ndcg@5": 0.5080023546015535,
+        "recall@5": 0.560144927536232
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5891304347826086,
+        "ndcg@5": 0.5630894893401984,
+        "recall@5": 0.6396135265700483
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5971014492753624,
+        "ndcg@5": 0.5637401203015576,
+        "recall@5": 0.640096618357488
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5946859903381643,
+        "ndcg@5": 0.556988717554857,
+        "recall@5": 0.6381642512077295
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5678743961352658,
+        "ndcg@5": 0.5272144695358101,
+        "recall@5": 0.5939613526570049
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5891304347826086,
+        "ndcg@5": 0.5630894893401984,
+        "recall@5": 0.6396135265700483
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5971014492753624,
+        "ndcg@5": 0.5637401203015576,
+        "recall@5": 0.640096618357488
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5946859903381643,
+        "ndcg@5": 0.556988717554857,
+        "recall@5": 0.6381642512077295
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5678743961352658,
+        "ndcg@5": 0.5272144695358101,
+        "recall@5": 0.5939613526570049
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5891304347826086,
+        "ndcg@5": 0.5630894893401984,
+        "recall@5": 0.6396135265700483
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5971014492753624,
+        "ndcg@5": 0.5637401203015576,
+        "recall@5": 0.640096618357488
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5946859903381643,
+        "ndcg@5": 0.556988717554857,
+        "recall@5": 0.6381642512077295
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5678743961352658,
+        "ndcg@5": 0.5272144695358101,
+        "recall@5": 0.5939613526570049
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5884057971014492,
+        "ndcg@5": 0.5598623458552165,
+        "recall@5": 0.6347826086956522
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6019323671497584,
+        "ndcg@5": 0.5675351856224693,
+        "recall@5": 0.640096618357488
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5801932367149759,
+        "ndcg@5": 0.5537031915889884,
+        "recall@5": 0.6429951690821256
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5601449275362319,
+        "ndcg@5": 0.5328598778458549,
+        "recall@5": 0.620048309178744
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5884057971014492,
+        "ndcg@5": 0.5598623458552165,
+        "recall@5": 0.6347826086956522
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6019323671497584,
+        "ndcg@5": 0.5675351856224693,
+        "recall@5": 0.640096618357488
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5801932367149759,
+        "ndcg@5": 0.5537031915889884,
+        "recall@5": 0.6429951690821256
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5601449275362319,
+        "ndcg@5": 0.5328598778458549,
+        "recall@5": 0.620048309178744
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5884057971014492,
+        "ndcg@5": 0.5598623458552165,
+        "recall@5": 0.6347826086956522
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6019323671497584,
+        "ndcg@5": 0.5675351856224693,
+        "recall@5": 0.640096618357488
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5801932367149759,
+        "ndcg@5": 0.5537031915889884,
+        "recall@5": 0.6429951690821256
+      },
+      {
+        "params": {
+          "bm25_weight": 0.25,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5601449275362319,
+        "ndcg@5": 0.5328598778458549,
+        "recall@5": 0.620048309178744
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5983091787439614,
+        "ndcg@5": 0.5688078807965539,
+        "recall@5": 0.6545893719806763
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6128019323671499,
+        "ndcg@5": 0.5706862828813758,
+        "recall@5": 0.6623188405797101
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5835748792270532,
+        "ndcg@5": 0.5408637626433483,
+        "recall@5": 0.6007246376811595
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5504830917874396,
+        "ndcg@5": 0.5121870037248867,
+        "recall@5": 0.5741545893719807
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5983091787439614,
+        "ndcg@5": 0.5688078807965539,
+        "recall@5": 0.6545893719806763
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6128019323671499,
+        "ndcg@5": 0.5706862828813758,
+        "recall@5": 0.6623188405797101
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5835748792270532,
+        "ndcg@5": 0.5408637626433483,
+        "recall@5": 0.6007246376811595
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5504830917874396,
+        "ndcg@5": 0.5121870037248867,
+        "recall@5": 0.5741545893719807
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5983091787439614,
+        "ndcg@5": 0.5688078807965539,
+        "recall@5": 0.6545893719806763
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6128019323671499,
+        "ndcg@5": 0.5706862828813758,
+        "recall@5": 0.6623188405797101
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5835748792270532,
+        "ndcg@5": 0.5408637626433483,
+        "recall@5": 0.6007246376811595
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5504830917874396,
+        "ndcg@5": 0.5121870037248867,
+        "recall@5": 0.5741545893719807
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5949275362318841,
+        "ndcg@5": 0.564252110608432,
+        "recall@5": 0.642512077294686
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6214975845410629,
+        "ndcg@5": 0.5737494861928883,
+        "recall@5": 0.6502415458937199
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6004830917874396,
+        "ndcg@5": 0.554925209093793,
+        "recall@5": 0.6248792270531401
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5632850241545894,
+        "ndcg@5": 0.5131173824398256,
+        "recall@5": 0.5620772946859903
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5949275362318841,
+        "ndcg@5": 0.564252110608432,
+        "recall@5": 0.642512077294686
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6214975845410629,
+        "ndcg@5": 0.5737494861928883,
+        "recall@5": 0.6502415458937199
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6004830917874396,
+        "ndcg@5": 0.554925209093793,
+        "recall@5": 0.6248792270531401
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5632850241545894,
+        "ndcg@5": 0.5131173824398256,
+        "recall@5": 0.5620772946859903
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5949275362318841,
+        "ndcg@5": 0.564252110608432,
+        "recall@5": 0.642512077294686
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6214975845410629,
+        "ndcg@5": 0.5737494861928883,
+        "recall@5": 0.6502415458937199
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6004830917874396,
+        "ndcg@5": 0.554925209093793,
+        "recall@5": 0.6248792270531401
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5632850241545894,
+        "ndcg@5": 0.5131173824398256,
+        "recall@5": 0.5620772946859903
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5956521739130435,
+        "ndcg@5": 0.5666355331941432,
+        "recall@5": 0.6396135265700483
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6082125603864734,
+        "ndcg@5": 0.5717426710318768,
+        "recall@5": 0.6502415458937199
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5961352657004831,
+        "ndcg@5": 0.5563022916934323,
+        "recall@5": 0.6429951690821256
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5751207729468599,
+        "ndcg@5": 0.5304675888170495,
+        "recall@5": 0.5910628019323672
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5956521739130435,
+        "ndcg@5": 0.5666355331941432,
+        "recall@5": 0.6396135265700483
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6082125603864734,
+        "ndcg@5": 0.5717426710318768,
+        "recall@5": 0.6502415458937199
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5961352657004831,
+        "ndcg@5": 0.5563022916934323,
+        "recall@5": 0.6429951690821256
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5751207729468599,
+        "ndcg@5": 0.5304675888170495,
+        "recall@5": 0.5910628019323672
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5956521739130435,
+        "ndcg@5": 0.5666355331941432,
+        "recall@5": 0.6396135265700483
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6082125603864734,
+        "ndcg@5": 0.5717426710318768,
+        "recall@5": 0.6502415458937199
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5961352657004831,
+        "ndcg@5": 0.5563022916934323,
+        "recall@5": 0.6429951690821256
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5751207729468599,
+        "ndcg@5": 0.5304675888170495,
+        "recall@5": 0.5910628019323672
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5867149758454107,
+        "ndcg@5": 0.5620743931174441,
+        "recall@5": 0.6396135265700483
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5898550724637681,
+        "ndcg@5": 0.5557715946962266,
+        "recall@5": 0.6227053140096619
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5922705314009662,
+        "ndcg@5": 0.5565272700087412,
+        "recall@5": 0.640096618357488
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5992753623188406,
+        "ndcg@5": 0.5605651705729129,
+        "recall@5": 0.6374396135265701
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5867149758454107,
+        "ndcg@5": 0.5620743931174441,
+        "recall@5": 0.6396135265700483
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5898550724637681,
+        "ndcg@5": 0.5557715946962266,
+        "recall@5": 0.6227053140096619
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5922705314009662,
+        "ndcg@5": 0.5565272700087412,
+        "recall@5": 0.640096618357488
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5992753623188406,
+        "ndcg@5": 0.5605651705729129,
+        "recall@5": 0.6374396135265701
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5867149758454107,
+        "ndcg@5": 0.5620743931174441,
+        "recall@5": 0.6396135265700483
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5898550724637681,
+        "ndcg@5": 0.5557715946962266,
+        "recall@5": 0.6227053140096619
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5922705314009662,
+        "ndcg@5": 0.5565272700087412,
+        "recall@5": 0.640096618357488
+      },
+      {
+        "params": {
+          "bm25_weight": 0.3,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5992753623188406,
+        "ndcg@5": 0.5605651705729129,
+        "recall@5": 0.6374396135265701
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5801932367149759,
+        "ndcg@5": 0.5620081950751663,
+        "recall@5": 0.6545893719806763
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6079710144927537,
+        "ndcg@5": 0.569344568629613,
+        "recall@5": 0.657487922705314
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5942028985507247,
+        "ndcg@5": 0.5549694634243203,
+        "recall@5": 0.6369565217391304
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5613526570048311,
+        "ndcg@5": 0.5173208776471913,
+        "recall@5": 0.5741545893719807
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5801932367149759,
+        "ndcg@5": 0.5620081950751663,
+        "recall@5": 0.6545893719806763
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6079710144927537,
+        "ndcg@5": 0.569344568629613,
+        "recall@5": 0.657487922705314
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5942028985507247,
+        "ndcg@5": 0.5549694634243203,
+        "recall@5": 0.6369565217391304
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5613526570048311,
+        "ndcg@5": 0.5173208776471913,
+        "recall@5": 0.5741545893719807
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5801932367149759,
+        "ndcg@5": 0.5620081950751663,
+        "recall@5": 0.6545893719806763
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6079710144927537,
+        "ndcg@5": 0.569344568629613,
+        "recall@5": 0.657487922705314
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5942028985507247,
+        "ndcg@5": 0.5549694634243203,
+        "recall@5": 0.6369565217391304
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.35,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5613526570048311,
+        "ndcg@5": 0.5173208776471913,
+        "recall@5": 0.5741545893719807
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5905797101449275,
+        "ndcg@5": 0.5642655869843605,
+        "recall@5": 0.6497584541062801
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6241545893719809,
+        "ndcg@5": 0.5843809556754984,
+        "recall@5": 0.6739130434782609
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6009661835748793,
+        "ndcg@5": 0.5574363631996867,
+        "recall@5": 0.6369565217391304
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5734299516908213,
+        "ndcg@5": 0.5252500212576288,
+        "recall@5": 0.5789855072463769
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5905797101449275,
+        "ndcg@5": 0.5642655869843605,
+        "recall@5": 0.6497584541062801
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6241545893719809,
+        "ndcg@5": 0.5843809556754984,
+        "recall@5": 0.6739130434782609
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6009661835748793,
+        "ndcg@5": 0.5574363631996867,
+        "recall@5": 0.6369565217391304
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5734299516908213,
+        "ndcg@5": 0.5252500212576288,
+        "recall@5": 0.5789855072463769
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5905797101449275,
+        "ndcg@5": 0.5642655869843605,
+        "recall@5": 0.6497584541062801
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6241545893719809,
+        "ndcg@5": 0.5843809556754984,
+        "recall@5": 0.6739130434782609
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6009661835748793,
+        "ndcg@5": 0.5574363631996867,
+        "recall@5": 0.6369565217391304
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.4,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5734299516908213,
+        "ndcg@5": 0.5252500212576288,
+        "recall@5": 0.5789855072463769
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5852657004830918,
+        "ndcg@5": 0.5649204563526815,
+        "recall@5": 0.6473429951690821
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6144927536231884,
+        "ndcg@5": 0.5818305236723957,
+        "recall@5": 0.6739130434782609
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6045893719806763,
+        "ndcg@5": 0.563118998535295,
+        "recall@5": 0.6478260869565218
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5893719806763285,
+        "ndcg@5": 0.5498655640990037,
+        "recall@5": 0.6248792270531401
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5852657004830918,
+        "ndcg@5": 0.5649204563526815,
+        "recall@5": 0.6473429951690821
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6144927536231884,
+        "ndcg@5": 0.5818305236723957,
+        "recall@5": 0.6739130434782609
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6045893719806763,
+        "ndcg@5": 0.563118998535295,
+        "recall@5": 0.6478260869565218
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5893719806763285,
+        "ndcg@5": 0.5498655640990037,
+        "recall@5": 0.6248792270531401
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5852657004830918,
+        "ndcg@5": 0.5649204563526815,
+        "recall@5": 0.6473429951690821
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6144927536231884,
+        "ndcg@5": 0.5818305236723957,
+        "recall@5": 0.6739130434782609
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6045893719806763,
+        "ndcg@5": 0.563118998535295,
+        "recall@5": 0.6478260869565218
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.45,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5893719806763285,
+        "ndcg@5": 0.5498655640990037,
+        "recall@5": 0.6248792270531401
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5811594202898551,
+        "ndcg@5": 0.5570123789324612,
+        "recall@5": 0.6347826086956522
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6043478260869566,
+        "ndcg@5": 0.571580566901854,
+        "recall@5": 0.6545893719806763
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6239130434782608,
+        "ndcg@5": 0.5746399579023738,
+        "recall@5": 0.6502415458937199
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.0,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5932367149758455,
+        "ndcg@5": 0.5511741018178256,
+        "recall@5": 0.6248792270531401
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5811594202898551,
+        "ndcg@5": 0.5570123789324612,
+        "recall@5": 0.6347826086956522
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6043478260869566,
+        "ndcg@5": 0.571580566901854,
+        "recall@5": 0.6545893719806763
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6239130434782608,
+        "ndcg@5": 0.5746399579023738,
+        "recall@5": 0.6502415458937199
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.02,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5932367149758455,
+        "ndcg@5": 0.5511741018178256,
+        "recall@5": 0.6248792270531401
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.15,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5811594202898551,
+        "ndcg@5": 0.5570123789324612,
+        "recall@5": 0.6347826086956522
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.2,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6043478260869566,
+        "ndcg@5": 0.571580566901854,
+        "recall@5": 0.6545893719806763
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.25,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.6239130434782608,
+        "ndcg@5": 0.5746399579023738,
+        "recall@5": 0.6502415458937199
+      },
+      {
+        "params": {
+          "bm25_weight": 0.35,
+          "semantic_weight": 0.5,
+          "graph_weight": 0.05,
+          "temporal_weight": 0.3,
+          "temporal_decay_days": 30
+        },
+        "mrr@5": 0.5932367149758455,
+        "ndcg@5": 0.5511741018178256,
+        "recall@5": 0.6248792270531401
+      }
+    ]
+  },
+  {
+    "strategy": "p3_recency_tag_combo",
+    "best_params": {
+      "alpha": 0.55,
+      "recency_weight": 0.25,
+      "tag_weight": 0.05,
+      "decay_days": 30
+    },
+    "best_metrics": {
+      "mrr@5": 0.6147342995169083,
+      "ndcg@5": 0.5786486186393272,
+      "recall@5": 0.6666666666666666
+    },
+    "num_configs": 120,
+    "all_results": [
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.2,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5801932367149759,
+        "ndcg@5": 0.5597665808326439,
+        "recall@5": 0.6497584541062801
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.2,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5729468599033817,
+        "ndcg@5": 0.5572564820637034,
+        "recall@5": 0.6497584541062801
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.2,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5693236714975847,
+        "ndcg@5": 0.5558945318540611,
+        "recall@5": 0.6497584541062801
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.2,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5693236714975847,
+        "ndcg@5": 0.5558945318540611,
+        "recall@5": 0.6497584541062801
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.25,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5956521739130436,
+        "ndcg@5": 0.5670444709021352,
+        "recall@5": 0.6690821256038647
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.25,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5920289855072465,
+        "ndcg@5": 0.5656825206924928,
+        "recall@5": 0.6690821256038647
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.25,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5920289855072465,
+        "ndcg@5": 0.5656825206924928,
+        "recall@5": 0.6690821256038647
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.25,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5884057971014494,
+        "ndcg@5": 0.5627534287142241,
+        "recall@5": 0.6642512077294686
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.3,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5857487922705314,
+        "ndcg@5": 0.5529949471061935,
+        "recall@5": 0.6369565217391304
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.3,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5857487922705314,
+        "ndcg@5": 0.5529949471061935,
+        "recall@5": 0.6369565217391304
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.3,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5821256038647343,
+        "ndcg@5": 0.5500658551279247,
+        "recall@5": 0.6321256038647343
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.3,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5821256038647343,
+        "ndcg@5": 0.5500658551279247,
+        "recall@5": 0.6321256038647343
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.35,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5565217391304349,
+        "ndcg@5": 0.5165513476403213,
+        "recall@5": 0.5741545893719807
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.35,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5565217391304349,
+        "ndcg@5": 0.5165513476403213,
+        "recall@5": 0.5741545893719807
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.35,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5565217391304349,
+        "ndcg@5": 0.5165513476403213,
+        "recall@5": 0.5741545893719807
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.35,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5565217391304349,
+        "ndcg@5": 0.5165513476403213,
+        "recall@5": 0.5741545893719807
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.4,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5272946859903381,
+        "ndcg@5": 0.5000278534066489,
+        "recall@5": 0.5722222222222222
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.4,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5272946859903381,
+        "ndcg@5": 0.5000278534066489,
+        "recall@5": 0.5722222222222222
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.4,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5272946859903381,
+        "ndcg@5": 0.5000278534066489,
+        "recall@5": 0.5722222222222222
+      },
+      {
+        "params": {
+          "alpha": 0.5,
+          "recency_weight": 0.4,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5272946859903381,
+        "ndcg@5": 0.5000278534066489,
+        "recall@5": 0.5722222222222222
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.2,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5881642512077296,
+        "ndcg@5": 0.566006155746431,
+        "recall@5": 0.6545893719806763
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.2,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5809178743961354,
+        "ndcg@5": 0.5634960569774906,
+        "recall@5": 0.6545893719806763
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.2,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5772946859903383,
+        "ndcg@5": 0.5621341067678481,
+        "recall@5": 0.6545893719806763
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.2,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5765700483091788,
+        "ndcg@5": 0.5618360552611352,
+        "recall@5": 0.6545893719806763
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.25,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.6147342995169083,
+        "ndcg@5": 0.5786486186393272,
+        "recall@5": 0.6666666666666666
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.25,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.6111111111111112,
+        "ndcg@5": 0.577286668429685,
+        "recall@5": 0.6666666666666666
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.25,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.6111111111111112,
+        "ndcg@5": 0.577286668429685,
+        "recall@5": 0.6666666666666666
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.25,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.607487922705314,
+        "ndcg@5": 0.574357576451416,
+        "recall@5": 0.6618357487922706
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.3,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5896135265700484,
+        "ndcg@5": 0.5527937288772807,
+        "recall@5": 0.6297101449275363
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.3,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5888888888888889,
+        "ndcg@5": 0.5524956773705677,
+        "recall@5": 0.6297101449275363
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.3,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5859903381642513,
+        "ndcg@5": 0.5498646368990119,
+        "recall@5": 0.6248792270531401
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.3,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5859903381642513,
+        "ndcg@5": 0.5498646368990119,
+        "recall@5": 0.6248792270531401
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.35,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5524154589371981,
+        "ndcg@5": 0.5045413948037056,
+        "recall@5": 0.5572463768115943
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.35,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5524154589371981,
+        "ndcg@5": 0.5045413948037056,
+        "recall@5": 0.5572463768115943
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.35,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5524154589371981,
+        "ndcg@5": 0.5045413948037056,
+        "recall@5": 0.5572463768115943
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.35,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5524154589371981,
+        "ndcg@5": 0.5045413948037056,
+        "recall@5": 0.5572463768115943
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.4,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5340579710144928,
+        "ndcg@5": 0.499825676658005,
+        "recall@5": 0.5673913043478261
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.4,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5340579710144928,
+        "ndcg@5": 0.499825676658005,
+        "recall@5": 0.5673913043478261
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.4,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5340579710144928,
+        "ndcg@5": 0.499825676658005,
+        "recall@5": 0.5673913043478261
+      },
+      {
+        "params": {
+          "alpha": 0.55,
+          "recency_weight": 0.4,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5340579710144928,
+        "ndcg@5": 0.499825676658005,
+        "recall@5": 0.5673913043478261
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.2,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5884057971014492,
+        "ndcg@5": 0.5612866890430049,
+        "recall@5": 0.6396135265700483
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.2,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5811594202898551,
+        "ndcg@5": 0.5587765902740645,
+        "recall@5": 0.6396135265700483
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.2,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.577536231884058,
+        "ndcg@5": 0.5574146400644222,
+        "recall@5": 0.6396135265700483
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.2,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5768115942028985,
+        "ndcg@5": 0.5571165885577093,
+        "recall@5": 0.6396135265700483
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.25,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5913043478260869,
+        "ndcg@5": 0.56405541082667,
+        "recall@5": 0.6502415458937199
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.25,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5876811594202899,
+        "ndcg@5": 0.5626934606170277,
+        "recall@5": 0.6502415458937199
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.25,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5869565217391305,
+        "ndcg@5": 0.5623954091103148,
+        "recall@5": 0.6502415458937199
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.25,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5840579710144927,
+        "ndcg@5": 0.559764368638759,
+        "recall@5": 0.6454106280193237
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.3,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.588888888888889,
+        "ndcg@5": 0.5542705654725741,
+        "recall@5": 0.6393719806763285
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.3,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5869565217391305,
+        "ndcg@5": 0.5535010354657042,
+        "recall@5": 0.6393719806763285
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.3,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5840579710144929,
+        "ndcg@5": 0.5508699949941482,
+        "recall@5": 0.6345410628019323
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.3,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5840579710144929,
+        "ndcg@5": 0.5508699949941482,
+        "recall@5": 0.6345410628019323
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.35,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5420289855072463,
+        "ndcg@5": 0.5023554589437023,
+        "recall@5": 0.560144927536232
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.35,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5420289855072463,
+        "ndcg@5": 0.5023554589437023,
+        "recall@5": 0.560144927536232
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.35,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5420289855072463,
+        "ndcg@5": 0.5023554589437023,
+        "recall@5": 0.560144927536232
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.35,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5420289855072463,
+        "ndcg@5": 0.5023554589437023,
+        "recall@5": 0.560144927536232
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.4,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.52512077294686,
+        "ndcg@5": 0.49181023302488674,
+        "recall@5": 0.5572463768115943
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.4,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.52512077294686,
+        "ndcg@5": 0.49181023302488674,
+        "recall@5": 0.5572463768115943
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.4,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.52512077294686,
+        "ndcg@5": 0.49181023302488674,
+        "recall@5": 0.5572463768115943
+      },
+      {
+        "params": {
+          "alpha": 0.6,
+          "recency_weight": 0.4,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.52512077294686,
+        "ndcg@5": 0.49181023302488674,
+        "recall@5": 0.5572463768115943
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.2,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5891304347826086,
+        "ndcg@5": 0.5627914378334855,
+        "recall@5": 0.6396135265700483
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.2,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5818840579710145,
+        "ndcg@5": 0.5602813390645449,
+        "recall@5": 0.6396135265700483
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.2,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5782608695652174,
+        "ndcg@5": 0.5589193888549027,
+        "recall@5": 0.6396135265700483
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.2,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5746376811594203,
+        "ndcg@5": 0.5559902968766338,
+        "recall@5": 0.6347826086956522
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.25,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5922705314009662,
+        "ndcg@5": 0.563127554193073,
+        "recall@5": 0.640096618357488
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.25,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5886473429951691,
+        "ndcg@5": 0.5617656039834308,
+        "recall@5": 0.640096618357488
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.25,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5879227053140096,
+        "ndcg@5": 0.5614675524767178,
+        "recall@5": 0.640096618357488
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.25,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.585024154589372,
+        "ndcg@5": 0.558836512005162,
+        "recall@5": 0.6352657004830918
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.3,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.585024154589372,
+        "ndcg@5": 0.5569111758717694,
+        "recall@5": 0.6429951690821256
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.3,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5801932367149758,
+        "ndcg@5": 0.5535106053933437,
+        "recall@5": 0.6381642512077295
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.3,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5801932367149758,
+        "ndcg@5": 0.5535106053933437,
+        "recall@5": 0.6381642512077295
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.3,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5801932367149758,
+        "ndcg@5": 0.5535106053933437,
+        "recall@5": 0.6381642512077295
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.35,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5584541062801932,
+        "ndcg@5": 0.5127351773931247,
+        "recall@5": 0.560144927536232
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.35,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5584541062801932,
+        "ndcg@5": 0.5127351773931247,
+        "recall@5": 0.560144927536232
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.35,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5584541062801932,
+        "ndcg@5": 0.5127351773931247,
+        "recall@5": 0.560144927536232
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.35,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5584541062801932,
+        "ndcg@5": 0.5127351773931247,
+        "recall@5": 0.560144927536232
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.4,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.527536231884058,
+        "ndcg@5": 0.4999356639899029,
+        "recall@5": 0.5673913043478261
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.4,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.527536231884058,
+        "ndcg@5": 0.4999356639899029,
+        "recall@5": 0.5673913043478261
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.4,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.527536231884058,
+        "ndcg@5": 0.4999356639899029,
+        "recall@5": 0.5673913043478261
+      },
+      {
+        "params": {
+          "alpha": 0.65,
+          "recency_weight": 0.4,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.527536231884058,
+        "ndcg@5": 0.4999356639899029,
+        "recall@5": 0.5673913043478261
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.2,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5794685990338164,
+        "ndcg@5": 0.555032823990826,
+        "recall@5": 0.629951690821256
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.2,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5722222222222222,
+        "ndcg@5": 0.5525227252218854,
+        "recall@5": 0.629951690821256
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.2,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5685990338164252,
+        "ndcg@5": 0.5511607750122431,
+        "recall@5": 0.629951690821256
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.2,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5649758454106281,
+        "ndcg@5": 0.5482316830339743,
+        "recall@5": 0.6251207729468599
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.25,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.58743961352657,
+        "ndcg@5": 0.563530391698731,
+        "recall@5": 0.6429951690821256
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.25,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5850241545893718,
+        "ndcg@5": 0.5626399199892457,
+        "recall@5": 0.6429951690821256
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.25,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5801932367149758,
+        "ndcg@5": 0.55923934951082,
+        "recall@5": 0.6381642512077295
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.25,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5801932367149758,
+        "ndcg@5": 0.55923934951082,
+        "recall@5": 0.6381642512077295
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.3,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5729468599033817,
+        "ndcg@5": 0.551555686911996,
+        "recall@5": 0.6381642512077295
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.3,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5693236714975847,
+        "ndcg@5": 0.5486265949337272,
+        "recall@5": 0.6333333333333334
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.3,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5693236714975847,
+        "ndcg@5": 0.5486265949337272,
+        "recall@5": 0.6333333333333334
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.3,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5693236714975847,
+        "ndcg@5": 0.5486265949337272,
+        "recall@5": 0.6333333333333334
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.35,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5398550724637681,
+        "ndcg@5": 0.508811236749554,
+        "recall@5": 0.5717391304347826
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.35,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5398550724637681,
+        "ndcg@5": 0.508811236749554,
+        "recall@5": 0.5717391304347826
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.35,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5398550724637681,
+        "ndcg@5": 0.508811236749554,
+        "recall@5": 0.5717391304347826
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.35,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5398550724637681,
+        "ndcg@5": 0.508811236749554,
+        "recall@5": 0.5717391304347826
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.4,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5222222222222223,
+        "ndcg@5": 0.492913147792621,
+        "recall@5": 0.5596618357487922
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.4,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5222222222222223,
+        "ndcg@5": 0.492913147792621,
+        "recall@5": 0.5596618357487922
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.4,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5222222222222223,
+        "ndcg@5": 0.492913147792621,
+        "recall@5": 0.5596618357487922
+      },
+      {
+        "params": {
+          "alpha": 0.7,
+          "recency_weight": 0.4,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5222222222222223,
+        "ndcg@5": 0.492913147792621,
+        "recall@5": 0.5596618357487922
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.2,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5794685990338164,
+        "ndcg@5": 0.5517764788873604,
+        "recall@5": 0.6207729468599034
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.2,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5722222222222222,
+        "ndcg@5": 0.5492663801184199,
+        "recall@5": 0.6207729468599034
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.2,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5678743961352658,
+        "ndcg@5": 0.5476063784020646,
+        "recall@5": 0.6207729468599034
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.2,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5649758454106281,
+        "ndcg@5": 0.5449753379305087,
+        "recall@5": 0.6159420289855072
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.25,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5753623188405796,
+        "ndcg@5": 0.5569680059055461,
+        "recall@5": 0.6454106280193237
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.25,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5717391304347825,
+        "ndcg@5": 0.5556060556959037,
+        "recall@5": 0.6454106280193237
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.25,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5681159420289854,
+        "ndcg@5": 0.5526769637176351,
+        "recall@5": 0.6405797101449275
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.25,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5681159420289854,
+        "ndcg@5": 0.5526769637176351,
+        "recall@5": 0.6405797101449275
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.3,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5801932367149758,
+        "ndcg@5": 0.5549075849459424,
+        "recall@5": 0.6309178743961352
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.3,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5772946859903381,
+        "ndcg@5": 0.5522765444743866,
+        "recall@5": 0.6260869565217392
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.3,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5772946859903381,
+        "ndcg@5": 0.5522765444743866,
+        "recall@5": 0.6260869565217392
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.3,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5772946859903381,
+        "ndcg@5": 0.5522765444743866,
+        "recall@5": 0.6260869565217392
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.35,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5432367149758455,
+        "ndcg@5": 0.519625286733745,
+        "recall@5": 0.6007246376811595
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.35,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5432367149758455,
+        "ndcg@5": 0.519625286733745,
+        "recall@5": 0.6007246376811595
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.35,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5432367149758455,
+        "ndcg@5": 0.519625286733745,
+        "recall@5": 0.6007246376811595
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.35,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5432367149758455,
+        "ndcg@5": 0.519625286733745,
+        "recall@5": 0.6007246376811595
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.4,
+          "tag_weight": 0.05,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5053140096618357,
+        "ndcg@5": 0.4839807700410252,
+        "recall@5": 0.5524154589371981
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.4,
+          "tag_weight": 0.1,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5053140096618357,
+        "ndcg@5": 0.4839807700410252,
+        "recall@5": 0.5524154589371981
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.4,
+          "tag_weight": 0.15,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5053140096618357,
+        "ndcg@5": 0.4839807700410252,
+        "recall@5": 0.5524154589371981
+      },
+      {
+        "params": {
+          "alpha": 0.75,
+          "recency_weight": 0.4,
+          "tag_weight": 0.2,
+          "decay_days": 30
+        },
+        "mrr@5": 0.5053140096618357,
+        "ndcg@5": 0.4839807700410252,
+        "recall@5": 0.5524154589371981
+      }
+    ]
+  }
+]

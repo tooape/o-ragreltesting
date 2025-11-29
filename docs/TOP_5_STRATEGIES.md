@@ -2,7 +2,7 @@
 
 This document provides detailed documentation for the top 5 ranking strategies identified through comprehensive evaluation (69 queries, 2,413 chunks, EmbeddingGemma-300M).
 
-*Last Updated: November 28, 2025*
+*Last Updated: November 29, 2025*
 
 ---
 
@@ -392,6 +392,76 @@ result = strategy.rank(
 
 - **Pros**: Leverages vault metadata, good for tagged content
 - **Cons**: +3ms latency, requires consistent tagging, marginal gain over P2
+
+---
+
+## 30-Day Decay Configuration (Long Time Horizon)
+
+For use cases requiring a longer time horizon (e.g., evergreen content, research queries, historical lookups), the strategies were re-optimized with `decay_days=30` fixed.
+
+### 30-Day Leaderboard
+
+| Rank | Strategy | MRR@5 (30d) | MRR@5 (10d) | Change | Best Params (30d) |
+|------|----------|-------------|-------------|--------|-------------------|
+| 1 | **c13_multi_signal_optimized** | **0.6242** | 0.6396 | -2.4% | BM25=0.35, semantic=0.40, graph=0.0, temporal=0.20 |
+| 2 | p2_recency_decay | 0.6220 | 0.6418 | -3.1% | alpha=0.55, recency=0.25 |
+| 3 | p1_recency_boost | 0.6220 | 0.6418 | -3.1% | alpha=0.55, recency=0.25 |
+| 4 | c37_lambdamart | 0.6193 | 0.6575 | -5.8% | first_stage_k=250 |
+| 5 | p3_recency_tag_combo | 0.6147 | 0.6370 | -3.5% | alpha=0.55, recency=0.25, tag=0.05 |
+
+### Key Observations
+
+1. **C13 becomes the winner**: With 30-day decay, c13_multi_signal_optimized surpasses the recency-focused strategies
+2. **LambdaMART drops most**: The largest degradation (-5.8%) since its recency gating is tuned for short time horizons
+3. **Alpha shifts from 0.65 → 0.55**: Lower dense weight compensates for weaker recency signal
+4. **Recency weight drops from 0.35 → 0.25**: Less reliance on temporal signal with longer decay
+5. **Graph weight goes to 0**: With longer horizons, graph centrality adds noise
+
+### 30-Day Optimal Configurations
+
+**C13 Multi-Signal (Best for 30-day)**:
+```python
+strategy = create_strategy(
+    "c13_multi_signal_optimized",
+    top_k=20,
+    bm25_weight=0.35,
+    semantic_weight=0.40,
+    graph_weight=0.0,        # Disabled for 30-day
+    temporal_weight=0.20,
+    temporal_decay_days=30
+)
+```
+
+**P2 Recency Decay (30-day config)**:
+```python
+strategy = create_strategy(
+    "p2_recency_decay",
+    top_k=20,
+    alpha=0.55,              # Reduced from 0.65
+    recency_weight=0.25,     # Reduced from 0.35
+    decay_days=30
+)
+```
+
+**C37 LambdaMART (30-day config)**:
+```python
+strategy = create_strategy(
+    "c37_lambdamart",
+    top_k=20,
+    first_stage_k=250,       # Increased from 200
+    temporal_decay_days=30
+)
+```
+
+### When to Use 30-Day Configuration
+
+| Use Case | Recommended Config |
+|----------|-------------------|
+| Daily work notes, status updates | **10-day** (default) |
+| Research queries, conceptual lookups | **30-day** |
+| Historical searches ("what did we decide about X") | **30-day** |
+| Evergreen documentation | **30-day** |
+| Recent project context | **10-day** |
 
 ---
 
