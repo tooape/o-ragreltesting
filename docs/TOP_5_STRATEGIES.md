@@ -242,6 +242,12 @@ strategy = create_strategy(
 
 P1 and P2 converged to identical optimal parameters after fine-tuning. P1 offers dimension-aware auto-configuration, while P2 is a simpler explicit-config version.
 
+**Implementation Note**: P1 and P2 use the *exact same algorithm* - linear interpolation of hybrid (dense+BM25) and recency scores. The only difference is configuration management:
+- **P1**: Has `OPTIMAL_CONFIGS` dict with precomputed optimal parameters for different embedding dimensions (768d, 512d). Pass `embedding_dim=512` to auto-select the 512d-optimized config.
+- **P2**: Explicit parameter passing only, no auto-configuration.
+
+When evaluated with the same hyperparameters, P1 and P2 produce identical MRR/NDCG scores. Both are retained in the leaderboard because P1's dimension-aware auto-config is useful for production deployments where you may switch between embedding dimensions.
+
 ---
 
 ## 4. C13: Multi-Signal Optimized
