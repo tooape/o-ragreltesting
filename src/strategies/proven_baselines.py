@@ -53,7 +53,7 @@ def days_since(dt: Optional[datetime], reference: Optional[datetime] = None) -> 
 
 @register_strategy
 class P1_RecencyBoost(FusionStrategy):
-    """P1: Recency Boost (Best Overall) - MRR@5: 0.6623
+    """P1: Recency Boost (Best Overall) - MRR@5: 0.6374
 
     Hybrid dense+BM25 fusion with exponential recency boost via linear interpolation.
 
@@ -69,7 +69,7 @@ class P1_RecencyBoost(FusionStrategy):
 
     STRATEGY_ID = "p1_recency_boost"
     CATEGORY = "proven_baselines"
-    DESCRIPTION = "Best overall: hybrid + recency via linear interpolation (MRR@5: 0.6623)"
+    DESCRIPTION = "Best overall: hybrid + recency via linear interpolation (MRR@5: 0.6374)"
 
     # Dimension-specific optimal configurations from Optuna optimization
     OPTIMAL_CONFIGS = {
@@ -181,7 +181,7 @@ class P1_RecencyBoost(FusionStrategy):
 
 @register_strategy
 class P2_RecencyDecay(FusionStrategy):
-    """P2: Recency Decay (Higher Semantic Weight) - MRR@5: 0.6498
+    """P2: Recency Decay (Higher Semantic Weight) - MRR@5: 0.6316
 
     Same algorithm as P1, but optimized for higher dense weight and longer decay.
     More "semantic" and less aggressive on recency.
@@ -192,7 +192,7 @@ class P2_RecencyDecay(FusionStrategy):
 
     STRATEGY_ID = "p2_recency_decay"
     CATEGORY = "proven_baselines"
-    DESCRIPTION = "Higher semantic weight (68% dense), slower decay (MRR@5: 0.6498)"
+    DESCRIPTION = "Higher semantic weight (68% dense), slower decay (MRR@5: 0.6316)"
 
     def __init__(
         self,
@@ -280,7 +280,7 @@ class P2_RecencyDecay(FusionStrategy):
 
 @register_strategy
 class P3_RecencyTagCombo(FusionStrategy):
-    """P3: Recency + Tag Combo - MRR@5: 0.6471
+    """P3: Recency + Tag Combo - MRR@5: 0.5758
 
     Combines recency boosting with tag-based relevance signals.
     Documents with matching tags receive additional score boost.
@@ -298,7 +298,7 @@ class P3_RecencyTagCombo(FusionStrategy):
 
     STRATEGY_ID = "p3_recency_tag_combo"
     CATEGORY = "proven_baselines"
-    DESCRIPTION = "Recency + tag overlap boost (MRR@5: 0.6471, +3ms latency)"
+    DESCRIPTION = "Recency + tag overlap boost (MRR@5: 0.5758, +3ms latency)"
 
     def __init__(
         self,
